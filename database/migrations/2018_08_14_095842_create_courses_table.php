@@ -15,6 +15,14 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('pic', 400);
+            $table->string('title', 400);
+            $table->string('abstract', 4000);
+            $table->text('information');
+            $table->text('description');
+
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
