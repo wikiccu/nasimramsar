@@ -21,9 +21,9 @@ class CreateMessagesTable extends Migration
             $table->string('body', 4000);
             $table->string('ip', 100);
             $table->dateTime('postdate');
-            
-            $table->tinyInteger('readed',4);
-            $table->tinyInteger('removed',4);
+
+            $table->tinyInteger('readed');
+            $table->tinyInteger('removed');
             
             $table->timestamps();
         });

@@ -21,6 +21,7 @@ class CreateTeachersTable extends Migration
             $table->string('abstract', 4000);
             $table->text('description');
             
+            $table->unsignedInteger('field_id');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
             
             $table->timestamps();

@@ -25,7 +25,10 @@ class CreatePostsTable extends Migration
 
             $table->tinyInteger('published')->default(0);
 
+            $table->unsignedInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();

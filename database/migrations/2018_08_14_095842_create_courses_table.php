@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->text('information');
             $table->text('description');
 
+            $table->unsignedInteger('field_id');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
 
             $table->timestamps();
