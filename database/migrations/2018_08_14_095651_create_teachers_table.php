@@ -15,6 +15,14 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('pic', 400);
+            $table->string('name', 400);
+            $table->string('title', 400);
+            $table->string('abstract', 4000);
+            $table->text('description');
+            
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
