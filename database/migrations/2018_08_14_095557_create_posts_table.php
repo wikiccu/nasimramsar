@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('abstract',1000)->collation('utf8_unicode_ci');
             $table->text('body')->collation('utf8_unicode_ci');
 
-            $table->dateTime('createdtime');
-            $table->dateTime('editedtime');
+            //$table->dateTime('createdtime');
+            //$table->dateTime('editedtime');
 
             $table->tinyInteger('published')->default(0);
 
