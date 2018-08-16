@@ -18,6 +18,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'mohsen1299@gmail.com',
             'password' => bcrypt('secret'),
         ]);
+        //add role 
+        DB::table('roles')->insert(['name' => 'admin']);
+        DB::table('roles')->insert(['name' => 'user']);
+        //add role2user
+        $user = App\User::find(1);
+        $role = App\Role::find(1);
+        $user->roles()->attach($role);
+
         //add subject
         DB::table('subjects')->insert(['title'=>'دوره های جدید']);
         DB::table('subjects')->insert(['title'=>'اخبار موسسه']);
