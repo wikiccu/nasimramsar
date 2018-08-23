@@ -30,3 +30,6 @@ Route::resources([
     '/admin/teacher' => 'Admin\TeacherController'
     ]);
 //php artisan make:controller Admin\TeacherController --resource --model=Teacher
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
