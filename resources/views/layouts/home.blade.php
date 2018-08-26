@@ -20,8 +20,8 @@
         }
     </script>
     <script src="js/bootstrap.min.js"></script>
-    <link href='//fonts.googleapis.com/css?family=Catamaran:400,100,300,500,700,600,800,900' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    {{-- <link href='//fonts.googleapis.com/css?family=Catamaran:400,100,300,500,700,600,800,900' rel='stylesheet' type='text/css'> --}}
+    {{-- <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> --}}
 </head>
 
 <body>
@@ -31,7 +31,7 @@
             <div class="head-top">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="images/bo.png" alt="" title="موسسه نسیم رامسر">
+                        <img src="images/nasim.png" alt="" title="موسسه نسیم رامسر">
                     </a>
                 </div>
                 <div class="login">
