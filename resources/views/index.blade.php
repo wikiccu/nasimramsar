@@ -1,6 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('title', 'صفحه اصلی')
+
+@section('indexContent')
+
+<div class='banner'>
+    <div class='container'>
+        <div class='banner-text'>
+            <h2 class='myDirection persianFont'>موسسه فرهنگی هنری نسیم رامسر</h2>
+            <p class='myDirection persianFont'>با مجوز رسمی از وزارت فرهنگ و ارشاد اسلامی </p>
+        </div>
+        <p class='banner-text1 myDirection persianFont'>فناوری اطلاعات، حسابداری و مالی، عمران و معماری</p>
+    </div>
+</div>
+
+@endsection
+
 
 @section('content')
 

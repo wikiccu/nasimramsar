@@ -5,8 +5,8 @@
     <title>موسسه نسیم رامسر | @yield('title') </title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <script src="js/jquery.min.js"></script>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/myStyle.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/homeStyle.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/homeStyleCustome.css" rel="stylesheet" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="آموزش, نسیم, نسیم رامسر, صنایع دستی, فنی و حرفه ای, کامپیوتر, برنامه نویسی, هنر, معماری, عمران حسابداری"/>
@@ -26,7 +26,7 @@
 
 <body>
 
-    <div class="header">
+    <div class="header @yield('notIndexContent')">
         <div class="container">
             <div class="head-top">
                 <div class="logo">
@@ -135,6 +135,7 @@
                 <p class="banner-text1 myDirection persianFont">فناوری اطلاعات، حسابداری و مالی، عمران و معماری</p>
             </div>
         </div>
+        @yield('indexContent')
         <div class="nav-top">
             <div class="container">
                 <div class="nav1">
