@@ -15,21 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function () {
-    return view('index');
-});
-
-//Route::resource('/admin/field', 'Admin\FieldController');
-//Route::resource('/admin/subject', 'Admin\SubjectController');
-Route::resources([
-    '/admin/course'  => 'Admin\CourseController',
-    '/admin/field'   => 'Admin\FieldController',
-    '/admin/message' => 'Admin\MessageController',
-    '/admin/post'    => 'Admin\PostController',
-    '/admin/subject' => 'Admin\SubjectController',
-    '/admin/teacher' => 'Admin\TeacherController'
-    ]);
-//php artisan make:controller Admin\TeacherController --resource --model=Teacher
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
