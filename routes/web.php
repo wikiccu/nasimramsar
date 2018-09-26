@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resources([
+    '/admin/course'  => 'Admin\CourseController',
+    '/admin/field'   => 'Admin\FieldController',
+    '/admin/message' => 'Admin\MessageController',
+    '/admin/post'    => 'Admin\PostController',
+    '/admin/subject' => 'Admin\SubjectController',
+    '/admin/teacher' => 'Admin\TeacherController',
+    '/admin/teacher' => 'Admin\GalleryController'
+    ]);
