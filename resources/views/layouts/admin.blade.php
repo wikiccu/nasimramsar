@@ -13,6 +13,7 @@
 
 
     <!-- Styles -->
+    <link href="{{ asset('css/adminlte/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/AdminLTE.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/myAdminStyle.css') }}" rel="stylesheet">
