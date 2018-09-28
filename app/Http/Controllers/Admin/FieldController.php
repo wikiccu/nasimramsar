@@ -17,8 +17,9 @@ class FieldController extends Controller
     {
         //
         //$fields = DB::table('fields')->get();
-        $fields = App\Field::all();
-        return view('admin.fields.index', ['fields' => $fields]);
+        $fields = Field::all();
+        //return view('admin.fields.index', ['fields' => $fields]);
+        return view('admin.fields.index', compact('fields'));
     }
 
     /**
@@ -29,6 +30,7 @@ class FieldController extends Controller
     public function create()
     {
         //
+        return view('admin.fields.create');
     }
 
     /**
@@ -40,11 +42,12 @@ class FieldController extends Controller
     public function store(Request $request)
     {
         //
-        // $flight = new Flight;
+        //return $request->all();
+        $field = new Field;
+        $field->Title = $request->Title;
+        $field->save();
 
-        // $flight->name = $request->name;
-
-        // $flight->save();
+        return redirect('admin\field')->with('success', 'Information has been added');
     }
 
     /**
@@ -56,6 +59,7 @@ class FieldController extends Controller
     public function show(Field $field)
     {
         //
+        return view('admin.fields.show');
     }
 
     /**
@@ -67,6 +71,7 @@ class FieldController extends Controller
     public function edit(Field $field)
     {
         //
+        return view('admin.fields.edit');
     }
 
     /**
