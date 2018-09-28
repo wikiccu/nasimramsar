@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ str_replace('_', ' ', config('app.name', 'Laravel')) }}</title>
 
 
 
@@ -47,46 +47,50 @@
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
+
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar direction">
 
-                <!-- Sidebar Menu -->
-                <ul class="sidebar-menu">
-
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="header">منو ها</li>
-                    <li class="">
-                        <a href="/admin">
-                            <i class="fa fa-dashboard"></i>
-                            <span>داشبورد</span>
-                        </a>
-                    </li>
-
-                    <li class="header">بخش محصولات</li>
-                    <li class="treeview ">
-                        <a href="#"><i class="fa fa-cubes"></i> <span>محصولات</span> <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li class=""><a href=""><i class="fa fa-cart-plus"></i>محصول جدید</a></li>
-                            <li class=""><a href="/Admin/Products"><i class="fa fa-list-alt"></i>لیست محصولات</a></li>
-                        </ul>
-                    </li>
-                    <li class=""><a href="/Admin/Categories"><i class="fa fa-sitemap"></i>دسته بندی ها</a></li>
-                    <li class=""><a href="/Admin/Materials"><i class="fa fa-tag"></i>جنس محصولات</a></li>
-                    <li class=""><a href="/Admin/Scales"><i class="fa fa-tag"></i>سایز بندی محصولات</a></li>
-                    <li class=""><a href="/Admin/Sponsors"><i class="fa fa-truck"></i>حامیان</a></li>
-
-                    <li class="header">بخش مقالات</li>
-                    <li class="">
-                        <a href="/Admin/Blogs">
-                            <i class="fa fa-files-o"></i>
-                            <span>مقالات</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.sidebar-menu -->
+              <!-- Sidebar Menu -->
+              <ul class="sidebar-menu">
+                <li class="header">بخش ها</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li class="active">
+                  <a href="admin.php">
+                    <i class="fa fa-dashboard"></i>
+                    <span>داشبورد</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="news.php">
+                    <i class="fa fa-files-o"></i>
+                    <span>خبر ها</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="courses.php">
+                    <i class="fa fa-calendar"></i>
+                    <span>دوره ها</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="teachers.php">
+                    <i class="fa fa-users"></i>
+                    <span>اساتید</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="messages.php">
+                    <i class="fa fa-envelope"></i>
+                    <span>پیام ها</span>
+                  </a>
+                </li>
+              </ul>
+              <!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
-        </aside>
+          </aside>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -109,10 +113,10 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-left hidden-xs">
-                Copyright © 2017 <a href="http://www.Ardavankala.com">Ardavan kala</a> Inc. All rights reserved
+                Copyright © 2017 <a href="http://www.nasimramsar.com">nasim ramsar</a> Inc. All rights reserved
             </div>
             <!-- Default to the left -->
-            <strong>کليه حقوق اين سايت متعلق به <a href="http://www.Ardavankala.com">اردوان کالا</a> می‌باشد.</strong>
+            <strong>کليه حقوق اين سايت متعلق به <a href="http://www.nasimramsar.com">موسسه نسیم رامسر</a> می‌باشد.</strong>
         </footer>
 
     </div>
