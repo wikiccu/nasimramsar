@@ -8,7 +8,7 @@
             <h3 class="box-title">رشته جدید</h3>
         </div>
         <!-- form start -->
-        <form role="form" method="post" action="{{url('admin/field')}}">
+        <form role="form" method="post" action="{{url('admin/course')}}">
             @csrf
             <div class="box-body">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

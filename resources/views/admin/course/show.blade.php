@@ -14,7 +14,7 @@
                         عنوان رشته
                     </dt>
                     <dd>
-                        {{$field->title}}
+                        {{$course->title}}
                     </dd>
                 </dl>
 
@@ -22,8 +22,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <a href="{{action('Admin\FieldController@edit', $field['id'])}}" class="btn btn-primary"> تغییر رشته </a> |
-                <a href="{{url('admin\field')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
+                <a href="{{action('Admin\CourseController@edit', $course['id'])}}" class="btn btn-primary"> تغییر رشته </a> |
+                <a href="{{url('admin\course')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
             </div>
         </div>
     </div>

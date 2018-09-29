@@ -7,24 +7,24 @@
                 <h3 class="box-title">مشخصات رشته</h3>
             </div>
             <!-- form start -->
-            <form role="form" method="post"  action="{{ url('admin/field/' . $field->id) }}">
+            <form role="form" method="post"  action="{{ url('admin/course/' . $course->id) }}">
                 @csrf
                 <input name="_method" type="hidden" value="PATCH">
 
                 <div class="box-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input name="Id" id="Id" type="hidden" value="{{$field->id}}" />
+                    <input name="Id" id="Id" type="hidden" value="{{$course->id}}" />
 
                     <div class="form-group">
                         <label for="title" class="control-label">عنوان رشته</label>
-                        <input id="title" name="title" class="form-control" value="{{$field->title}}"/>
+                        <input id="title" name="title" class="form-control" value="{{$course->title}}"/>
                         <span for="title" class="text-danger"></span>
                     </div>
 
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> ذخیره</button> |
-                    <a href="{{url('admin\field')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
+                    <a href="{{url('admin\course')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
                 </div>
             </form>
         </div>

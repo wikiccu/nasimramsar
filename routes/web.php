@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
 Route::resources([
-//     '/admin/course'  => 'Admin\CourseController',
+    '/admin/course'  => 'Admin\CourseController',
     '/admin/field'   => 'Admin\FieldController',
 //     '/admin/message' => 'Admin\MessageController',
 //     '/admin/post'    => 'Admin\PostController',
