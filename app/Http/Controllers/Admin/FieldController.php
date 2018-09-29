@@ -47,7 +47,7 @@ class FieldController extends Controller
         //
         //return $request->all();
         $field = new Field;
-        $field->Title = $request->title;
+        $field->title = $request->title;
         $field->save();
 
         return redirect('admin\field')->with('success', 'Information has been added');

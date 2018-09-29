@@ -29,6 +29,8 @@ class CourseController extends Controller
     public function create()
     {
         //
+        $menu = 'course';
+        return view('admin.course.create',compact('menu'));
     }
 
     /**
@@ -40,6 +42,11 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $course = new Course;
+        //$course->title = $request->title;
+        $course->save();
+
+        return redirect('admin\course')->with('success', 'Information has been added');
     }
 
     /**
@@ -48,9 +55,12 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show($id)
     {
         //
+        $course = Course::find($id);
+        $menu = 'course';
+        return view('admin.course.show',compact('course','id','menu'));
     }
 
     /**
@@ -59,9 +69,12 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
         //
+        $course = Course::find($id);
+        $menu = 'course';
+        return view('admin.course.edit',compact('course','id','menu'));
     }
 
     /**
@@ -71,9 +84,14 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request,$id)
     {
         //
+        $course = Course::find($id);
+        //$course->title = $request->title;
+        $course->save();
+
+        return redirect('admin\course')->with('success', 'Information has been modified');
     }
 
     /**
@@ -82,8 +100,10 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
         //
+        $course = Course::find($id);
+        $course->delete();
     }
 }
