@@ -104,8 +104,11 @@ class FieldController extends Controller
     {
         //
         $field = Field::find($id);
-        $field->delete();
-        return redirect('admin\field')->with('success','Information has been  deleted');
+        if($field->teachers->count() ==0 && $field->courses->count()==0){
+            $field->delete();
+            return redirect('admin\field')->with('success','Information has been  deleted');
+        }
+        return redirect('admin\field')->with('failed','can not remove Information');
     }
 }
 //https://appdividend.com/2018/02/23/laravel-5-6-crud-tutorial/
