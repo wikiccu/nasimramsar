@@ -19,9 +19,9 @@ class FieldController extends Controller
         //$fields = DB::table('fields')->get();
         $fields = Field::all();
         $menu = 'field';
-        //return view('admin.fields.index', ['fields' => $fields]);
+        //return view('admin.field.index', ['fields' => $fields]);
         //return compact('fields','menu' );
-        return view('admin.fields.index', compact('fields','menu'));
+        return view('admin.field.index', compact('fields','menu'));
     }
 
     /**
@@ -33,7 +33,7 @@ class FieldController extends Controller
     {
         //
         $menu = 'field';
-        return view('admin.fields.create',compact('menu'));
+        return view('admin.field.create',compact('menu'));
     }
 
     /**
@@ -47,7 +47,7 @@ class FieldController extends Controller
         //
         //return $request->all();
         $field = new Field;
-        $field->Title = $request->Title;
+        $field->Title = $request->title;
         $field->save();
 
         return redirect('admin\field')->with('success', 'Information has been added');
@@ -65,7 +65,7 @@ class FieldController extends Controller
         $field = Field::find($id);
         //return $field;
         $menu = 'field';
-        return view('admin.fields.show',compact('field','id','menu'));
+        return view('admin.field.show',compact('field','id','menu'));
     }
 
     /**
@@ -79,7 +79,7 @@ class FieldController extends Controller
         //
         $field = Field::find($id);
         $menu = 'field';
-        return view('admin.fields.edit',compact('field','id','menu'));
+        return view('admin.field.edit',compact('field','id','menu'));
     }
 
     /**
@@ -93,7 +93,7 @@ class FieldController extends Controller
     {
         //
         $field = Field::find($id);
-        $field->Title = $request->Title;
+        $field->title = $request->title;
         $field->save();
 
         return redirect('admin\field')->with('success', 'Information has been modified');

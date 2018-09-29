@@ -16,6 +16,9 @@ class SubjectController extends Controller
     public function index()
     {
         //
+        $subjects = Subject::all();
+        $menu = 'subject';
+        return view('admin.subject.index', compact('subjects','menu'));
     }
 
     /**
@@ -26,6 +29,8 @@ class SubjectController extends Controller
     public function create()
     {
         //
+        $menu = 'subject';
+        return view('admin.subject.create',compact('menu'));
     }
 
     /**
@@ -37,6 +42,11 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         //
+        $subject = new Subject;
+        $subject->title = $request->title;
+        $subject->save();
+
+        return redirect('admin\subject')->with('success', 'Information has been added');
     }
 
     /**
@@ -48,6 +58,9 @@ class SubjectController extends Controller
     public function show(Subject $subject)
     {
         //
+        $subject = Subject::find($id);
+        $menu = 'subject';
+        return view('admin.subject.show',compact('subject','id','menu'));
     }
 
     /**
@@ -59,6 +72,9 @@ class SubjectController extends Controller
     public function edit(Subject $subject)
     {
         //
+        $subject = Subject::find($id);
+        $menu = 'subject';
+        return view('admin.subject.edit',compact('subject','id','menu'));
     }
 
     /**
@@ -71,6 +87,11 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         //
+        $subject = Subject::find($id);
+        $subject->title = $request->title;
+        $subject->save();
+
+        return redirect('admin\subject')->with('success', 'Information has been modified');
     }
 
     /**
@@ -82,5 +103,11 @@ class SubjectController extends Controller
     public function destroy(Subject $subject)
     {
         //
+        $subject = Subject::find($id);
+        if($subject->posts->count() ==0){
+            $subject->delete();
+            return redirect('admin\subject')->with('success','Information has been  deleted');
+        }
+        return redirect('admin\subject')->with('failed','can not remove Information');
     }
 }
