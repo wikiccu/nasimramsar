@@ -5,8 +5,8 @@
 <div class="col-xs-12">
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">لیست رشتهات</h3>
-            <a href="{{url('admin\field\create')}}" class="btn btn-primary pull-left" style="margin-right: 1em;"><i class="fa fa-plus"></i> رشته جدید</a>
+            <h3 class="box-title">لیست موضوع ها</h3>
+            <a href="{{url('admin\subject\create')}}" class="btn btn-primary pull-left" style="margin-right: 1em;"><i class="fa fa-plus"></i> موضوع جدید</a>
             <div class="pull-left">
                 <div id="searchBox" class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control pull-right" placeholder="جستجو">
@@ -21,37 +21,33 @@
         <div class="box-body table-responsive no-padding">
             <table class="table table-hover persian-table table-striped table-bordered">
                 <tr>
-                    <th>عنوان رشته</th>
-                    <th>تعداد استاد</th>
-                    <th>تعداد مقاله</th>
+                    <th>عنوان موضوع</th>
+                    <th>تعداد خبر</th>
                     <th>تنظیمات</th>
                 </tr>
-                @if($fields)
-                    @foreach ($fields as $field)
+                @if($subjects)
+                    @foreach ($subjects as $subject)
 
                         <tr>
                             <td>
-                                {{ $field->title}}
+                                {{ $subject->title}}
                             </td>
                             <td>
-                                {{ $field->teachers->count()}}
-                            </td>
-                            <td>
-                                {{ $field->courses->count()}}
+                                {{ $subject->posts->count()}}
                             </td>
                             <td class="operation-td">
-                                <a href="{{action('Admin\FieldController@show', $field['id'])}}">
-                                    <i class="fa fa-list-alt" title="نمایش رشته"></i>
+                                <a href="{{action('Admin\SubjectController@show', $subject['id'])}}">
+                                    <i class="fa fa-list-alt" title="نمایش موضوع"></i>
                                 </a>
-                                <a href="{{action('Admin\FieldController@edit', $field['id'])}}">
-                                    <i class="fa fa-edit" title="تغییر رشته"></i>
+                                <a href="{{action('Admin\SubjectController@edit', $subject['id'])}}">
+                                    <i class="fa fa-edit" title="تغییر موضوع"></i>
                                 </a>
-                                <form style="display:inline;" action="{{ url('admin/field/' . $field->id) }}" method="post"
-                                    onsubmit="return confirm('از حذف رشته اطمینان دارید؟');">
+                                <form style="display:inline;" action="{{ url('admin/subject/' . $subject->id) }}" method="post"
+                                    onsubmit="return confirm('از حذف موضوع اطمینان دارید؟');">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="linkButton" title="حذف رشته">
-                                            <i class="fa fa-trash-o" title="حذف رشته"></i>
+                                        <button class="linkButton" title="حذف موضوع">
+                                            <i class="fa fa-trash-o" title="حذف موضوع"></i>
                                         </button>
                                 </form>
                             </td>

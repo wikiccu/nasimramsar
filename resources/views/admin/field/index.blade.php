@@ -5,7 +5,7 @@
 <div class="col-xs-12">
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">لیست رشتهات</h3>
+            <h3 class="box-title">لیست رشته ها</h3>
             <a href="{{url('admin\field\create')}}" class="btn btn-primary pull-left" style="margin-right: 1em;"><i class="fa fa-plus"></i> رشته جدید</a>
             <div class="pull-left">
                 <div id="searchBox" class="input-group input-group-sm" style="width: 150px;">

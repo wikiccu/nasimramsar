@@ -55,7 +55,7 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show($id)
     {
         //
         $subject = Subject::find($id);
@@ -69,7 +69,7 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
         //
         $subject = Subject::find($id);
@@ -84,7 +84,7 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, $id)
     {
         //
         $subject = Subject::find($id);
@@ -100,7 +100,7 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
         //
         $subject = Subject::find($id);

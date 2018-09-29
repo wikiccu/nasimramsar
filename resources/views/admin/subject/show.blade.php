@@ -5,16 +5,16 @@
 <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">مشخصات رشته</h3>
+                <h3 class="box-title">مشخصات موضوع</h3>
             </div>
 
             <div class="box-body">
                 <dl class="dl-horizontal">
                     <dt>
-                        عنوان رشته
+                        عنوان موضوع
                     </dt>
                     <dd>
-                        {{$field->title}}
+                        {{$subject->title}}
                     </dd>
                 </dl>
 
@@ -22,8 +22,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <a href="{{action('Admin\FieldController@edit', $field['id'])}}" class="btn btn-primary"> تغییر رشته </a> |
-                <a href="{{url('admin\field')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
+                <a href="{{action('Admin\SubjectController@edit', $subject['id'])}}" class="btn btn-primary"> تغییر موضوع </a> |
+                <a href="{{url('admin\subject')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
             </div>
         </div>
     </div>
