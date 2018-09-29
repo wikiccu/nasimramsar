@@ -56,10 +56,12 @@ class FieldController extends Controller
      * @param  \App\Field  $field
      * @return \Illuminate\Http\Response
      */
-    public function show(Field $field)
+    public function show($id)
     {
         //
-        return view('admin.fields.show');
+        $field = Field::find($id);
+        //return $field;
+        return view('admin.fields.show',compact('field','id'));
     }
 
     /**
@@ -68,10 +70,11 @@ class FieldController extends Controller
      * @param  \App\Field  $field
      * @return \Illuminate\Http\Response
      */
-    public function edit(Field $field)
+    public function edit($id)
     {
         //
-        return view('admin.fields.edit');
+        $field = Field::find($id);
+        return view('admin.fields.edit',compact('field','id'));
     }
 
     /**
@@ -81,9 +84,14 @@ class FieldController extends Controller
      * @param  \App\Field  $field
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Field $field)
+    public function update(Request $request, $id)
     {
         //
+        $field = Field::find($id);
+        $field->Title = $request->Title;
+        $field->save();
+
+        return redirect('admin\field')->with('success', 'Information has been modified');
     }
 
     /**
@@ -92,8 +100,9 @@ class FieldController extends Controller
      * @param  \App\Field  $field
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Field $field)
+    public function destroy($id)
     {
         //
     }
 }
+//https://appdividend.com/2018/02/23/laravel-5-6-crud-tutorial/

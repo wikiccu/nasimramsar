@@ -36,10 +36,10 @@
                             <td></td>
                             <td></td>
                             <td class="operation-td">
-                                <a href="./Details">
+                                <a href="{{action('Admin\FieldController@show', $field['id'])}}">
                                     <i class="fa fa-list-alt" title="نمایش موضوع"></i>
                                 </a>
-                                <a href="./Edit">
+                                <a href="{{action('Admin\FieldController@edit', $field['id'])}}">
                                     <i class="fa fa-edit" title="تغییر موضوع"></i>
                                 </a>
                                 <a href="./Delete">
