@@ -142,3 +142,11 @@ dl.dl-horizontal dd {
     .nav-tabs.right-li > li {
         float: right !important;
     }
+
+.linkButton{
+    border: 0;
+    background-color: inherit;
+}
+.linkButton:hover i{
+    color: red;
+}

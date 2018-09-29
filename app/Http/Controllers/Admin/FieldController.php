@@ -103,6 +103,9 @@ class FieldController extends Controller
     public function destroy($id)
     {
         //
+        $field = Field::find($id);
+        $field->delete();
+        return redirect('admin\field')->with('success','Information has been  deleted');
     }
 }
 //https://appdividend.com/2018/02/23/laravel-5-6-crud-tutorial/

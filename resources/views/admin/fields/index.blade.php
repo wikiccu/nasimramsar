@@ -42,9 +42,14 @@
                                 <a href="{{action('Admin\FieldController@edit', $field['id'])}}">
                                     <i class="fa fa-edit" title="تغییر موضوع"></i>
                                 </a>
-                                <a href="./Delete">
-                                    <i class="fa fa-trash-o" title="حذف موضوع"></i>
-                                </a>
+                                <form style="display:inline;" action="{{ url('admin/field/' . $field->id) }}" method="post"
+                                    onsubmit="return confirm('از حذف موضوع اطمینان دارید؟');">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="linkButton" title="حذف موضوع">
+                                            <i class="fa fa-trash-o" title="حذف موضوع"></i>
+                                        </button>
+                                </form>
                             </td>
                         </tr>
 
