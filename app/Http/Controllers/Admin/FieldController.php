@@ -18,8 +18,10 @@ class FieldController extends Controller
         //
         //$fields = DB::table('fields')->get();
         $fields = Field::all();
+        $menu = 'field';
         //return view('admin.fields.index', ['fields' => $fields]);
-        return view('admin.fields.index', compact('fields'));
+        //return compact('fields','menu' );
+        return view('admin.fields.index', compact('fields','menu'));
     }
 
     /**
@@ -30,7 +32,8 @@ class FieldController extends Controller
     public function create()
     {
         //
-        return view('admin.fields.create');
+        $menu = 'field';
+        return view('admin.fields.create',compact('menu'));
     }
 
     /**
@@ -61,7 +64,8 @@ class FieldController extends Controller
         //
         $field = Field::find($id);
         //return $field;
-        return view('admin.fields.show',compact('field','id'));
+        $menu = 'field';
+        return view('admin.fields.show',compact('field','id','menu'));
     }
 
     /**
@@ -74,7 +78,8 @@ class FieldController extends Controller
     {
         //
         $field = Field::find($id);
-        return view('admin.fields.edit',compact('field','id'));
+        $menu = 'field';
+        return view('admin.fields.edit',compact('field','id','menu'));
     }
 
     /**

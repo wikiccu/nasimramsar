@@ -10,8 +10,6 @@
 
     <title>{{ str_replace('_', ' ', config('app.name', 'Laravel')) }}</title>
 
-
-
     <!-- Styles -->
     <link href="{{ asset('css/adminlte/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/AdminLTE.min.css') }}" rel="stylesheet">
@@ -25,7 +23,7 @@
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="{{url('admin')}}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
                     <b>مدیریت</b>
@@ -55,32 +53,50 @@
               <ul class="sidebar-menu">
                 <li class="header">بخش ها</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
-                  <a href="admin.php">
+                <li class="@if($menu=='admin') active @endif">
+                  <a href="{{url('admin')}}">
                     <i class="fa fa-dashboard"></i>
                     <span>داشبورد</span>
                   </a>
                 </li>
-                <li>
-                  <a href="news.php">
+                <li class="@if($menu=='subject') active @endif">
+                    <a href="{{url('admin\subject')}}">
+                      <i class="fa fa-sitemap"></i>
+                      <span>موضوع ها</span>
+                    </a>
+                </li>
+                <li class="@if($menu=='post') active @endif">
+                  <a href="{{url('admin\post')}}">
                     <i class="fa fa-files-o"></i>
                     <span>خبر ها</span>
                   </a>
                 </li>
-                <li>
-                  <a href="courses.php">
+                <li class="@if($menu=='field') active @endif">
+                  <a href="{{url('admin\field')}}">
+                    <i class="fa fa-sitemap"></i>
+                    <span>رشته ها</span>
+                  </a>
+                </li>
+                <li class="@if($menu=='course') active @endif">
+                  <a href="{{url('admin\course')}}">
                     <i class="fa fa-calendar"></i>
                     <span>دوره ها</span>
                   </a>
                 </li>
-                <li>
-                  <a href="teachers.php">
+                <li class="@if($menu=='teacher') active @endif">
+                  <a href="{{url('admin\teacher')}}">
                     <i class="fa fa-users"></i>
                     <span>اساتید</span>
                   </a>
                 </li>
-                <li>
-                  <a href="messages.php">
+                <li class="@if($menu=='gallery') active @endif">
+                  <a href="{{url('admin\gallery')}}">
+                    <i class="fa fa-picture-o"></i>
+                    <span>گالری</span>
+                  </a>
+                </li>
+                <li class="@if($menu=='message') active @endif">
+                  <a href="{{url('admin\message')}}">
                     <i class="fa fa-envelope"></i>
                     <span>پیام ها</span>
                   </a>
