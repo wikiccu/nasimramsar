@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('header')
+<link href="{{ asset('froala-editor/css/froala_editor.pkgd.min.css') }}" rel="stylesheet">
+<link href="{{ asset('froala-editor/css/froala_style.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="col-md-12">
         <div class="box box-primary">
@@ -29,7 +34,8 @@
                                   if (input.files && input.files[0]) {
                                         //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
                                     var fileExtension = ['jpg'];
-                                    if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {                                          $("#pic").val("");
+                                    if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
+                                      $("#pic").val("");
                                       alert("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '));
                                     }
                                     var reader = new FileReader();

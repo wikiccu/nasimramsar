@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('header')
+<link href="{{ asset('froala-editor/css/froala_editor.pkgd.min.css') }}" rel="stylesheet">
+<link href="{{ asset('froala-editor/css/froala_style.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <div class="col-md-12">
@@ -30,29 +35,7 @@
                         src="{{asset('images/no-image.png')}}" class="img-rounded" alt="no Image Available">
                       <input id="pic" name="pic" type="file" onchange="GetImage()" style="display: none" />
                     </div>
-                    <script>
-                        function GetImage() {
-                            try {
-                              var input = document.getElementById("pic");
-                              if (input.files && input.files[0]) {
-                                //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-                                var fileExtension = ['jpg'];
-                                if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
-                                  $("#pic").val("");
-                                  showAppMessage("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '), "warning");
-                                }
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                  $('#inputImage').attr('src', e.target.result);
-                                  changeImage = true;
-                                }
-                                reader.readAsDataURL(input.files[0]);
-                              }
-                            } catch (e) {
-                              showAppMessage(e.statusMessage, "error");
-                            }
-                        };
-                    </script>
+
                 </div>
 
                 <div class="form-group">
@@ -100,4 +83,66 @@
     </div>
 </div>
 
+
+
+@endsection
+
+@section('scripts')
+<script src="{{ asset('froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
+<script type="">
+      $(document).ready(function () {
+        $('#information').froalaEditor({
+            // Set the image upload URL.
+            imageUploadURL: '?handler=UploadFile',
+
+            direction: 'rtl',
+            language: 'fa',
+            heightMin: 200,
+
+            imageUploadParams: {
+                id: 'my_editor'
+            },
+            requestHeaders: {
+                'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
+            }
+        });
+        $('#description').froalaEditor({
+            // Set the image upload URL.
+            imageUploadURL: '?handler=UploadFile',
+
+            direction: 'rtl',
+            language: 'fa',
+            heightMin: 200,
+
+            imageUploadParams: {
+                id: 'my_editor'
+            },
+            requestHeaders: {
+                'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
+            }
+        });
+    });
+
+    function GetImage() {
+        try {
+          var input = document.getElementById("pic");
+          if (input.files && input.files[0]) {
+            //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            var fileExtension = ['jpg'];
+            if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
+              $("#pic").val("");
+              showAppMessage("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '), "warning");
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#inputImage').attr('src', e.target.result);
+              changeImage = true;
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        } catch (e) {
+          showAppMessage(e.statusMessage, "error");
+        }
+    };
+</script>
 @endsection

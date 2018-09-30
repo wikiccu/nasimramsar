@@ -16,6 +16,9 @@
     <link href="{{ asset('css/adminlte/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/myAdminStyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte/skin-blue.min.css') }}" rel="stylesheet">
+
+    @yield('header')
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -138,8 +141,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/adminLTE.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/adminLTE.min.js') }}"></script>
+
+    @yield('scripts')
 </body>
 </html>

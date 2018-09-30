@@ -36,14 +36,14 @@
                         اطلاعات دوره
                     </dt>
                     <dd>
-                        {{$course->information}}
+                        {!! $course->information !!}
                     </dd>
 
                     <dt>
                         درباره ی  دوره
                     </dt>
                     <dd>
-                        {{$course->description}}
+                        {!! $course->description !!}
                     </dd>
 
                     <dt>
