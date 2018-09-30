@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Course;
+use App\Field;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CourseController extends Controller
 {
@@ -29,8 +31,9 @@ class CourseController extends Controller
     public function create()
     {
         //
+        $fields = Field::all();
         $menu = 'course';
-        return view('admin.course.create',compact('menu'));
+        return view('admin.course.create',compact('fields','menu'));
     }
 
     /**
@@ -42,8 +45,25 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(300, 300);
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $image_resize->save(public_path('images/course/' .$filename));
+        }
+
         $course = new Course;
-        //$course->title = $request->title;
+
+        $course->pic = $filename;
+        $course->title = $request->title;
+        $course->abstract = $request->abstract;
+        $course->information = $request->information;
+        $course->description = $request->description;
+        $course->field_id = $request->field_id;
+
         $course->save();
 
         return redirect('admin\course')->with('success', 'Information has been added');
@@ -73,8 +93,9 @@ class CourseController extends Controller
     {
         //
         $course = Course::find($id);
+        $fields = Field::all();
         $menu = 'course';
-        return view('admin.course.edit',compact('course','id','menu'));
+        return view('admin.course.edit',compact('course','id','fields','menu'));
     }
 
     /**
@@ -104,6 +125,8 @@ class CourseController extends Controller
     {
         //
         $course = Course::find($id);
+        //removed file
         $course->delete();
+        return redirect('admin\course')->with('success', 'Information has been Removed');
     }
 }

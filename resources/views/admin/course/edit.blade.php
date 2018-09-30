@@ -4,7 +4,7 @@
 <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">مشخصات رشته</h3>
+                <h3 class="box-title">مشخصات دوره</h3>
             </div>
             <!-- form start -->
             <form role="form" method="post"  action="{{ url('admin/course/' . $course->id) }}">
@@ -16,7 +16,7 @@
                     <input name="Id" id="Id" type="hidden" value="{{$course->id}}" />
 
                     <div class="form-group">
-                        <label for="title" class="control-label">عنوان رشته</label>
+                        <label for="title" class="control-label">عنوان دوره</label>
                         <input id="title" name="title" class="form-control" value="{{$course->title}}"/>
                         <span for="title" class="text-danger"></span>
                     </div>
