@@ -45,14 +45,16 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $filename='';
+
         if ($request->hasFile('pic')) {
             $file = $request->file('pic');
 
             $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(300, 300);
+            $image_resize->resize(400, 270);
 
-            $filename = time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path('images/course/' .$filename));
+            $filename = 'images/courses/'.time().'_'.$file->getClientOriginalName();
+            $image_resize->save(public_path($filename));
         }
 
         $course = new Course;
@@ -109,7 +111,29 @@ class CourseController extends Controller
     {
         //
         $course = Course::find($id);
-        //$course->title = $request->title;
+
+        if ($request->hasFile('pic')) {
+
+            $file = $request->file('pic');
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 270);
+
+            if($course->pic==''){
+                $filename = 'images/courses/'.time().'_'.$file->getClientOriginalName();
+                $image_resize->save(public_path($filename));
+                $course->pic = $filename;
+            }else{
+                $filename = $course->pic;
+                $image_resize->save(public_path($filename));
+            }
+        }
+
+        $course->title = $request->title;
+        $course->abstract = $request->abstract;
+        $course->information = $request->information;
+        $course->description = $request->description;
+        $course->field_id = $request->field_id;
+
         $course->save();
 
         return redirect('admin\course')->with('success', 'Information has been modified');
@@ -126,6 +150,9 @@ class CourseController extends Controller
         //
         $course = Course::find($id);
         //removed file
+        $filename = $course->pic;
+        unlink(public_path($filename));
+
         $course->delete();
         return redirect('admin\course')->with('success', 'Information has been Removed');
     }

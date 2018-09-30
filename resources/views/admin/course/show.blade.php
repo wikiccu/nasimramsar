@@ -10,12 +10,49 @@
 
             <div class="box-body">
                 <dl class="dl-horizontal">
+
+                    <dt>
+                        تصویر دوره
+                    </dt>
+                    <dd>
+                        <img src="{{$course->pic===''?asset('images/no-image.png'):asset($course->pic)}}"  class="img-rounded" alt="no Image Available">
+                    </dd>
+
                     <dt>
                         عنوان دوره
                     </dt>
                     <dd>
                         {{$course->title}}
                     </dd>
+
+                    <dt>
+                        خلاصه دوره
+                    </dt>
+                    <dd>
+                        {{$course->abstract}}
+                    </dd>
+
+                    <dt>
+                        اطلاعات دوره
+                    </dt>
+                    <dd>
+                        {{$course->information}}
+                    </dd>
+
+                    <dt>
+                        درباره ی  دوره
+                    </dt>
+                    <dd>
+                        {{$course->description}}
+                    </dd>
+
+                    <dt>
+                        موضوع  دوره
+                    </dt>
+                    <dd>
+                        {{$course->field->title}}
+                    </dd>
+
                 </dl>
 
             </div>
