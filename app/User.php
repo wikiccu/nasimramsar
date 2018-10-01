@@ -32,4 +32,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function isActive()
+    {
+        return $this->isActive != 0;
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles();
+    }
 }

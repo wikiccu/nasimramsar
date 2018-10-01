@@ -17,6 +17,7 @@ class CreateFroalaFileUploadsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('path');
+            $table->string('editor');
             $table->timestamps();
             //$table->softDeletes();
         });

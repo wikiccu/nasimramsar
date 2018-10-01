@@ -7,9 +7,16 @@ use App\Field;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        //$this->middleware('active');
+        //$this->middleware('role:editor');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +72,11 @@ class CourseController extends Controller
         $course->information = $request->information;
         $course->description = $request->description;
         $course->field_id = $request->field_id;
+
+        if (Auth::check()) {
+            // The user is logged in...
+            $course->user_id = Auth::id();
+        }
 
         $course->save();
 

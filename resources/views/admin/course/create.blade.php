@@ -101,7 +101,7 @@
             heightMin: 200,
 
             imageUploadParams: {
-                id: 'my_editor',
+                id: 'my_editor_information_creat_course',
                 location: 'images', // This allows us to distinguish between Froala or a regular file upload.
                 _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
             },
@@ -130,7 +130,7 @@
 
           // Request params.
           data: {
-            id: 'my_editor',
+            id: 'my_editor_information_creat_course',
             src: $img.attr('src'),
             _token: "{{ csrf_token() }}"
           }
@@ -141,7 +141,7 @@
         .fail (function () {
           console.log ('image delete problem');
         })
-      })
+      });
 
 
 
@@ -155,12 +155,35 @@
             heightMin: 200,
 
             imageUploadParams: {
-                id: 'my_editor'
+                id: 'my_editor_description_creat_course',
+                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
+                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
             },
-            requestHeaders: {
-                'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
+        })// Catch image remove
+        .on('froalaEditor.image.removed', function (e, editor, $img) {
+          $.ajax({
+            // Request method.
+            method: "POST",
+
+            // Request URL.
+            url: "{{url('/deletefile')}}",
+
+            // Request params.
+            data: {
+              id: 'my_editor_description_creat_course',
+              src: $img.attr('src'),
+              _token: "{{ csrf_token() }}"
             }
+          })
+          .done (function (data) {
+            console.log ('image was deleted');
+          })
+          .fail (function () {
+            console.log ('image delete problem');
+          })
         });
+
+
     });
 
     function GetImage() {

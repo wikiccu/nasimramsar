@@ -20,7 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
-Route::resources([
+Route::resources(
+    [
     '/admin/course'  => 'Admin\CourseController',
     '/admin/field'   => 'Admin\FieldController',
 //     '/admin/message' => 'Admin\MessageController',
