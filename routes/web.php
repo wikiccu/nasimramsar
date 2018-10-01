@@ -31,5 +31,6 @@ Route::resources([
     ]);
 
 //froala
-Route::post('/upload','Admin\AdminController@upload');
+Route::post('/uploadfile','Admin\AdminController@upload');
+Route::post('/deletefile','Admin\AdminController@delete');
 Route::DELETE('/fileuploads', 'Admin\AdminController@destroy');

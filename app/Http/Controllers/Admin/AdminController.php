@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\FileUpload;
+use App\FroalaFileUpload;
 
 class AdminController extends Controller
 {
@@ -18,15 +18,15 @@ class AdminController extends Controller
     	$input 				= $request->all();
     	$location 			= $input['location'];
 
-		$fileData 			= $request->file('image'); //this gets the image data for 1st argument
+		$fileData 			= $request->file('file'); //this gets the image data for 1st argument
         // $filename 			= $fileData->getClientOriginalName();
-        $filename           = $_FILES['image']['name'];
+        $filename           = time().$_FILES['file']['name'];
         // $completePath 		= url('/' . $location . '/' . $filename);
-        $destinationPath 	= 'images/';
-        $request->file('image')->move($destinationPath, $filename);
+        $destinationPath 	= 'images/froalafiles/';
+        $request->file('file')->move($destinationPath, $filename);
 		$completePath = url('/' . $destinationPath . $filename);
 
-		$fileupload = new FileUpload;
+		$fileupload = new FroalaFileUpload;
 		$fileupload->title = $filename;
 		$fileupload->path = $completePath;
 		$fileupload->save();
@@ -35,11 +35,13 @@ class AdminController extends Controller
 		// }
 	}
 
-    public function destroy(Request $request){
+    public function delete(Request $request){
     	$input = $request->all();
     	$url = parse_url($input['src']);
     	$splitPath = explode("/", $url["path"]);
-    	$splitPathLength = count($splitPath);
-    	FileUpload::where('path', 'LIKE', '%' . $splitPath[$splitPathLength-1] . '%')->delete();
+        $splitPathLength = count($splitPath);
+        $filename=$splitPath[$splitPathLength-1];
+        unlink(public_path('images/froalafiles/'.$filename));
+        FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
     }
 }

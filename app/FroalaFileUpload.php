@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FileUpload extends Model
+class FroalaFileUpload extends Model
 {
     //
-    use SoftDeletes;
+    //use SoftDeletes;
 
-	protected $table = 'fileUploads';
+	protected $table = 'froalafileUploads';
 
 	protected $fillable = [
 		'title',

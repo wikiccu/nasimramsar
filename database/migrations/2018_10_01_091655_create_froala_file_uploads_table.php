@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileUploadsTable extends Migration
+class CreateFroalaFileUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFileUploadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('file_uploads', function (Blueprint $table) {
+        Schema::create('froalafileuploads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('path');
             $table->timestamps();
-            $table->softDeletes();
+            //$table->softDeletes();
         });
     }
 
@@ -29,6 +29,6 @@ class CreateFileUploadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('file_uploads');
+        Schema::dropIfExists('froala_file_uploads');
     }
 }

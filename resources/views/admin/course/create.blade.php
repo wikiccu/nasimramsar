@@ -93,7 +93,8 @@
       $(document).ready(function () {
         $('#information').froalaEditor({
             // Set the image upload URL.
-            imageUploadURL: '/uploadfile',
+            //imageUploadURL: '/uploadfile',
+            imageUploadURL: '{{url('/uploadfile')}}',
 
             direction: 'rtl',
             language: 'fa',
@@ -109,16 +110,42 @@
             //},
 
             // URL to get all department images from
-            imageManagerLoadURL: '/fileuploads',
+            //imageManagerLoadURL: '/fileuploads',
             // Set the delete image request URL.
-            imageManagerDeleteURL: "/fileuploads",
+            //imageManagerDeleteURL: "/fileuploads",
             // Set the delete image request type.
-            imageManagerDeleteMethod: "DELETE",
-            imageManagerDeleteParams: {
-                _token: "{{ csrf_token() }}"
-            }
+            //imageManagerDeleteMethod: "DELETE",
+            //imageManagerDeleteParams: {
+            //    _token: "{{ csrf_token() }}"
+            //}
+        })
+        // Catch image remove
+      .on('froalaEditor.image.removed', function (e, editor, $img) {
+        $.ajax({
+          // Request method.
+          method: "POST",
 
-        });
+          // Request URL.
+          url: "{{url('/deletefile')}}",
+
+          // Request params.
+          data: {
+            id: 'my_editor',
+            src: $img.attr('src'),
+            _token: "{{ csrf_token() }}"
+          }
+        })
+        .done (function (data) {
+          console.log ('image was deleted');
+        })
+        .fail (function () {
+          console.log ('image delete problem');
+        })
+      })
+
+
+
+
         $('#description').froalaEditor({
             // Set the image upload URL.
             imageUploadURL: '/UploadFile',
