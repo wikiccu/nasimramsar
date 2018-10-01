@@ -93,22 +93,35 @@
       $(document).ready(function () {
         $('#information').froalaEditor({
             // Set the image upload URL.
-            imageUploadURL: '?handler=UploadFile',
+            imageUploadURL: '/uploadfile',
 
             direction: 'rtl',
             language: 'fa',
             heightMin: 200,
 
             imageUploadParams: {
-                id: 'my_editor'
+                id: 'my_editor',
+                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
+                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
             },
-            requestHeaders: {
-                'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
+            //requestHeaders: {
+            //    'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
+            //},
+
+            // URL to get all department images from
+            imageManagerLoadURL: '/fileuploads',
+            // Set the delete image request URL.
+            imageManagerDeleteURL: "/fileuploads",
+            // Set the delete image request type.
+            imageManagerDeleteMethod: "DELETE",
+            imageManagerDeleteParams: {
+                _token: "{{ csrf_token() }}"
             }
+
         });
         $('#description').froalaEditor({
             // Set the image upload URL.
-            imageUploadURL: '?handler=UploadFile',
+            imageUploadURL: '/UploadFile',
 
             direction: 'rtl',
             language: 'fa',

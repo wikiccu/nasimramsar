@@ -29,3 +29,7 @@ Route::resources([
 //     '/admin/teacher' => 'Admin\TeacherController',
 //     '/admin/teacher' => 'Admin\GalleryController'
     ]);
+
+//froala
+Route::post('/upload','Admin\AdminController@upload');
+Route::DELETE('/fileuploads', 'Admin\AdminController@destroy');
