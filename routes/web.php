@@ -26,7 +26,7 @@ Route::resources(
 //     '/admin/post'    => 'Admin\PostController',
     '/admin/field'   => 'Admin\FieldController',
     '/admin/course'  => 'Admin\CourseController',
-//     '/admin/teacher' => 'Admin\TeacherController',
+    '/admin/teacher' => 'Admin\TeacherController',
 //     '/admin/teachercourse' => 'Admin\TeacherCourseController',
 //     '/admin/gallery' => 'Admin\GalleryController',
 //     '/admin/message' => 'Admin\MessageController',

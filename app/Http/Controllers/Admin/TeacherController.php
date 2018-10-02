@@ -24,7 +24,7 @@ class TeacherController extends Controller
         //
         $teachers = Teacher::all();
         $menu = 'teacher';
-        return view('admin.teacher.index', compact('teacher','menu'));
+        return view('admin.teacher.index', compact('teachers','menu'));
     }
 
     /**
