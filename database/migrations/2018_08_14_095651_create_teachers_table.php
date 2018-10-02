@@ -15,15 +15,15 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pic', 400);
-            $table->string('name', 400);
-            $table->string('title', 400);
-            $table->string('abstract', 4000);
-            $table->text('description');
-            
+            $table->string('pic', 400)->collation('utf8_unicode_ci');
+            $table->string('name', 400)->collation('utf8_unicode_ci');
+            $table->string('title', 400)->collation('utf8_unicode_ci');
+            $table->string('abstract', 4000)->collation('utf8_unicode_ci');
+            $table->text('description')->collation('utf8_unicode_ci');
+
             $table->unsignedInteger('field_id');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
     }

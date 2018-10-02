@@ -15,16 +15,16 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            
-            $table->string('name', 400);
-            $table->string('email', 400);
-            $table->string('body', 4000);
+
+            $table->string('name', 400)->collation('utf8_unicode_ci');
+            $table->string('email', 400)->collation('utf8_unicode_ci');
+            $table->string('body', 4000)->collation('utf8_unicode_ci');
             $table->string('ip', 100);
             $table->dateTime('postdate');
 
             $table->tinyInteger('readed');
             $table->tinyInteger('removed');
-            
+
             $table->timestamps();
         });
     }

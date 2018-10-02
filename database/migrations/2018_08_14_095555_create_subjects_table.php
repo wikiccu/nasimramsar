@@ -15,7 +15,7 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 400);
+            $table->string('title', 400)->collation('utf8_unicode_ci');
             $table->integer('order')->unsigned()->default(0);
             $table->timestamps();
         });

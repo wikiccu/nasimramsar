@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Course;
 use App\Field;
+use App\FroalaFileUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -186,7 +187,12 @@ class CourseController extends Controller
             if($startpos!=false && $endpos!=false)
             {
                 $src = substr($part,$startpos+5,$endpos-$startpos-5);
-                unlink($src);
+                //unlink($src);
+                $splitPath = explode("/", $src);
+                $splitPathLength = count($splitPath);
+                $filename=$splitPath[$splitPathLength-1];
+                unlink(public_path('images/froalafiles/'.$filename));
+                FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
             }
         }
     }

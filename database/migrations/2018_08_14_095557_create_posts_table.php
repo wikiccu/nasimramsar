@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pic',400);
+            $table->string('pic',400)->collation('utf8_unicode_ci');
             $table->string('title',400)->collation('utf8_unicode_ci');
             $table->string('abstract',1000)->collation('utf8_unicode_ci');
             $table->text('body')->collation('utf8_unicode_ci');
@@ -27,11 +27,12 @@ class CreatePostsTable extends Migration
 
             $table->unsignedInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            
+
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
