@@ -22,13 +22,14 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
 Route::resources(
     [
-    '/admin/course'  => 'Admin\CourseController',
-    '/admin/field'   => 'Admin\FieldController',
-//     '/admin/message' => 'Admin\MessageController',
-//     '/admin/post'    => 'Admin\PostController',
     '/admin/subject' => 'Admin\SubjectController',
+//     '/admin/post'    => 'Admin\PostController',
+    '/admin/field'   => 'Admin\FieldController',
+    '/admin/course'  => 'Admin\CourseController',
 //     '/admin/teacher' => 'Admin\TeacherController',
-//     '/admin/teacher' => 'Admin\GalleryController'
+//     '/admin/teachercourse' => 'Admin\TeacherCourseController',
+//     '/admin/gallery' => 'Admin\GalleryController',
+//     '/admin/message' => 'Admin\MessageController',
     ]);
 
 //froala

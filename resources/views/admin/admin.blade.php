@@ -77,12 +77,29 @@
     <a href="{{url('admin\teacher')}}">
         <div class="info-box">
         <span class="info-box-icon bg-yellow">
-            <i class="fa fa-users"></i>
+            <i class="fa fa-user-secret"></i>
         </span>
 
         <div class="info-box-content">
             <span class="info-box-text">بخش</span>
             <span class="info-box-number"> اساتید</span>
+        </div>
+        <!-- /.info-box-content -->
+        </div>
+    </a>
+    <!-- /.info-box -->
+    </div>
+    <!-- Your Page Content Here -->
+    <div class="col-md-3 col-sm-6 col-xs-12 pull-right">
+    <a href="">
+        <div class="info-box">
+        <span class="info-box-icon bg-fuchsia">
+            <i class="fa fa-users"></i>
+        </span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">بخش</span>
+            <span class="info-box-number"> دوره های اساتید</span>
         </div>
         <!-- /.info-box-content -->
         </div>

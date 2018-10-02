@@ -88,8 +88,14 @@
                 </li>
                 <li class="@if($menu=='teacher') active @endif">
                   <a href="{{url('admin\teacher')}}">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-user-secret"></i>
                     <span>اساتید</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="">
+                    <i class="fa fa-users"></i>
+                    <span>دوره های اساتید</span>
                   </a>
                 </li>
                 <li class="@if($menu=='gallery') active @endif">
