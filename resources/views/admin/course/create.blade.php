@@ -52,13 +52,26 @@
 
                 <div class="form-group">
                     <label for="information" class="control-label">اطلاعات دوره</label>
-                    <textarea id="information" name="information" class="form-control" placeholder="اطلاعات دوره" ></textarea>
+                    <textarea id="information" name="information" class="form-control" placeholder="اطلاعات دوره" >
+                        <h5><i class="fa fa-calendar-check-o"></i>&nbsp;<span>شروع دوره: هفته اول تیرماه</span></h5>
+                        <h5><i class="fa fa-calendar"></i>&nbsp;<span>طول دوره: 10 جلسه (دوره مقدماتی)، 10 جلسه (دوره پیشرفته)</span></h5>
+                        <h5><i class="fa fa-users"></i>&nbsp;<span>نوع دوره: خصوصی، نیمه خصوصی و عمومی</span></h5>
+                        <h5><i class="fa fa-dollar"></i>&nbsp;<span>شهریه دوره: بنا بر نوع تشکیل کلاس ها متفاوت می باشد</span></h5>
+                    </textarea>
                     <span for="information" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="description" class="control-label">درباره ی دوره</label>
-                    <textarea id="description" name="description" class="form-control" placeholder="درباره ی دوره" ></textarea>
+                    <textarea id="description" name="description" class="form-control" placeholder="درباره ی دوره" >
+                            <dl class="dlclass">
+                                <h4>سرفصل های دوره:</h4>
+                                <ul>
+                                    <li>سرفصل اول</li>
+                                    <li>سرفصل دوم</li>
+                                </ul>
+                            </dl>
+                    </textarea>
                     <span for="description" class="text-danger"></span>
                 </div>
 

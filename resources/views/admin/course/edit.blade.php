@@ -27,29 +27,6 @@
                             src="{{$course->pic===''?asset('images/no-image.png'):asset($course->pic)}}" class="img-rounded" alt="no Image Available">
                           <input id="pic" name="pic" type="file" onchange="GetImage()" style="display: none" />
                         </div>
-                        <script>
-                            function GetImage() {
-                                try {
-                                  var input = document.getElementById("pic");
-                                  if (input.files && input.files[0]) {
-                                        //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-                                    var fileExtension = ['jpg'];
-                                    if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
-                                      $("#pic").val("");
-                                      alert("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '));
-                                    }
-                                    var reader = new FileReader();
-                                    reader.onload = function (e) {
-                                      $('#inputImage').attr('src', e.target.result);
-                                      changeImage = true;
-                                    }
-                                    reader.readAsDataURL(input.files[0]);
-                                  }
-                                } catch (e) {
-                                    alert(e.statusMessage);
-                                    }
-                                };
-                        </script>
                     </div>
 
                     <div class="form-group">
@@ -81,7 +58,7 @@
                         <select id="field_id" name="field_id" class="form-control">
                            @if($fields)
                             @foreach ($fields as $field)
-                              <option value="{{$field->id}}" @if($field->id==$course->field_id) 'selected' @endif >{{$field->title}}</option>
+                              <option value="{{$field->id}}" @if($field->id==$course->field_id) selected @endif>{{$field->title}}</option>
                             @endforeach
                           @endif
 
@@ -98,4 +75,93 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
+<script type="">
+      $(document).ready(function () {
+        $('#information').froalaEditor({
+            imageUploadURL: '{{url('/uploadfile')}}',
+
+            direction: 'rtl',
+            language: 'fa',
+            heightMin: 200,
+
+            imageUploadParams: {
+                id: 'my_editor_information_creat_course',
+                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
+                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
+            },
+        })
+        .on('froalaEditor.image.removed', function (e, editor, $img) {
+            $.ajax({
+            method: "POST",
+            url: "{{url('/deletefile')}}",
+            data: {
+                id: 'my_editor_information_creat_course',
+                src: $img.attr('src'),
+                _token: "{{ csrf_token() }}"
+            }
+            })
+            .done (function (data) {
+            console.log ('image was deleted');
+            })
+            .fail (function () {
+            console.log ('image delete problem');
+            })
+        });
+        $('#description').froalaEditor({
+            imageUploadURL: '/UploadFile',
+            direction: 'rtl',
+            language: 'fa',
+            heightMin: 200,
+
+            imageUploadParams: {
+                id: 'my_editor_description_creat_course',
+                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
+                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
+            },
+        })
+        .on('froalaEditor.image.removed', function (e, editor, $img) {
+            $.ajax({
+            method: "POST",
+            url: "{{url('/deletefile')}}",
+            data: {
+                id: 'my_editor_description_creat_course',
+                src: $img.attr('src'),
+                _token: "{{ csrf_token() }}"
+            }
+            })
+            .done (function (data) {
+            console.log ('image was deleted');
+            })
+            .fail (function () {
+            console.log ('image delete problem');
+            })
+        });
+    });
+
+    function GetImage() {
+        try {
+          var input = document.getElementById("pic");
+          if (input.files && input.files[0]) {
+            //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            var fileExtension = ['jpg'];
+            if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
+              $("#pic").val("");
+              showAppMessage("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '), "warning");
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#inputImage').attr('src', e.target.result);
+              changeImage = true;
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        } catch (e) {
+          showAppMessage(e.statusMessage, "error");
+        }
+    };
+</script>
 @endsection
