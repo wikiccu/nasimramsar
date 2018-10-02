@@ -44,10 +44,10 @@
                                 {{ $teacher->abstract}}
                             </td>
                             <td class="operation-td">
-                                <a href="{{action('Admin\CourseController@show', $teacher['id'])}}">
+                                <a href="{{action('Admin\TeacherController@show', $teacher['id'])}}">
                                     <i class="fa fa-list-alt" title="نمایش استاد"></i>
                                 </a>
-                                <a href="{{action('Admin\CourseController@edit', $teacher['id'])}}">
+                                <a href="{{action('Admin\TeacherController@edit', $teacher['id'])}}">
                                     <i class="fa fa-edit" title="تغییر استاد"></i>
                                 </a>
                                 <form style="display:inline;" action="{{ url('admin/teacher/' . $teacher->id) }}" method="post"

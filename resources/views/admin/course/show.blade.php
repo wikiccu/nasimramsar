@@ -36,14 +36,18 @@
                         اطلاعات دوره
                     </dt>
                     <dd>
-                        {!! $course->information !!}
+                        <div class="well clearfix" style="clear: both;">
+                            {!! $course->information !!}
+                        </div>
                     </dd>
 
                     <dt>
                         درباره ی  دوره
                     </dt>
                     <dd>
-                        {!! $course->description !!}
+                        <div class="well clearfix" style="clear: both;">
+                            {!! $course->description !!}
+                        </div>
                     </dd>
 
                     <dt>

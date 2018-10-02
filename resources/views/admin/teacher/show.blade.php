@@ -19,6 +19,13 @@
                     </dd>
 
                     <dt>
+                        نام استاد
+                    </dt>
+                    <dd>
+                        {{$teacher->name}}
+                    </dd>
+
+                    <dt>
                         عنوان استاد
                     </dt>
                     <dd>
@@ -33,17 +40,12 @@
                     </dd>
 
                     <dt>
-                        اطلاعات استاد
-                    </dt>
-                    <dd>
-                        {!! $teacher->information !!}
-                    </dd>
-
-                    <dt>
                         درباره ی  استاد
                     </dt>
                     <dd>
-                        {!! $teacher->description !!}
+                        <div class="well clearfix" style="clear: both;">
+                            {!! $teacher->description !!}
+                        </div>
                     </dd>
 
                     <dt>
@@ -59,7 +61,7 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <a href="{{action('Admin\CourseController@edit', $teacher['id'])}}" class="btn btn-primary"> تغییر استاد </a> |
+                <a href="{{action('Admin\TeacherController@edit', $teacher['id'])}}" class="btn btn-primary"> تغییر استاد </a> |
                 <a href="{{url('admin\teacher')}}" class="btn btn-default"><i class="fa fa-list-alt" title="بازگشت به لیست"></i> بازگشت به لیست</a>
             </div>
         </div>

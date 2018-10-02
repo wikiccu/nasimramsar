@@ -30,6 +30,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="name" class="control-label">نام استاد</label>
+                        <input id="name" name="name" class="form-control" value="{{$teacher->name}}"/>
+                        <span for="name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
                         <label for="title" class="control-label">عنوان استاد</label>
                         <input id="title" name="title" class="form-control" value="{{$teacher->title}}"/>
                         <span for="title" class="text-danger"></span>
@@ -42,19 +48,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="information" class="control-label">اطلاعات استاد</label>
-                        <textarea id="information" name="information" class="form-control" placeholder="اطلاعات استاد" >{{$teacher->information}}</textarea>
-                         <span for="information" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
                         <label for="description" class="control-label">درباره ی استاد</label>
                         <textarea id="description" name="description" class="form-control" placeholder="درباره ی استاد" >{{$teacher->description}}</textarea>
                         <span for="description" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="field_id" class="control-label">موضوع استاد</label>
+                        <label for="field_id" class="control-label">رشته استاد</label>
                         <select id="field_id" name="field_id" class="form-control">
                            @if($fields)
                             @foreach ($fields as $field)
@@ -81,36 +81,6 @@
 <script src="{{ asset('froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
 <script type="">
       $(document).ready(function () {
-        $('#information').froalaEditor({
-            imageUploadURL: '{{url('/uploadfile')}}',
-
-            direction: 'rtl',
-            language: 'fa',
-            heightMin: 200,
-
-            imageUploadParams: {
-                id: 'my_editor_information_creat_teacher',
-                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
-                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
-            },
-        })
-        .on('froalaEditor.image.removed', function (e, editor, $img) {
-            $.ajax({
-            method: "POST",
-            url: "{{url('/deletefile')}}",
-            data: {
-                id: 'my_editor_information_creat_teacher',
-                src: $img.attr('src'),
-                _token: "{{ csrf_token() }}"
-            }
-            })
-            .done (function (data) {
-            console.log ('image was deleted');
-            })
-            .fail (function () {
-            console.log ('image delete problem');
-            })
-        });
         $('#description').froalaEditor({
             imageUploadURL: '/UploadFile',
             direction: 'rtl',

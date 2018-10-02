@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="field_id" class="control-label">موضوع استاد</label>
+                    <label for="field_id" class="control-label">رشته استاد</label>
                     <select id="field_id" name="field_id" class="form-control">
                       @if($fields)
                         @foreach ($fields as $field)
@@ -93,60 +93,6 @@
 <script src="{{ asset('froala-editor/js/froala_editor.pkgd.min.js') }}" defer></script>
 <script type="">
       $(document).ready(function () {
-        $('#information').froalaEditor({
-            // Set the image upload URL.
-            //imageUploadURL: '/uploadfile',
-            imageUploadURL: '{{url('/uploadfile')}}',
-
-            direction: 'rtl',
-            language: 'fa',
-            heightMin: 200,
-
-            imageUploadParams: {
-                id: 'my_editor_information_creat_teacher',
-                location: 'images', // This allows us to distinguish between Froala or a regular file upload.
-                _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
-            },
-            //requestHeaders: {
-            //    'XSRF-TOKEN': $('input:hidden[name="_token"]').val()
-            //},
-
-            // URL to get all department images from
-            //imageManagerLoadURL: '/fileuploads',
-            // Set the delete image request URL.
-            //imageManagerDeleteURL: "/fileuploads",
-            // Set the delete image request type.
-            //imageManagerDeleteMethod: "DELETE",
-            //imageManagerDeleteParams: {
-            //    _token: "{{ csrf_token() }}"
-            //}
-        })
-        // Catch image remove
-      .on('froalaEditor.image.removed', function (e, editor, $img) {
-        $.ajax({
-          // Request method.
-          method: "POST",
-
-          // Request URL.
-          url: "{{url('/deletefile')}}",
-
-          // Request params.
-          data: {
-            id: 'my_editor_information_creat_teacher',
-            src: $img.attr('src'),
-            _token: "{{ csrf_token() }}"
-          }
-        })
-        .done (function (data) {
-          console.log ('image was deleted');
-        })
-        .fail (function () {
-          console.log ('image delete problem');
-        })
-      });
-
-
-
 
         $('#description').froalaEditor({
             // Set the image upload URL.
@@ -184,8 +130,6 @@
             console.log ('image delete problem');
           })
         });
-
-
     });
 
     function GetImage() {
