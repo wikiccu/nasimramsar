@@ -91,7 +91,7 @@
     </div>
     <!-- Your Page Content Here -->
     <div class="col-md-3 col-sm-6 col-xs-12 pull-right">
-    <a href="">
+    <a href="{{url('admin\teachercourse')}}">
         <div class="info-box">
         <span class="info-box-icon bg-fuchsia">
             <i class="fa fa-users"></i>

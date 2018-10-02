@@ -92,8 +92,8 @@
                     <span>اساتید</span>
                   </a>
                 </li>
-                <li class="">
-                  <a href="">
+                <li class="@if($menu=='teachercourse') active @endif">
+                  <a href="{{url('admin\teachercourse')}}">
                     <i class="fa fa-users"></i>
                     <span>دوره های اساتید</span>
                   </a>
