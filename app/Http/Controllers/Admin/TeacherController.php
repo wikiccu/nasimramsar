@@ -26,7 +26,8 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $teachers = Teacher::all();
+        // $teachers = Teacher::all();
+        $teachers = Teacher::orderBy('id', 'DESC')->get();
         $menu = 'teacher';
         return view('admin.teacher.index', compact('teachers','menu'));
     }

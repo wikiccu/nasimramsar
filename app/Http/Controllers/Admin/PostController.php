@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Post;
+use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,6 +23,10 @@ class PostController extends Controller
     public function index()
     {
         //
+        //$posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
+        $menu = 'post';
+        return view('admin.post.index', compact('posts','menu'));
     }
 
     /**
@@ -32,6 +37,9 @@ class PostController extends Controller
     public function create()
     {
         //
+        $subjects = Subject::all();
+        $menu = 'post';
+        return view('admin.post.create',compact('subjects','menu'));
     }
 
     /**
@@ -43,6 +51,35 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $filename='';
+
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 270);
+
+            $filename = 'images/posts/'.time().'_'.$file->getClientOriginalName();
+            $image_resize->save(public_path($filename));
+        }
+
+        $post = new Post;
+
+        $post->pic = $filename;
+        $post->title = $request->title;
+        // $post->abstract = $request->abstract;
+        // $post->information = $request->information;
+        // $post->description = $request->description;
+        $post->field_id = $request->field_id;
+
+        if (Auth::check()) {
+            // The user is logged in...
+            $post->user_id = Auth::id();
+        }
+
+        $post->save();
+
+        return redirect('admin\post')->with('success', 'Information has been added');
     }
 
     /**
@@ -51,9 +88,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
+        $post = Course::find($id);
+        $menu = 'post';
+        return view('admin.post.show',compact('post','id','menu'));
     }
 
     /**
@@ -62,9 +102,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
+        $post = Course::find($id);
+        $subjects = Subject::all();
+        $menu = 'post';
+        return view('admin.post.edit',compact('post','id','subjects','menu'));
     }
 
     /**
@@ -74,9 +118,36 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         //
+        $post = Course::find($id);
+
+        if ($request->hasFile('pic')) {
+
+            $file = $request->file('pic');
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 270);
+
+            if($post->pic==''){
+                $filename = 'images/posts/'.time().'_'.$file->getClientOriginalName();
+                $image_resize->save(public_path($filename));
+                $post->pic = $filename;
+            }else{
+                $filename = $post->pic;
+                $image_resize->save(public_path($filename));
+            }
+        }
+
+        $post->title = $request->title;
+        // $post->abstract = $request->abstract;
+        // $post->information = $request->information;
+        // $post->description = $request->description;
+        $post->field_id = $request->field_id;
+
+        $post->save();
+
+        return redirect('admin\post')->with('success', 'Information has been modified');
     }
 
     /**
@@ -85,8 +156,42 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         //
+        $post = Course::find($id);
+        //removed file
+        $filename = $post->pic;
+        unlink(public_path($filename));
+
+        //remove pic from body
+        //file_exists("test.txt");
+        $this->deleteImage($post->information);
+        $this->deleteImage($post->description);
+
+        $post->delete();
+        return redirect('admin\post')->with('success', 'Information has been Removed');
+    }
+
+    public function deleteImage($text)
+    {
+        $pattern = "<img.*?>";
+        $parts = preg_split($pattern, $text);
+
+        // Loop through parts array and display substrings
+        foreach($parts as $part){
+            $startpos=stripos($part,"src=");
+            $endpos=stripos($part,"\" ",$startpos);
+            if($startpos!=false && $endpos!=false)
+            {
+                $src = substr($part,$startpos+5,$endpos-$startpos-5);
+                //unlink($src);
+                $splitPath = explode("/", $src);
+                $splitPathLength = count($splitPath);
+                $filename=$splitPath[$splitPathLength-1];
+                unlink(public_path('images/froalafiles/'.$filename));
+                FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
+            }
+        }
     }
 }

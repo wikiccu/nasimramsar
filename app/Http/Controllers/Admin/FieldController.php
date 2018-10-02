@@ -23,7 +23,8 @@ class FieldController extends Controller
     {
         //
         //$fields = DB::table('fields')->get();
-        $fields = Field::all();
+        // $fields = Field::all();
+        $fields = Field::orderBy('id', 'DESC')->get();
         $menu = 'field';
         //return view('admin.field.index', ['fields' => $fields]);
         //return compact('fields','menu' );

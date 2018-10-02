@@ -23,7 +23,7 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 Route::resources(
     [
     '/admin/subject' => 'Admin\SubjectController',
-//     '/admin/post'    => 'Admin\PostController',
+    '/admin/post'    => 'Admin\PostController',
     '/admin/field'   => 'Admin\FieldController',
     '/admin/course'  => 'Admin\CourseController',
     '/admin/teacher' => 'Admin\TeacherController',

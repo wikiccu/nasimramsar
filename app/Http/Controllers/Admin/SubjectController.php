@@ -22,7 +22,8 @@ class SubjectController extends Controller
     public function index()
     {
         //
-        $subjects = Subject::all();
+        // $subjects = Subject::all();
+        $subjects = Subject::orderBy('id', 'DESC')->get();
         $menu = 'subject';
         return view('admin.subject.index', compact('subjects','menu'));
     }
