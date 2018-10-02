@@ -73,10 +73,10 @@ class CourseController extends Controller
         $course->description = $request->description;
         $course->field_id = $request->field_id;
 
-        if (Auth::check()) {
-            // The user is logged in...
-            $course->user_id = Auth::id();
-        }
+        // if (Auth::check()) {
+        //     // The user is logged in...
+        //     $course->user_id = Auth::id();
+        // }
 
         $course->save();
 
@@ -165,7 +165,29 @@ class CourseController extends Controller
         $filename = $course->pic;
         unlink(public_path($filename));
 
+        //remove pic from body
+        //file_exists("test.txt");
+        deleteImage($course->information);
+        deleteImage($course->description);
+
         $course->delete();
         return redirect('admin\course')->with('success', 'Information has been Removed');
+    }
+
+    public function deleteImage($text)
+    {
+        $pattern = "<img.*?>";
+        $parts = preg_split($pattern, $text);
+
+        // Loop through parts array and display substrings
+        foreach($parts as $part){
+            $startpos=stripos($part,"src=");
+            $endpos=stripos($part,"\" ",$startpos);
+            if($startpos!=false && $endpos!=false)
+            {
+                $src = substr($part,$startpos+5,$endpos-$startpos-5);
+                unlink($src);
+            }
+        }
     }
 }

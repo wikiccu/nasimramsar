@@ -28,7 +28,7 @@ class AdminController extends Controller
 
 		$fileupload = new FroalaFileUpload;
 		$fileupload->title = $filename;
-		$fileupload->path = $completePath;
+        $fileupload->path = $completePath;
 		$fileupload->save();
 		// if($fileupload->save()){
 			return stripslashes(response()->json(['link' => $completePath])->content());
