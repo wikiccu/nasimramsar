@@ -9,5 +9,4 @@ class TeacherCourse extends Model
     //
     protected $table = 'teacher_courses';
 
-
 }

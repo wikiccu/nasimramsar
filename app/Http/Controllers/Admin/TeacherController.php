@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        //$this->middleware('active');
+        //$this->middleware('role:editor');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +22,9 @@ class TeacherController extends Controller
     public function index()
     {
         //
+        $teachers = Teacher::all();
+        $menu = 'teacher';
+        return view('admin.teacher.index', compact('teacher','menu'));
     }
 
     /**
@@ -26,6 +35,9 @@ class TeacherController extends Controller
     public function create()
     {
         //
+        $fields = Field::all();
+        $menu = 'teacher';
+        return view('admin.teacher.create',compact('teacher','menu'));
     }
 
     /**
@@ -37,6 +49,30 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         //
+        $filename='';
+
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 270);
+
+            $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
+            $image_resize->save(public_path($filename));
+        }
+
+        $teacher = new Teacher;
+
+        $teacher->pic = $filename;
+        // $teacher->title = $request->title;
+        // $teacher->abstract = $request->abstract;
+        // $teacher->information = $request->information;
+        // $teacher->description = $request->description;
+        // $teacher->field_id = $request->field_id;
+
+        $teacher->save();
+
+        return redirect('admin\teacher')->with('success', 'Information has been added');
     }
 
     /**
@@ -45,9 +81,12 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show($id)
     {
         //
+        $teacher = Teacher::find($id);
+        $menu = 'teacher';
+        return view('admin.teacher.show',compact('teacher','id','menu'));
     }
 
     /**
@@ -56,9 +95,13 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
         //
+        $teacher = Teacher::find($id);
+        $fields = Field::all();
+        $menu = 'teacher';
+        return view('admin.teacher.edit',compact('teacher','id','fields','menu'));
     }
 
     /**
@@ -68,9 +111,37 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, $id)
     {
         //
+        $teacher = Teacher::find($id);
+
+        if ($request->hasFile('pic')) {
+
+            $file = $request->file('pic');
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 270);
+
+            if($teacher->pic==''){
+                $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
+                $image_resize->save(public_path($filename));
+                $teacher->pic = $filename;
+            }else{
+                $filename = $teacher->pic;
+                $image_resize->save(public_path($filename));
+            }
+        }
+
+        $teacher->title = $request->title;
+        // $teacher->abstract = $request->abstract;
+        // $teacher->information = $request->information;
+        // $teacher->description = $request->description;
+        $teacher->field_id = $request->field_id;
+
+        $teacher->save();
+
+        return redirect('admin\teacher')->with('success', 'Information has been modified');
+
     }
 
     /**
@@ -79,8 +150,42 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($id)
     {
         //
+        $teacher = Teacher::find($id);
+        //removed file
+        $filename = $teacher->pic;
+        unlink(public_path($filename));
+
+        //remove pic from body
+        //file_exists("test.txt");
+        deleteImage($teacher->information);
+        deleteImage($teacher->description);
+
+        $teacher->delete();
+        return redirect('admin\teacher')->with('success', 'Information has been Removed');
+    }
+
+    public function deleteImage($text)
+    {
+        $pattern = "<img.*?>";
+        $parts = preg_split($pattern, $text);
+
+        // Loop through parts array and display substrings
+        foreach($parts as $part){
+            $startpos=stripos($part,"src=");
+            $endpos=stripos($part,"\" ",$startpos);
+            if($startpos!=false && $endpos!=false)
+            {
+                $src = substr($part,$startpos+5,$endpos-$startpos-5);
+                //unlink($src);
+                $splitPath = explode("/", $src);
+                $splitPathLength = count($splitPath);
+                $filename=$splitPath[$splitPathLength-1];
+                unlink(public_path('images/froalafiles/'.$filename));
+                FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
+            }
+        }
     }
 }
