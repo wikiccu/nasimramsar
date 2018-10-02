@@ -39,6 +39,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="name" class="control-label">نام استاد</label>
+                    <input id="name" name="name" class="form-control" placeholder="نام استاد" />
+                    <span for="name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
                     <label for="title" class="control-label">عنوان استاد</label>
                     <input id="title" name="title" class="form-control" placeholder="عنوان استاد" />
                     <span for="title" class="text-danger"></span>
@@ -51,26 +57,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="information" class="control-label">اطلاعات استاد</label>
-                    <textarea id="information" name="information" class="form-control" placeholder="اطلاعات استاد" >
-                        <h5><i class="fa fa-calendar-check-o"></i>&nbsp;<span>شروع استاد: هفته اول تیرماه</span></h5>
-                        <h5><i class="fa fa-calendar"></i>&nbsp;<span>طول استاد: 10 جلسه (استاد مقدماتی)، 10 جلسه (استاد پیشرفته)</span></h5>
-                        <h5><i class="fa fa-users"></i>&nbsp;<span>نوع استاد: خصوصی، نیمه خصوصی و عمومی</span></h5>
-                        <h5><i class="fa fa-dollar"></i>&nbsp;<span>شهریه استاد: بنا بر نوع تشکیل کلاس ها متفاوت می باشد</span></h5>
-                    </textarea>
-                    <span for="information" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
                     <label for="description" class="control-label">درباره ی استاد</label>
                     <textarea id="description" name="description" class="form-control" placeholder="درباره ی استاد" >
-                            <dl class="dlclass">
-                                <h4>سرفصل های استاد:</h4>
-                                <ul>
-                                    <li>سرفصل اول</li>
-                                    <li>سرفصل دوم</li>
-                                </ul>
-                            </dl>
+                        <h4 class="persianFont">تخصص ها</h4><ul class="teacherActivity"><li><h5 class="persianFont">تخصص اول</h5></li><li><h5 class="persianFont">تخصص دوم</h5></li><li><h5 class="persianFont"> و سایر نرم افزار ها</h5></li></ul>
                     </textarea>
                     <span for="description" class="text-danger"></span>
                 </div>

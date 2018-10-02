@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Teacher;
+use App\Field;
+use App\FroalaFileUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -37,7 +41,7 @@ class TeacherController extends Controller
         //
         $fields = Field::all();
         $menu = 'teacher';
-        return view('admin.teacher.create',compact('teacher','menu'));
+        return view('admin.teacher.create',compact('teacher','fields','menu'));
     }
 
     /**
@@ -64,11 +68,11 @@ class TeacherController extends Controller
         $teacher = new Teacher;
 
         $teacher->pic = $filename;
-        // $teacher->title = $request->title;
-        // $teacher->abstract = $request->abstract;
-        // $teacher->information = $request->information;
-        // $teacher->description = $request->description;
-        // $teacher->field_id = $request->field_id;
+        $teacher->name = $request->name;
+        $teacher->title = $request->title;
+        $teacher->abstract = $request->abstract;
+        $teacher->description = $request->description;
+        $teacher->field_id = $request->field_id;
 
         $teacher->save();
 
@@ -132,10 +136,10 @@ class TeacherController extends Controller
             }
         }
 
+        $teacher->name = $request->name;
         $teacher->title = $request->title;
-        // $teacher->abstract = $request->abstract;
-        // $teacher->information = $request->information;
-        // $teacher->description = $request->description;
+        $teacher->abstract = $request->abstract;
+        $teacher->description = $request->description;
         $teacher->field_id = $request->field_id;
 
         $teacher->save();
@@ -156,12 +160,14 @@ class TeacherController extends Controller
         $teacher = Teacher::find($id);
         //removed file
         $filename = $teacher->pic;
-        unlink(public_path($filename));
-
+        if($filename!='' && file_exists(public_path($filename)))
+        {
+            unlink(public_path($filename));
+        }
         //remove pic from body
         //file_exists("test.txt");
-        deleteImage($teacher->information);
-        deleteImage($teacher->description);
+        $this->deleteImage($teacher->information);
+        $this->deleteImage($teacher->description);
 
         $teacher->delete();
         return redirect('admin\teacher')->with('success', 'Information has been Removed');

@@ -168,8 +168,8 @@ class CourseController extends Controller
 
         //remove pic from body
         //file_exists("test.txt");
-        deleteImage($course->information);
-        deleteImage($course->description);
+        $this->deleteImage($course->information);
+        $this->deleteImage($course->description);
 
         $course->delete();
         return redirect('admin\course')->with('success', 'Information has been Removed');
