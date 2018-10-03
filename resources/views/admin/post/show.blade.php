@@ -45,7 +45,7 @@
                         موضوع  خبر
                     </dt>
                     <dd>
-                        {{$post->field->title}}
+                        {{$post->subject->title}}
                     </dd>
 
                 </dl>

@@ -42,29 +42,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="information" class="control-label">اطلاعات خبر</label>
-                        <textarea id="information" name="information" class="form-control" placeholder="اطلاعات خبر" >{{$post->information}}</textarea>
-                         <span for="information" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
                         <label for="body" class="control-label">متن خبر</label>
                         <textarea id="body" name="body" class="form-control" placeholder="درباره ی خبر" >{{$post->body}}</textarea>
                         <span for="body" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="field_id" class="control-label">موضوع خبر</label>
-                        <select id="field_id" name="field_id" class="form-control">
-                           @if($fields)
-                            @foreach ($fields as $field)
-                              <option value="{{$field->id}}" @if($field->id==$post->field_id) selected @endif>{{$field->title}}</option>
+                        <label for="subject_id" class="control-label">موضوع خبر</label>
+                        <select id="subject_id" name="subject_id" class="form-control">
+                           @if($subjects)
+                            @foreach ($subjects as $subject)
+                              <option value="{{$subject->id}}" @if($subject->id==$post->subject_id) selected @endif>{{$subject->title}}</option>
                             @endforeach
                           @endif
 
-                          {{--  <?php if($field->id==$post->field_id){echo 'selected';} ?>  --}}
+                          {{--  <?php if($subject->id==$post->subject_id){echo 'selected';} ?>  --}}
                         </select>
-                        <span for="field_id" class="text-danger"></span>
+                        <span for="subject_id" class="text-danger"></span>
                     </div>
 
                 <!-- /.box-body -->
@@ -88,7 +82,7 @@
             heightMin: 200,
 
             imageUploadParams: {
-                id: 'my_editor_body_creat_post',
+                id: 'my_editor_body_edit_post',
                 location: 'images', // This allows us to distinguish between Froala or a regular file upload.
                 _token: "{{ csrf_token() }}" // This passes the laravel token with the ajax request.
             },
@@ -98,7 +92,7 @@
             method: "POST",
             url: "{{url('/deletefile')}}",
             data: {
-                id: 'my_editor_body_creat_post',
+                id: 'my_editor_body_edit_post',
                 src: $img.attr('src'),
                 _token: "{{ csrf_token() }}"
             }

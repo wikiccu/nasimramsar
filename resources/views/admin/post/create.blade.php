@@ -58,15 +58,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="field_id" class="control-label">موضوع خبر</label>
-                    <select id="field_id" name="field_id" class="form-control">
-                      @if($fields)
-                        @foreach ($fields as $field)
-                          <option value="{{$field->id}}">{{$field->title}}</option>
+                    <label for="subject_id" class="control-label">موضوع خبر</label>
+                    <select id="subject_id" name="subject_id" class="form-control">
+                      @if($subjects)
+                        @foreach ($subjects as $subject)
+                          <option value="{{$subject->id}}">{{$subject->title}}</option>
                         @endforeach
                       @endif
                     </select>
-                    <span for="field_id" class="text-danger"></span>
+                    <span for="subject_id" class="text-danger"></span>
                 </div>
 
             </div>
