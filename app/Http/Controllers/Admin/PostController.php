@@ -6,6 +6,8 @@ use App\Post;
 use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -67,10 +69,11 @@ class PostController extends Controller
 
         $post->pic = $filename;
         $post->title = $request->title;
-        // $post->abstract = $request->abstract;
-        // $post->information = $request->information;
-        // $post->description = $request->description;
-        $post->field_id = $request->field_id;
+        $post->abstract = $request->abstract;
+        $post->body = $request->body;
+        $post->subject_id = $request->subject_id;
+
+        $post->user_id=1;
 
         if (Auth::check()) {
             // The user is logged in...
@@ -91,7 +94,7 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        $post = Course::find($id);
+        $post = Post::find($id);
         $menu = 'post';
         return view('admin.post.show',compact('post','id','menu'));
     }
@@ -105,7 +108,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
-        $post = Course::find($id);
+        $post = Post::find($id);
         $subjects = Subject::all();
         $menu = 'post';
         return view('admin.post.edit',compact('post','id','subjects','menu'));
@@ -121,7 +124,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $post = Course::find($id);
+        $post = Post::find($id);
 
         if ($request->hasFile('pic')) {
 
@@ -140,10 +143,9 @@ class PostController extends Controller
         }
 
         $post->title = $request->title;
-        // $post->abstract = $request->abstract;
-        // $post->information = $request->information;
-        // $post->description = $request->description;
-        $post->field_id = $request->field_id;
+        $post->abstract = $request->abstract;
+        $post->body = $request->body;
+        $post->subject_id = $request->subject_id;
 
         $post->save();
 
@@ -159,7 +161,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-        $post = Course::find($id);
+        $post = Post::find($id);
         //removed file
         $filename = $post->pic;
         unlink(public_path($filename));
