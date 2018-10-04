@@ -78,6 +78,8 @@ class GalleryController extends Controller
 
         $gallery->save();
 
+        //$gallery->id
+
         return redirect('admin\gallery')->with('success', 'Information has been added');
     }
 

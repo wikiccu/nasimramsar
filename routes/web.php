@@ -28,7 +28,7 @@ Route::resources(
     '/admin/course'  => 'Admin\CourseController',
     '/admin/teacher' => 'Admin\TeacherController',
 //     '/admin/teachercourse' => 'Admin\TeacherCourseController',
-//     '/admin/gallery' => 'Admin\GalleryController',
+    '/admin/gallery' => 'Admin\GalleryController',
 //     '/admin/message' => 'Admin\MessageController',
     ]);
 
