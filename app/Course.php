@@ -11,4 +11,9 @@ class Course extends Model
     {
         return $this->belongsTo('App\Field');
     }
+
+    public function galleries()
+    {
+        return  $this->hasMany('App\Gallery');
+    }
 }

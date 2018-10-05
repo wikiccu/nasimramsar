@@ -12,13 +12,6 @@
                 <dl class="dl-horizontal">
 
                     <dt>
-                        تصویر گالری
-                    </dt>
-                    <dd>
-                        <img src="{{$gallery->pic===''?asset('images/no-image.png'):asset($gallery->pic)}}"  class="img-rounded" alt="no Image Available">
-                    </dd>
-
-                    <dt>
                         عنوان گالری
                     </dt>
                     <dd>
@@ -26,14 +19,7 @@
                     </dd>
 
                     <dt>
-                        خلاصه گالری
-                    </dt>
-                    <dd>
-                        {{$gallery->abstract}}
-                    </dd>
-
-                    <dt>
-                        متن گالری
+                        درباره ی گالری
                     </dt>
                     <dd>
                         <div class="well clearfix" style="clear: both;">
@@ -42,10 +28,10 @@
                     </dd>
 
                     <dt>
-                        موضوع  گالری
+                        تصاویر  گالری
                     </dt>
                     <dd>
-                        {{$gallery->subject->title}}
+                        {{--  {{$gallery->images}}  --}}
                     </dd>
 
                 </dl>

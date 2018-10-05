@@ -23,20 +23,10 @@
         </div>
         @endif
         <!-- form start -->
-        <form role="form" method="gallery" action="{{url('admin/gallery')}}" enctype="multipart/form-data">
+        <form role="form" method="post" action="{{url('admin/gallery')}}" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                <div class="form-group">
-                    <label for="Name" class="control-label">تصویر گالری</label>
-                    <div>
-                      <img id="inputImage" onclick="$('#pic').trigger('click');" style="cursor: pointer;width: auto;height: 180px;"
-                        src="{{asset('images/no-image.png')}}" class="img-rounded" alt="no Image Available">
-                      <input id="pic" name="pic" type="file" onchange="GetImage()" style="display: none" />
-                    </div>
-
-                </div>
 
                 <div class="form-group">
                     <label for="title" class="control-label">عنوان گالری</label>
@@ -44,29 +34,38 @@
                     <span for="title" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                    <label for="abstract" class="control-label">خلاصه گالری</label>
-                    <textarea id="abstract" name="abstract" class="form-control" placeholder="خلاصه گالری" ></textarea>
-                    <span for="abstract" class="text-danger"></span>
-                </div>
 
                 <div class="form-group">
-                    <label for="body" class="control-label">متن گالری</label>
+                    <label for="body" class="control-label">درباره ی گالری</label>
                     <textarea id="body" name="body" class="form-control" placeholder="درباره ی گالری" >
                     </textarea>
                     <span for="body" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="subject_id" class="control-label">موضوع گالری</label>
-                    <select id="subject_id" name="subject_id" class="form-control">
-                      @if($subjects)
-                        @foreach ($subjects as $subject)
-                          <option value="{{$subject->id}}">{{$subject->title}}</option>
+                    <label for="pics">عکس های گالری</label>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                انتخاب عکس ها <input id="uploadPic" style="display: none;" onchange="GetImage(this)" multiple="multiple" type="file">
+                            </span>
+                        </label>
+                        <input id="uploadPicLog" class="form-control" readonly="readonly" type="text">
+                    </div>
+                </div>
+                <div id="uploadPicWell" class="hidden well clearfix"></div>
+
+                <div class="form-group">
+                    <label for="course_id" class="control-label">دوره مربوطه</label>
+                    <select id="course_id" name="course_id" class="form-control">
+                        <option value="">-- انتخاب دوره --</option>
+                      @if($courses)
+                        @foreach ($courses as $course)
+                          <option value="{{$course->id}}">{{$course->title}}</option>
                         @endforeach
                       @endif
                     </select>
-                    <span for="subject_id" class="text-danger"></span>
+                    <span for="course_id" class="text-danger"></span>
                 </div>
 
             </div>
@@ -123,28 +122,38 @@
           })
         });
 
-
     });
 
-    function GetImage() {
+    function GetImage(input) {
         try {
-          var input = document.getElementById("pic");
-          if (input.files && input.files[0]) {
-            //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-            var fileExtension = ['jpg'];
-            if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
-              $("#pic").val("");
-              showAppMessage("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '), "warning");
+            //var input2 = document.getElementById("uploadPic");
+            if(input.files){
+                $('#uploadPicLog').val(input.files.length>1?input.files.length + ' فایل انتخاب شده':input.files[0].name)
+                $('#uploadPicWell').removeClass('hidden').html("");;
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+                var i;
+                var filename;
+                console.log(input.value)
+                for (i = 0; i < input.files.length; i++) {
+                    console.log(input.files[i]);
+                    filename=input.files[i].name.toLowerCase();
+                    if($.inArray(filename.split('.')[filename.split('.').length-1].toLowerCase(), fileExtension)===-1){
+                        //not good
+                        console.log("not image");
+                    }else{
+                        console.log("its image");
+                        var reader = new FileReader();
+                        reader.readAsDataURL(input.files[i]);
+                        reader.onload = function (e) {
+                            //$('#inputImage').attr('src', e.target.result);
+                            var child = '<div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive img-thumbnail" src='+e.target.result+' ></div>';
+                            $('#uploadPicWell').append(child)
+                        }
+                    }
+                }
             }
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $('#inputImage').attr('src', e.target.result);
-              changeImage = true;
-            }
-            reader.readAsDataURL(input.files[0]);
-          }
         } catch (e) {
-          showAppMessage(e.statusMessage, "error");
+          console.log(e.statusMessage);
         }
     };
 </script>

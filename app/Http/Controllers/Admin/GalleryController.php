@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Gallery;
+use App\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,9 +36,9 @@ class GalleryController extends Controller
     public function create()
     {
         //
-        $subjects = Subject::all();
+        $courses = Course::all();
         $menu = 'gallery';
-        return view('admin.gallery.create',compact('subjects','menu'));
+        return view('admin.gallery.create',compact('courses','menu'));
     }
 
     /**
@@ -49,32 +50,10 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         //
-        $filename='';
-
-        if ($request->hasFile('pic')) {
-            $file = $request->file('pic');
-
-            $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(400, 270);
-
-            $filename = 'images/gallerys/'.time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path($filename));
-        }
-
         $gallery = new Gallery;
-
-        $gallery->pic = $filename;
         $gallery->title = $request->title;
-        $gallery->abstract = $request->abstract;
         $gallery->body = $request->body;
-        $gallery->subject_id = $request->subject_id;
-
-        $gallery->user_id=1;
-
-        if (Auth::check()) {
-            // The user is logged in...
-            $gallery->user_id = Auth::id();
-        }
+        $gallery->course_id = $request->course_id;
 
         $gallery->save();
 

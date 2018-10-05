@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImageTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('image', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('title',400)->collation('utf8_unicode_ci');
             $table->string('pic',400);
             $table->tinyInteger('mainPic')->default(0);
 
-            $table->unsignedInteger('gallery_id');
+            $table->unsignedInteger('gallery_id')->nullable();
             $table->foreign('gallery_id')->references('id')->on('galleries')->onDelete('cascade');
 
             $table->timestamps();

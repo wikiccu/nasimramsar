@@ -17,6 +17,10 @@ class CreateGalleriesTable extends Migration
             $table->increments('id');
             $table->string('title',400)->collation('utf8_unicode_ci');
             $table->text('body')->collation('utf8_unicode_ci');
+
+            $table->unsignedInteger('course_id')->nullable();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
