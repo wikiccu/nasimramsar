@@ -23,7 +23,7 @@
         </div>
         @endif
         <!-- form start -->
-        <form role="form" method="post" action="{{url('admin/gallery')}}" enctype="multipart/form-data">
+        <form role="form" method="POST" action="{{url('admin/gallery')}}" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -47,13 +47,13 @@
                     <div class="input-group">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-                                انتخاب عکس ها <input id="uploadPic" style="display: none;" onchange="GetImage(this)" multiple="multiple" type="file">
+                                انتخاب عکس ها <input id="uploadPics[]" name="uploadPics[]" style="display: none;" onchange="GetImage(this)" multiple="multiple" type="file">
                             </span>
                         </label>
-                        <input id="uploadPicLog" class="form-control" readonly="readonly" type="text">
+                        <input id="uploadPicsLog" class="form-control" readonly="readonly" type="text">
                     </div>
                 </div>
-                <div id="uploadPicWell" class="hidden well clearfix"></div>
+                <div id="uploadPicsWell" class="hidden well clearfix"></div>
 
                 <div class="form-group">
                     <label for="course_id" class="control-label">دوره مربوطه</label>
@@ -126,10 +126,10 @@
 
     function GetImage(input) {
         try {
-            //var input2 = document.getElementById("uploadPic");
+            //var input2 = document.getElementById("uploadPics");
             if(input.files){
-                $('#uploadPicLog').val(input.files.length>1?input.files.length + ' فایل انتخاب شده':input.files[0].name)
-                $('#uploadPicWell').removeClass('hidden').html("");;
+                $('#uploadPicsLog').val(input.files.length>1?input.files.length + ' فایل انتخاب شده':input.files[0].name)
+                $('#uploadPicsWell').removeClass('hidden').html("");;
                 var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
                 var i;
                 var filename;
@@ -147,7 +147,7 @@
                         reader.onload = function (e) {
                             //$('#inputImage').attr('src', e.target.result);
                             var child = '<div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive img-thumbnail" src='+e.target.result+' ></div>';
-                            $('#uploadPicWell').append(child)
+                            $('#uploadPicsWell').append(child)
                         }
                     }
                 }

@@ -23,6 +23,7 @@
                 <tr>
                     {{--  <th>تصویر گالری</th>  --}}
                     <th>عنوان گالری</th>
+                    <th>دوره مربوطه</th>
                     <th>تعداد تصاویر</th>
                     <th>تنظیمات</th>
                 </tr>
@@ -37,6 +38,11 @@
                                 {{ $gallery->title}}
                             </td>
                             <td>
+                                @if($gallery->course)
+                                    {{$gallery->course->title}}
+                                @endif
+                            </td>
+                            <td>
                                 {{ $gallery->images->count()}}
                             </td>
                             <td class="operation-td">
@@ -46,7 +52,7 @@
                                 <a href="{{action('Admin\GalleryController@edit', $gallery['id'])}}">
                                     <i class="fa fa-edit" title="تغییر گالری"></i>
                                 </a>
-                                <form style="display:inline;" action="{{ url('admin/gallery/' . $gallery->id) }}" method="gallery"
+                                <form style="display:inline;" action="{{ url('admin/gallery/' . $gallery->id) }}" method="POST"
                                     onsubmit="return confirm('از حذف گالری اطمینان دارید؟');">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">

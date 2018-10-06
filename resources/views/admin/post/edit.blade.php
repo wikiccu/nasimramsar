@@ -60,6 +60,7 @@
                         </select>
                         <span for="subject_id" class="text-danger"></span>
                     </div>
+                </div>
 
                 <!-- /.box-body -->
                 <div class="box-footer">

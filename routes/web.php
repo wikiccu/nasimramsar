@@ -36,3 +36,9 @@ Route::resources(
 Route::post('/uploadfile','Admin\AdminController@upload');
 Route::post('/deletefile','Admin\AdminController@delete');
 Route::DELETE('/fileuploads', 'Admin\AdminController@destroy');
+
+//delete image in gallery
+// Route::DELETE('/deleteImage', 'Admin\GalleryController@destroyImage')->name('destroyImage');
+// Route::post('/deleteImage', 'Admin\GalleryController@destroyImage')->name('destroyImage');
+//Route::get('/deleteGalleryImage', 'Admin\GalleryController@destroyImage');
+Route::DELETE('/deleteGalleryImage', 'Admin\GalleryController@destroyImage');

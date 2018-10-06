@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Gallery;
 use App\Course;
+use App\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -57,7 +58,24 @@ class GalleryController extends Controller
 
         $gallery->save();
 
-        //$gallery->id
+        //return $gallery->id;
+        //save gallery image
+        if($request->hasFile('uploadPics')){
+            $index = 1;
+            foreach($request->file('uploadPics') as $file){
+                $name='g_'.$gallery->id.'_'.$file->getClientOriginalName();
+                $file->move(public_path().'/images/galleries/', $name);
+                $image = new Image;
+                if($index==1) {
+                    $image->mainPic=1;
+                }
+                $image->title = $gallery->title.' - عکس '.$index;
+                $image->pic ='images/galleries/'.$name;
+                $image->gallery_id = $gallery->id;
+                $image->save();
+                $index++;
+            }
+        }
 
         return redirect('admin\gallery')->with('success', 'Information has been added');
     }
@@ -68,7 +86,7 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function show(Gallery $gallery)
+    public function show($id)
     {
         //
         $gallery = Gallery::find($id);
@@ -82,13 +100,13 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit($id)
     {
         //
         $gallery = Gallery::find($id);
-        $subjects = Subject::all();
+        $courses = Course::all();
         $menu = 'gallery';
-        return view('admin.gallery.edit',compact('gallery','id','subjects','menu'));
+        return view('admin.gallery.edit',compact('gallery','id','courses','menu'));
     }
 
     /**
@@ -98,13 +116,31 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request, $id)
     {
         //
         $gallery = Gallery::find($id);
-        $subjects = Subject::all();
-        $menu = 'gallery';
-        return view('admin.gallery.edit',compact('gallery','id','subjects','menu'));
+
+        $gallery->title = $request->title;
+        $gallery->body = $request->body;
+        $gallery->course_id = $request->course_id;
+        $gallery->save();
+
+        if($request->hasFile('uploadPics')){
+            $index=$gallery->images->count()+1;
+            foreach($request->file('uploadPics') as $file){
+                $name='g_'.$gallery->id.'_'.$file->getClientOriginalName();
+                $file->move(public_path().'/images/galleries/', $name);
+                $image = new Image;
+                $image->title = $gallery->title.' - عکس '.$index;
+                $image->pic ='images/galleries/'.$name;
+                $image->gallery_id = $gallery->id;
+                $image->save();
+                $index++;
+            }
+        }
+
+        return redirect('admin\gallery')->with('success', 'Information has been modified');
     }
 
     /**
@@ -113,7 +149,7 @@ class GalleryController extends Controller
      * @param  \App\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy($id)
     {
         //
         $gallery = Gallery::find($id);
@@ -125,7 +161,22 @@ class GalleryController extends Controller
         // $this->deleteImage($gallery->information);
         // $this->deleteImage($gallery->description);
 
+        //remove images
+        // $gallery->images
+
         $gallery->delete();
         return redirect('admin\gallery')->with('success', 'Information has been Removed');
     }
+
+    public function destroyImage(Request $request)
+    {
+        //remove image
+        $img = Image::find($request->id);
+        $filename = $img->pic;
+        unlink(public_path($filename));
+        $img->delete();
+
+        return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
+    }
+
 }

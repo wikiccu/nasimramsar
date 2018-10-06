@@ -20,6 +20,7 @@
                         <input id="title" name="title" class="form-control" value="{{$field->title}}"/>
                         <span for="title" class="text-danger"></span>
                     </div>
+                </div>
 
                 <!-- /.box-body -->
                 <div class="box-footer">

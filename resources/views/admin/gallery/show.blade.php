@@ -31,7 +31,28 @@
                         تصاویر  گالری
                     </dt>
                     <dd>
+                        <div class="well clearfix" style="clear: both;">
                         {{--  {{$gallery->images}}  --}}
+                        @foreach ($gallery->images as $image)
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="thumbnail">
+                                <img class="img-responsive img-thumbnail" src="{{asset($image->pic)}}" >
+                                <div class="caption">
+                                        <p>{{$image->title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        </div>
+                    </dd>
+
+                    <dt>
+                        دوره مربوطه
+                    </dt>
+                    <dd>
+                        @if($gallery->course)
+                            {{$gallery->course->title}}
+                        @endif
                     </dd>
 
                 </dl>
