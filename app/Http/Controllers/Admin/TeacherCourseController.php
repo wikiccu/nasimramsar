@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\TeacherCourse;
+use App\Teacher;
+use App\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,6 +24,10 @@ class TeacherCourseController extends Controller
     public function index()
     {
         //
+        $teachers = Teacher::all();
+        $courses = Course::orderBy('id', 'DESC')->get();
+        $menu = 'teachercourse';
+        return view('admin.teachercourse.index', compact('teachers','courses','menu'));
     }
 
     /**
@@ -32,6 +38,7 @@ class TeacherCourseController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -43,6 +50,12 @@ class TeacherCourseController extends Controller
     public function store(Request $request)
     {
         //
+        $teachercourse = new TeacherCourse;
+        $teachercourse->teacher_id = $request->teacher_id;
+        $teachercourse->course_id = $request->course_id;
+        $teachercourse->save();
+
+        return redirect('admin\teachercourse')->with('success', 'Information has been added');
     }
 
     /**
@@ -85,8 +98,14 @@ class TeacherCourseController extends Controller
      * @param  \App\TeacherCourse  $teacherCourse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeacherCourse $teacherCourse)
+    public function destroy(Request $request)
     {
         //
+        $teachercourse = TeacherCourse::where('teacher_id',$request->teacher_id)->where('course_id',$request->course_id)->first();
+
+        if($teachercourse){
+            $teachercourse->delete();
+        }
+        return redirect('admin\teachercourse')->with('success', 'Information has been Removed');
     }
 }

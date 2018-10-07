@@ -29,6 +29,9 @@ body {
     text-align: right !important;
 }
 
+.operation-td{
+    text-align: center;
+}
 .operation-td i.fa {
     margin: 0 4px;
     cursor: pointer;

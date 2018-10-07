@@ -27,7 +27,7 @@ Route::resources(
     '/admin/field'   => 'Admin\FieldController',
     '/admin/course'  => 'Admin\CourseController',
     '/admin/teacher' => 'Admin\TeacherController',
-//     '/admin/teachercourse' => 'Admin\TeacherCourseController',
+    '/admin/teachercourse' => 'Admin\TeacherCourseController',
     '/admin/gallery' => 'Admin\GalleryController',
     '/admin/message' => 'Admin\MessageController',
     ]);
@@ -38,7 +38,4 @@ Route::post('/deletefile','Admin\AdminController@delete');
 Route::DELETE('/fileuploads', 'Admin\AdminController@destroy');
 
 //delete image in gallery
-// Route::DELETE('/deleteImage', 'Admin\GalleryController@destroyImage')->name('destroyImage');
-// Route::post('/deleteImage', 'Admin\GalleryController@destroyImage')->name('destroyImage');
-//Route::get('/deleteGalleryImage', 'Admin\GalleryController@destroyImage');
 Route::DELETE('/deleteGalleryImage', 'Admin\GalleryController@destroyImage');

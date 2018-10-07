@@ -16,4 +16,9 @@ class Course extends Model
     {
         return  $this->hasMany('App\Gallery');
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany('App\Teachers', 'teacher_courses');
+    }
 }
