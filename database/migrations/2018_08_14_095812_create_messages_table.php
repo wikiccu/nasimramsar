@@ -17,15 +17,14 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
 
             $table->string('name', 400)->collation('utf8_unicode_ci');
-            $table->string('email', 400)->collation('utf8_unicode_ci');
+            $table->string('email', 400);
             $table->string('body', 4000)->collation('utf8_unicode_ci');
             $table->string('ip', 100);
-            $table->dateTime('postdate');
 
-            $table->tinyInteger('readed');
-            $table->tinyInteger('removed');
+            $table->tinyInteger('readed')->default(0);;
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

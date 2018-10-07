@@ -22,6 +22,9 @@ class MessageController extends Controller
     public function index()
     {
         //
+        $messages = Message::orderBy('id', 'DESC')->get();
+        $menu = 'message';
+        return view('admin.message.index', compact('messages','menu'));
     }
 
     /**
@@ -51,9 +54,12 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
         //
+        $message = Message::find($id);
+        $menu = 'message';
+        return view('admin.message.show',compact('message','id','menu'));
     }
 
     /**
@@ -85,8 +91,11 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy($id)
     {
         //
+        $message = Message::find($id);
+        $message->delete();
+        return redirect('admin\message')->with('success','Information has been  deleted');
     }
 }

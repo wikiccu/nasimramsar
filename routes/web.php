@@ -29,7 +29,7 @@ Route::resources(
     '/admin/teacher' => 'Admin\TeacherController',
 //     '/admin/teachercourse' => 'Admin\TeacherCourseController',
     '/admin/gallery' => 'Admin\GalleryController',
-//     '/admin/message' => 'Admin\MessageController',
+    '/admin/message' => 'Admin\MessageController',
     ]);
 
 //froala
