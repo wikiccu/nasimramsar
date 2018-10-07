@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Gallery;
 use App\Course;
 use App\Image;
+use App\FroalaFileUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -153,16 +154,18 @@ class GalleryController extends Controller
     {
         //
         $gallery = Gallery::find($id);
-        //removed file
-        $filename = $gallery->pic;
-        unlink(public_path($filename));
 
         //remove pic from body
-        // $this->deleteImage($gallery->information);
-        // $this->deleteImage($gallery->description);
+        $this->deleteImage($gallery->body);
 
         //remove images
-        // $gallery->images
+        foreach ($gallery->images as $image) {
+            if(file_exists(public_path($image->pic)))
+            {
+                unlink(public_path($image->pic));
+            }
+            $image->delete();
+        }
 
         $gallery->delete();
         return redirect('admin\gallery')->with('success', 'Information has been Removed');
@@ -173,10 +176,38 @@ class GalleryController extends Controller
         //remove image
         $img = Image::find($request->id);
         $filename = $img->pic;
-        unlink(public_path($filename));
+        if(file_exists(public_path($filename)))
+        {
+            unlink(public_path($filename));
+        }
         $img->delete();
 
         return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
+    }
+
+    public function deleteImage($text)
+    {
+        $pattern = "<img.*?>";
+        $parts = preg_split($pattern, $text);
+
+        // Loop through parts array and display substrings
+        foreach($parts as $part){
+            $startpos=stripos($part,"src=");
+            $endpos=stripos($part,"\" ",$startpos);
+            if($startpos!=false && $endpos!=false)
+            {
+                $src = substr($part,$startpos+5,$endpos-$startpos-5);
+                //unlink($src);
+                $splitPath = explode("/", $src);
+                $splitPathLength = count($splitPath);
+                $filename=$splitPath[$splitPathLength-1];
+                if(file_exists(public_path('images/froalafiles/'.$filename)))
+                {
+                    unlink(public_path('images/froalafiles/'.$filename));
+                }
+                FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
+            }
+        }
     }
 
 }

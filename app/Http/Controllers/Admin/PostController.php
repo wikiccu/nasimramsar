@@ -164,8 +164,10 @@ class PostController extends Controller
         $post = Post::find($id);
         //removed file
         $filename = $post->pic;
-        unlink(public_path($filename));
-
+        if(file_exists(public_path($filename)))
+        {
+            unlink(public_path($filename));
+        }
         //remove pic from body
         //file_exists("test.txt");
         $this->deleteImage($post->information);
@@ -191,7 +193,10 @@ class PostController extends Controller
                 $splitPath = explode("/", $src);
                 $splitPathLength = count($splitPath);
                 $filename=$splitPath[$splitPathLength-1];
-                unlink(public_path('images/froalafiles/'.$filename));
+                if(file_exists(public_path('images/froalafiles/'.$filename)))
+                {
+                    unlink(public_path('images/froalafiles/'.$filename));
+                }
                 FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
             }
         }

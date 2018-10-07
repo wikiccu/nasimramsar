@@ -190,7 +190,10 @@ class TeacherController extends Controller
                 $splitPath = explode("/", $src);
                 $splitPathLength = count($splitPath);
                 $filename=$splitPath[$splitPathLength-1];
-                unlink(public_path('images/froalafiles/'.$filename));
+                if(file_exists(public_path('images/froalafiles/'.$filename)))
+                {
+                    unlink(public_path('images/froalafiles/'.$filename));
+                }
                 FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
             }
         }

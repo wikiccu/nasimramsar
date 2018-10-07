@@ -165,8 +165,10 @@ class CourseController extends Controller
         $course = Course::find($id);
         //removed file
         $filename = $course->pic;
-        unlink(public_path($filename));
-
+        if(file_exists(public_path($filename)))
+        {
+            unlink(public_path($filename));
+        }
         //remove pic from body
         //file_exists("test.txt");
         $this->deleteImage($course->information);
@@ -192,7 +194,10 @@ class CourseController extends Controller
                 $splitPath = explode("/", $src);
                 $splitPathLength = count($splitPath);
                 $filename=$splitPath[$splitPathLength-1];
-                unlink(public_path('images/froalafiles/'.$filename));
+                if(file_exists(public_path('images/froalafiles/'.$filename)))
+                {
+                    unlink(public_path('images/froalafiles/'.$filename));
+                }
                 FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
             }
         }
