@@ -233,7 +233,7 @@
                 <div class="col-md-4 content-mid-1">
                     <div class="port effect-1">
                         <div class="image-box">
-                            <img src="images/a1.jpg" alt="" class="img-responsive">
+                            <img src="images/mainpic.jpg" alt="" class="img-responsive">
                         </div>
                         <div class="text-desc text-ed">
                             <h6 class="persianFont">صنایع دستی</h6>
@@ -260,7 +260,7 @@
                         <div class="col-md-6 listview_1_of_2">
                             <div class="images_1_of_2">
                                 <div class="listimg col-md-4 col-xs-12 pull-right">
-                                    <img src="images/news/orf.jpg" alt="">
+                                    <img src="images/posts/orf.jpg" alt="">
                                 </div>
                                 <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                     <h3>موسیقی کودکان</h3>
@@ -277,7 +277,7 @@
                         <div class="col-md-6 listview_1_of_2">
                             <div class="images_1_of_2">
                                 <div class="listimg col-md-4 col-xs-12 pull-right">
-                                    <img src="images/news/web.jpg" alt="">
+                                    <img src="images/posts/web.jpg" alt="">
                                 </div>
                                 <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                     <h3>دوره های کامپیوتر </h3>
@@ -296,7 +296,7 @@
                     <div class="col-md-6 listview_1_of_2">
                         <div class="images_1_of_2">
                             <div class="listimg col-md-4 col-xs-12 pull-right">
-                                <img src="images/news/kargah2.jpg" alt="">
+                                <img src="images/posts/kargah2.jpg" alt="">
                             </div>
                             <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                     <h3>کارگاه های حسابداری </h3>
@@ -313,7 +313,7 @@
                     <div class="col-md-6 listview_1_of_2">
                         <div class="images_1_of_2">
                             <div class="listimg col-md-4 col-xs-12 pull-right">
-                                <img src="images/news/carpet.jpg" alt="">
+                                <img src="images/posts/carpet.jpg" alt="">
                             </div>
                             <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                     <h3> کلاس های صنایع دستی </h3>
@@ -334,7 +334,7 @@
                     <div class="col-md-6 listview_1_of_2">
                         <div class="images_1_of_2">
                             <div class="listimg col-md-4 col-xs-12 pull-right">
-                                <img src="images/news/modem.jpg" alt="">
+                                <img src="images/posts/modem.jpg" alt="">
                             </div>
                             <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                 <h3>عرضه مودم نسل چهارم</h3>
@@ -351,7 +351,7 @@
                     <div class="col-md-6 listview_1_of_2">
                         <div class="images_1_of_2">
                             <div class="listimg col-md-4 col-xs-12 pull-right">
-                                <img src="images/news/music.jpg" alt="">
+                                <img src="images/posts/music.jpg" alt="">
                             </div>
                             <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                 <h3>دوره های موسیقی</h3>
@@ -458,7 +458,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/gallery/fi.jpg" alt="" class="img-responsive">
+                    <img src="images/galleries/fi.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش C#</h6>
@@ -469,7 +469,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/gallery/fi1.jpg" alt="" class="img-responsive">
+                    <img src="images/galleries/fi1.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش چرم دوزی</h6>
@@ -480,7 +480,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/gallery/fi3.jpg" alt="" class="img-responsive">
+                    <img src="images/galleries/fi3.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش پیانو</h6>
@@ -491,7 +491,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/gallery/fi2.jpg" alt="" class="img-responsive">
+                    <img src="images/galleries/fi2.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش نرم افزار هلو</h6>
@@ -502,7 +502,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/gallery/fi4.jpg" alt="" class="img-responsive">
+                    <img src="images/galleries/fi4.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">دوره های مالیاتی</h6>
