@@ -8,6 +8,7 @@
 .myDirection {
     direction: rtl;
 }
+
 .myDirection2 {
     direction: ltr;
 }
@@ -34,10 +35,12 @@
     .navbar1 {
         float: right !important;
     }
+
     .social-ic {
         float: left !important;
         margin: 4px 0 0 15px !important;
     }
+
     div.nav1 ul li {
         float: right !important;
     }
@@ -103,7 +106,8 @@
     box-shadow: 0px 0px 10px rgba(187, 255, 181, 0.26);
     border: 1px solid rgba(192, 192, 192, 0.28);
 }
-.images_1_of_2:hover{
+
+.images_1_of_2:hover {
     border-color: lightgrey;
 }
 
@@ -112,11 +116,12 @@
     display: block;
     opacity: 0.7;
 }
-.images_1_of_2:hover img{
+
+.images_1_of_2:hover img {
     opacity: 1;
 }
 
-.images_1_of_2:hover h3{
+.images_1_of_2:hover h3 {
     text-decoration: none;
     color: #B7112A !important;
 }
@@ -131,7 +136,7 @@
     float: left;
 }
 
-.images_1_of_2 div.button span a{
+.images_1_of_2 div.button span a {
     outline: none;
     padding: 4px 29px;
     border: none;
@@ -147,60 +152,76 @@
     background: #B7112A !important;
     color: #fff !important;
 }
-ul.subject,ul.hotBlog{
+
+ul.subject,
+ul.hotBlog {
     list-style: none;
     padding: 20px;
 }
-ul.subject li{
+
+ul.subject li {
     padding: 8px 8px;
 }
-ul.subject li a{
-    color:black;
+
+ul.subject li a {
+    color: black;
 }
-ul.subject li a:hover{
+
+ul.subject li a:hover {
     text-decoration: none !important;
     color: #B7112A !important;
 }
-ul.subject li a h4{
+
+ul.subject li a h4 {
     display: contents;
 }
-ul.subject li a:hover span{
+
+ul.subject li a:hover span {
     background-color: #B7112A !important;
 }
-p.mainArticle{
+
+p.mainArticle {
     padding: 15px;
     text-indent: 5%;
     text-align: justify;
 }
+
 p.teacherContact {
     direction: ltr;
     text-align: center;
 }
-ul.teacherActivity{
+
+ul.teacherActivity {
     padding: 3% 5%;
 }
-ul.teacherActivity li{
+
+ul.teacherActivity li {
     margin: 1em 0;
 }
-dl.dlclass{
+
+dl.dlclass {
     padding: 5% 7%;
 }
-dl.dlclass dt,dl.dlclass dd li{
+
+dl.dlclass dt,
+dl.dlclass dd li {
     padding: 1%;
 }
-.about-grid h5{
+
+.about-grid h5 {
     text-align: justify;
 }
 
-a.teacherlink{
-    color:black;
-}
-a.teacherlink:hover{
-    text-decoration: none !important;
-    color:  #B7112A !important;
+a.teacherlink {
+    color: black;
 }
 
-button.logoutBtn{
+a.teacherlink:hover {
+    text-decoration: none !important;
+    color: #B7112A !important;
+}
+
+button.logoutBtn {
     color: #fff;
     font-size: 1.2em;
     text-decoration: none;
@@ -211,12 +232,30 @@ button.logoutBtn{
     background-color: transparent;
 }
 
-button.logoutBtn:hover{
+button.logoutBtn:hover {
     background: #00959f;
 }
-.images_1_of_2.big_pic img{
+
+.images_1_of_2.big_pic img {
     width: 100%;
 }
-.images_1_of_2.big_pic .subject{
+
+.images_1_of_2.big_pic .subject {
     padding: 1em 3em;
+}
+
+.gallery_btn {
+    margin-top: 1em;
+    margin-left: 2em;
+    background-color: #00959F;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 0;
+}
+.gallery_btn:hover{
+    text-decoration: none !important;
+    background: #B7112A !important;
+    color: #fff !important;
+    border: 1px solid #00959F;
 }

@@ -160,22 +160,22 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav cl-effect-8">
                                 <li>
-                                    <a class="active persianFont" href="{{url('/')}}">صفحه اول</a>
+                                    <a class="@if($menu=='welcome')active @endif persianFont" href="{{url('/')}}">صفحه اول</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="{{url('activity')}}">فعالیت های ما</a>
+                                    <a class="@if($menu=='activity')active @endif persianFont" href="{{url('activity')}}">فعالیت های ما</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="{{url('news')}}"> اخبار و مقالات</a>
+                                    <a class="@if($menu=='news')active @endif persianFont" href="{{url('news')}}"> اخبار و مقالات</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="{{url('gallery')}}">گالری</a>
+                                    <a class="@if($menu=='gallery')active @endif persianFont" href="{{url('gallery')}}">گالری</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="{{url('about')}}">درباره ما</a>
+                                    <a class="@if($menu=='about')active @endif persianFont" href="{{url('about')}}">درباره ما</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="{{url('contact')}}">تماس با ما</a>
+                                    <a class="@if($menu=='contact')active @endif persianFont" href="{{url('contact')}}">تماس با ما</a>
                                 </li>
                             </ul>
                         </div>
@@ -214,7 +214,9 @@
 
     <!---->
     <div class="content-bottom">
-        <h1 class="persianFont myDirection">گالری تصاویر</h1>
+        <h1 class="persianFont myDirection">گالری تصاویر
+            <a href="{{url('gallery')}}" class="btn btn-default pull-left gallery_btn" style="">سایر تصاویر</a>
+        </h1>
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">

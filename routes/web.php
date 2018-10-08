@@ -21,6 +21,15 @@
 Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/activity', 'WelcomeController@activity')->name('activity');
+Route::get('/news', 'WelcomeController@news')->name('news');
+Route::get('/gallery', 'WelcomeController@gallery')->name('gallery');
+Route::get('/about', 'WelcomeController@about')->name('about');
+Route::get('/contact', 'WelcomeController@contact')->name('contact');
+
+Route::get('/teacher', 'WelcomeController@teacher')->name('teacher');
+Route::get('/course', 'WelcomeController@course')->name('course');
+Route::get('/post', 'WelcomeController@post')->name('post');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
