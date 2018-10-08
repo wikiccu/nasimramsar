@@ -13,8 +13,7 @@
     <title>موسسه نسیم رامسر | @yield('title')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+
 
     <!-- Styles -->
     <link href="{{ asset('css/adminlte/bootstrap.min.css') }}" rel="stylesheet">
@@ -30,6 +29,8 @@
 			window.scrollTo(0, 1);
 		}
     </script>
+
+    @yield('header')
 
 </head>
 <body>
@@ -319,5 +320,8 @@
         </div>
     </div>
     <!--//footer-->
+    <script src="{{ asset('js/jquery.min.js') }}" ></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+    @yield('scripts')
 </body>
 </html>

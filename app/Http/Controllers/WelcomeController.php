@@ -26,11 +26,10 @@ class WelcomeController extends Controller
 
     public function activity()
     {
-        $filds = Field::all();
+        $fields = Field::all();
         $courses = Course::all();
-
         $menu='activity';
-        return view('welcome',compact('menu'));
+        return view('activity',compact('menu','fields','courses'));
     }
 
     public function news()
