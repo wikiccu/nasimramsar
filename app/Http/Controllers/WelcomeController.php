@@ -7,6 +7,7 @@ use App\Post;
 use App\Teacher;
 use App\Course;
 use App\Field;
+use App\Message;
 
 class WelcomeController extends Controller
 {
@@ -55,7 +56,19 @@ class WelcomeController extends Controller
     public function contact()
     {
         $menu='contact';
-        return view('welcome',compact('menu'));
+        return view('contact',compact('menu'));
+    }
+    public function contactPost()
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'body' => 'required'
+            ]);
+        Message::create($request->all());
+
+        return back()->with('success', 'Thanks for contacting us!');
+        //return view('contact',compact('menu'));
     }
 
 

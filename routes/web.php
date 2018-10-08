@@ -26,6 +26,7 @@ Route::get('/news', 'WelcomeController@news')->name('news');
 Route::get('/gallery', 'WelcomeController@gallery')->name('gallery');
 Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
+Route::post('/contact', 'WelcomeController@contactPost')->name('contactPost');
 
 Route::get('/teacher', 'WelcomeController@teacher')->name('teacher');
 Route::get('/course', 'WelcomeController@course')->name('course');
