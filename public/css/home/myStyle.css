@@ -1,0 +1,222 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../../fonts/Vazir-FD.eot');
+    src: url('../../fonts/Vazir-FD.eot?#iefix') format('embedded-opentype'), url('../../fonts/Vazir-FD.woff') format('woff'), url('../../fonts/Vazir-FD.ttf') format('truetype');
+    font-weight: normal;
+}
+
+.myDirection {
+    direction: rtl;
+}
+.myDirection2 {
+    direction: ltr;
+}
+
+.persianFont {
+    font-family: Vazir !important;
+}
+
+.single-bottom input[type="checkbox"]+label {
+    padding-right: 31px !important;
+    padding-left: 0 !important;
+}
+
+.single-bottom input[type="checkbox"]+label span:first-child {
+    right: 0 !important;
+    left: unset !important;
+}
+
+.banner-text h2 {
+    font-size: 3em !important;
+}
+
+@media(min-width:768px) {
+    .navbar1 {
+        float: right !important;
+    }
+    .social-ic {
+        float: left !important;
+        margin: 4px 0 0 15px !important;
+    }
+    div.nav1 ul li {
+        float: right !important;
+    }
+}
+
+.test-wrapper img {
+    right: 0 !important;
+    left: unset !important;
+}
+
+.test-gr {
+    margin-right: 7em !important;
+    margin-left: 0 !important;
+    direction: rtl !important;
+}
+
+.test-grid p::before {
+    margin: 0 4.4em 0 1.2em !important;
+}
+
+.contact-grid1 i {
+    float: right !important;
+}
+
+.con-ic {
+    float: left !important;
+}
+
+.map iframe {
+    min-height: 435px !important;
+}
+
+.contact-form1 {
+    padding: 0 0 0 1em !important;
+}
+
+.btn-style {
+    outline: none;
+    padding: 11px 50px;
+    border: none;
+    background: #00959F;
+    font-size: 1em;
+    color: #fff;
+    width: 100%;
+    margin: 1.5em 0 0 0em;
+}
+
+.btn-style:hover {
+    text-decoration: none !important;
+    background: #B7112A !important;
+    color: #fff !important;
+}
+
+.listview_1_of_2 {
+    padding: 0px 15px 0px 0px !important;
+    margin: 0em 0em 2em 0em !important;
+    float: right;
+    direction: rtl;
+}
+
+.images_1_of_2 {
+    padding: 2.5%;
+    box-shadow: 0px 0px 10px rgba(187, 255, 181, 0.26);
+    border: 1px solid rgba(192, 192, 192, 0.28);
+}
+.images_1_of_2:hover{
+    border-color: lightgrey;
+}
+
+.images_1_of_2 img {
+    max-width: 100%;
+    display: block;
+    opacity: 0.7;
+}
+.images_1_of_2:hover img{
+    opacity: 1;
+}
+
+.images_1_of_2:hover h3{
+    text-decoration: none;
+    color: #B7112A !important;
+}
+
+.images_1_of_2 p {
+    padding: 0.1em 0 0.1em 0;
+    line-height: 1.8em;
+    margin: 0.3em 0em;
+}
+
+.images_1_of_2 div.button {
+    float: left;
+}
+
+.images_1_of_2 div.button span a{
+    outline: none;
+    padding: 4px 29px;
+    border: none;
+    background: #00959F;
+    font-size: 1em;
+    color: #fff !important;
+    width: 100%;
+    margin: 1.5em 0 0 0em;
+}
+
+.images_1_of_2 div.button span a:hover {
+    text-decoration: none !important;
+    background: #B7112A !important;
+    color: #fff !important;
+}
+ul.subject,ul.hotBlog{
+    list-style: none;
+    padding: 20px;
+}
+ul.subject li{
+    padding: 8px 8px;
+}
+ul.subject li a{
+    color:black;
+}
+ul.subject li a:hover{
+    text-decoration: none !important;
+    color: #B7112A !important;
+}
+ul.subject li a h4{
+    display: contents;
+}
+ul.subject li a:hover span{
+    background-color: #B7112A !important;
+}
+p.mainArticle{
+    padding: 15px;
+    text-indent: 5%;
+    text-align: justify;
+}
+p.teacherContact {
+    direction: ltr;
+    text-align: center;
+}
+ul.teacherActivity{
+    padding: 3% 5%;
+}
+ul.teacherActivity li{
+    margin: 1em 0;
+}
+dl.dlclass{
+    padding: 5% 7%;
+}
+dl.dlclass dt,dl.dlclass dd li{
+    padding: 1%;
+}
+.about-grid h5{
+    text-align: justify;
+}
+
+a.teacherlink{
+    color:black;
+}
+a.teacherlink:hover{
+    text-decoration: none !important;
+    color:  #B7112A !important;
+}
+
+button.logoutBtn{
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin: 0 0.5em;
+    border: 2px solid #00959f;
+    padding: 5px 25px;
+    display: block;
+    background-color: transparent;
+}
+
+button.logoutBtn:hover{
+    background: #00959f;
+}
+.images_1_of_2.big_pic img{
+    width: 100%;
+}
+.images_1_of_2.big_pic .subject{
+    padding: 1em 3em;
+}
