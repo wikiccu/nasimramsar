@@ -37,7 +37,7 @@
         <div class="container">
             <div class="head-top">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{url('/')}}">
                         <img src="images/bo.png" alt="" title="موسسه نسیم رامسر">
                     </a>
                 </div>
@@ -160,22 +160,22 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav cl-effect-8">
                                 <li>
-                                    <a class="active persianFont" href="index.html">صفحه اول </a>
+                                    <a class="active persianFont" href="{{url('/')}}">صفحه اول</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="portfolio.html">فعالیت های ما</a>
+                                    <a class="persianFont" href="{{url('activity')}}">فعالیت های ما</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="blogs.html"> اخبار و مقالات </a>
+                                    <a class="persianFont" href="{{url('news')}}"> اخبار و مقالات</a>
                                 </li>
                                 <li>
-                                    <a class="persianFont" href="about.html">درباره ما</a>
+                                    <a class="persianFont" href="{{url('gallery')}}">گالری</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="typo.html">Short Codes</a>
-                                </li> -->
                                 <li>
-                                    <a class="persianFont" href="contact.html">تماس با ما</a>
+                                    <a class="persianFont" href="{{url('about')}}">درباره ما</a>
+                                </li>
+                                <li>
+                                    <a class="persianFont" href="{{url('contact')}}">تماس با ما</a>
                                 </li>
                             </ul>
                         </div>
