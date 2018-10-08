@@ -34,7 +34,7 @@
 
 </head>
 <body>
-    <div class="header">
+    <div class="header @if($menu!='welcome') head1 @endif">
         <div class="container">
             <div class="head-top">
                 <div class="logo">
@@ -42,16 +42,31 @@
                         <img src="images/bo.png" alt="" title="موسسه نسیم رامسر">
                     </a>
                 </div>
+                @if (Route::has('login'))
                 <div class="login">
                     <ul class="nav-login">
+                        @auth
                         <li>
                             <a href="#" data-toggle="modal" data-target="#myModal1" class="persianFont">ورود</a>
                         </li>
                         <li>
                             <a href="#" data-toggle="modal" data-target="#myModal2" class="persianFont">عضویت</a>
                         </li>
+                        @else
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <input name='return' type='hidden' value='".urlencode($_SERVER['PHP_SELF'])."' />
+                                @csrf
+                                <button type='submit' class='persianFont logoutBtn'>خروج</button>
+                            </form>
+                        </li>
+                        <li>
+                            <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
+                @endif
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -134,15 +149,17 @@
             </div>
         </div>
         <!-- //signup -->
-        <div class="banner">
-            <div class="container">
-                <div class="banner-text">
-                    <h2 class="myDirection persianFont">موسسه فرهنگی هنری نسیم رامسر</h2>
-                    <p class="myDirection persianFont">با مجوز رسمی از وزارت فرهنگ و ارشاد اسلامی </p>
+        @if($menu=='welcome')
+            <div class="banner">
+                <div class="container">
+                    <div class="banner-text">
+                        <h2 class="myDirection persianFont">موسسه فرهنگی هنری نسیم رامسر</h2>
+                        <p class="myDirection persianFont">با مجوز رسمی از وزارت فرهنگ و ارشاد اسلامی </p>
+                    </div>
+                    <p class="banner-text1 myDirection persianFont">فناوری اطلاعات، حسابداری و مالی، عمران و معماری</p>
                 </div>
-                <p class="banner-text1 myDirection persianFont">فناوری اطلاعات، حسابداری و مالی، عمران و معماری</p>
             </div>
-        </div>
+        @endif
         <div class="nav-top">
             <div class="container">
                 <div class="nav1">

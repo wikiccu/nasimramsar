@@ -38,8 +38,29 @@ class User extends Authenticatable
         return $this->isActive != 0;
     }
 
-    public function hasRole($role)
+    public function hasRole($roleName)
     {
-        return in_array($role, $this->roles());
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == $roleName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function isAdmin()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'Admin')
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
