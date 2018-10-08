@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Teacher;
+use App\Course;
+use App\Field;
 
 class WelcomeController extends Controller
 {
@@ -24,6 +26,9 @@ class WelcomeController extends Controller
 
     public function activity()
     {
+        $filds = Field::all();
+        $courses = Course::all();
+
         $menu='activity';
         return view('welcome',compact('menu'));
     }

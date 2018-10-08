@@ -49,7 +49,7 @@
         </div>
         <div class="servies-top">
             <div class="section group">
-                    @if($posts)
+                @if($posts)
                     <?php $index=0; ?>
                     <div class="section group">
                         @foreach ($posts as $post)
@@ -76,7 +76,7 @@
                         <?php $index++ ?>
                         @endforeach
                     </div>
-                    @endif
+                @endif
             </div>
             <div class="section group">
                 <div class="col-md-2 contact-form pull-left">
