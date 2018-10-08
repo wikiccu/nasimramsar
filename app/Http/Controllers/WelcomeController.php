@@ -46,8 +46,10 @@ class WelcomeController extends Controller
 
     public function about()
     {
+        $fields = Field::all();
+        $teachers = Teacher::all();
         $menu='about';
-        return view('welcome',compact('menu'));
+        return view('about',compact('menu','fields','teachers'));
     }
 
     public function contact()

@@ -60,6 +60,9 @@
                                 <button type='submit' class='persianFont logoutBtn'>خروج</button>
                             </form>
                         </li>
+                        {{--  @if ( $user->isAdmin() )
+                            <p>Yay! I'm Admin!</p>
+                        @endif  --}}
                         <li>
                             <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
                         </li>
@@ -190,7 +193,7 @@
                                     <a class="@if($menu=='gallery')active @endif persianFont" href="{{url('gallery')}}">گالری</a>
                                 </li>
                                 <li>
-                                    <a class="@if($menu=='about')active @endif persianFont" href="{{url('about')}}">درباره ما</a>
+                                    <a class="@if($menu=='about')active @endif persianFont" href="{{url('about')}}">دربارۀ ما</a>
                                 </li>
                                 <li>
                                     <a class="@if($menu=='contact')active @endif persianFont" href="{{url('contact')}}">تماس با ما</a>
@@ -299,6 +302,7 @@
             <div class="col-md-6 footer-left pull-right">
                 <h3 class="persianFont myDirection">اطلاعات </h3>
                 <p class="para persianFont myDirection">موسسه فرهنگی هنری نسیم رامسر
+                        {{--  <script type='text/javascript' src='http://webshomar.com/rx/?counter/stat/9002/c055c825fcdd5e60d25df7e7123b66c9/script.js'></script>  --}}
                     <br>با مجوز رسمی از وزارت فرهنگ و ارشاد اسلامی
                     <br>شماره ثبت: 10
                     <br>تاریخ ثبت: 81/6/23</p>
@@ -341,4 +345,3 @@
     <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
     @yield('scripts')
 </body>
-</html>

@@ -28,7 +28,7 @@
             @if($courses)
                 @foreach ($courses as $course)
                     <div class="col-md-4 filtr-item" data-category="{{$course->field_id}}" data-sort="">
-                        <a href="url('course/'.{{$course->id}})" class="b-link-stripe b-animate-go swipebox">
+                        <a href="{{url('course/'.$course->id)}}" class="b-link-stripe b-animate-go swipebox">
                             <div class="ed-gal-effect slow-zoom horizontal">
                                 <div class="img-box">
                                     <img src="{{$course->pic}}" alt="{{$course->title}}" />
