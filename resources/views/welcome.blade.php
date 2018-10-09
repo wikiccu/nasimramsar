@@ -56,7 +56,7 @@
                             <div class="col-md-6 listview_1_of_2">
                                 <div class="images_1_of_2">
                                     <div class="listimg col-md-4 col-xs-12 pull-right">
-                                        <img src="{{$post->pic}}" alt="">
+                                        <img src="{{asset($post->pic)}}" alt="">
                                     </div>
                                     <div class="text col-md-8 col-xs-12 pull-left persianFont">
                                         <h3>{{$post->title}}</h3>
@@ -98,7 +98,7 @@
             <div class="test-grid-2">
                 @foreach ($teachers as $teacher)
                     <div class="col-md-6 test-wrapper pull-right">
-                        <img src="{{$teacher->pic}}" alt="" class="img-responsive">
+                        <img src="{{asset($teacher->pic)}}" alt="" class="img-responsive">
                         <div class="test-grid">
                             <div class="test-gr">
                                 <a class="teacherlink" href="{{url('teacher/'.$teacher->id)}}" ><h4 class="persianFont">{{$teacher->name}}</h4></a>

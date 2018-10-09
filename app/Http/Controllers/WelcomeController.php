@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Subject;
 use App\Teacher;
 use App\Course;
 use App\Field;
@@ -33,10 +34,24 @@ class WelcomeController extends Controller
         return view('activity',compact('menu','fields','courses'));
     }
 
-    public function news()
+    public function news($subject_id = null)
     {
+        $subjects = Subject::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
+        $this_subject = "آخرین اخبار و مقالات موسسه نسیم";
+        if($subject_id)
+        {
+            $posts = Post::where('subject_id',$subject_id)->orderBy('id', 'DESC')->get();
+            $this_subject = Subject::find($subject_id)->title;
+        }
+        else
+        {
+            $posts = Post::orderBy('id', 'DESC')->get();
+            $this_subject = "آخرین اخبار و مقالات موسسه نسیم";
+        }
+        $all_posts_number = Post::all()->count();
         $menu='news';
-        return view('welcome',compact('menu'));
+        return view('news',compact('menu','subjects','posts','this_subject','all_posts_number'));
     }
 
     public function gallery()
@@ -58,7 +73,7 @@ class WelcomeController extends Controller
         $menu='contact';
         return view('contact',compact('menu'));
     }
-    public function contactPost()
+    public function contactPost(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
