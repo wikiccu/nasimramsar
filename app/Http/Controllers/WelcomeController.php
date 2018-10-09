@@ -114,8 +114,15 @@ class WelcomeController extends Controller
 
     public function course($id)
     {
+        $course = Course::find($id);
         $menu='activity';
-        return view('course',compact('menu'));
+        return view('course',compact('menu','course'));
     }
+
+    // public function Image($id)
+    // {
+    //     $menu='gallery';
+    //     return view('course',compact('menu'));
+    // }
 
 }

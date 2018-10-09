@@ -241,7 +241,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/galleries/fi.jpg" alt="" class="img-responsive">
+                    <img src="{{asset('images/galleries/fi.jpg')}}" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش C#</h6>
@@ -252,7 +252,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/galleries/fi1.jpg" alt="" class="img-responsive">
+                    <img src="{{asset('images/galleries/fi1.jpg')}}" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش چرم دوزی</h6>
@@ -263,7 +263,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/galleries/fi3.jpg" alt="" class="img-responsive">
+                    <img src="{{asset('images/galleries/fi3.jpg')}}" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش پیانو</h6>
@@ -274,7 +274,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/galleries/fi2.jpg" alt="" class="img-responsive">
+                    <img src="{{asset('images/galleries/fi2.jpg')}}" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">آموزش نرم افزار هلو</h6>
@@ -285,7 +285,7 @@
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
-                    <img src="images/galleries/fi4.jpg" alt="" class="img-responsive">
+                    <img src="{{asset('images/galleries/fi4.jpg')}}" alt="" class="img-responsive">
                 </div>
                 <div class="text-desc">
                     <h6 class="persianFont myDirection">دوره های مالیاتی</h6>
