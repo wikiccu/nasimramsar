@@ -8,6 +8,7 @@ use App\Subject;
 use App\Teacher;
 use App\Course;
 use App\Field;
+use App\Gallery;
 use App\Message;
 
 class WelcomeController extends Controller
@@ -56,8 +57,9 @@ class WelcomeController extends Controller
 
     public function gallery()
     {
+        $galleries = Gallery::all();
         $menu='gallery';
-        return view('welcome',compact('menu'));
+        return view('gallery',compact('menu','galleries'));
     }
 
     public function about()
@@ -119,7 +121,7 @@ class WelcomeController extends Controller
         return view('course',compact('menu','course'));
     }
 
-    // public function Image($id)
+    // public function galleryImage($id)
     // {
     //     $menu='gallery';
     //     return view('course',compact('menu'));

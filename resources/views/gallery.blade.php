@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title')@endsection
+@section('title')گالری@endsection
 
 @section('content')
 
