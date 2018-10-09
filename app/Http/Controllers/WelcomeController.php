@@ -107,8 +107,9 @@ class WelcomeController extends Controller
 
     public function teacher($id)
     {
+        $teacher = Teacher::find($id);
         $menu='about';
-        return view('teacher',compact('menu'));
+        return view('teacher',compact('menu','teacher'));
     }
 
     public function course($id)
