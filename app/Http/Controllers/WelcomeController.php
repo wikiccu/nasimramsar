@@ -90,20 +90,31 @@ class WelcomeController extends Controller
 
     public function post($id)
     {
+        $post = Post::find($id);
+        if($post)
+        {
+            $page_title = $post->title;
+        }
+        else
+        {
+            $page_title = "خبر پیدا نشد";
+        }
         $menu='news';
-        return view('welcome',compact('menu'));
+        $subjects = Subject::all();
+        $all_posts_number = Post::all()->count();
+        return view('post',compact('menu','post','subjects','all_posts_number','page_title'));
     }
 
     public function teacher($id)
     {
-        $menu='news';
-        return view('welcome',compact('menu'));
+        $menu='about';
+        return view('teacher',compact('menu'));
     }
 
     public function course($id)
     {
-        $menu='news';
-        return view('welcome',compact('menu'));
+        $menu='activity';
+        return view('course',compact('menu'));
     }
 
 }

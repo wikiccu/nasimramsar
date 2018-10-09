@@ -28,9 +28,9 @@ Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
 Route::post('/contact', 'WelcomeController@contactPost')->name('contactPost');
 
-Route::get('/teacher', 'WelcomeController@teacher')->name('teacher');
-Route::get('/course', 'WelcomeController@course')->name('course');
-Route::get('/post', 'WelcomeController@post')->name('post');
+Route::get('/teacher/{id}', 'WelcomeController@teacher')->name('teacher');
+Route::get('/course/{id}', 'WelcomeController@course')->name('course');
+Route::get('/post/{id}', 'WelcomeController@post')->name('post');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');

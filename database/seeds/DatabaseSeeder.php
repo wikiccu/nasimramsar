@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         //add user
         DB::table('users')->insert([
-            'name'      => 'mohsen1299',
+            'name'      => 'محسن شعبانیان',
             'email'     => 'mohsen1299@gmail.com',
             'password'  => bcrypt('secret'),
             'is_active' =>'1'
@@ -39,7 +39,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'مودم نسل چهارم اینترنت آسیاتک (LTE) در فروشگاه نسیم رایانه عرضه می گردد.',
             'body' => '<p>با امکان اتصال به رایانه و اینترنت بیسیم (wifi) برای اتصال به تلفن همراه، در محل فروشگاه نسیم رایانه عرضه می شود.</p>',
             'subject_id'=>4,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-06-21 08:53:00'
         ]);
         DB::table('posts')->insert([
             'pic' => 'images/posts/web.jpg',
@@ -47,7 +48,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'ثبت نام دوره های تابستانه کلاس های برنامه نویسی',
             'body' => '<p>آموزش برنامه نویسی تلفن های همراه و دستگاه های همراه، آموزش طراحی صفحات وب، طراحی پایگاه های داده و ساخت نرم افزار های مختلف به کمک تکنولوژی های جدید در موسسه فرهنگی هنری نسیم رامسر ادامه دارد.</p>',
             'subject_id'=>1,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-06-23 09:40:10'
         ]);
         DB::table('posts')->insert([
             'pic' => 'images/posts/kargah2.jpg',
@@ -55,7 +57,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'ثبت نام کارگاه های جدید حسابداری و مالی، با تدریس استاد ابراهیمیان و ... آغاز گردید .',
             'body' => '<p>ثبت نام کار گاه های حسابداری مقدماتی و پیشرفته، مسائل مالی و حسابداری و مالیاتی و همچنین آموزش نرم افزار مالی در موسسه نسیم شروع شد.</p>',
             'subject_id'=>1,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-06-24 14:26:00'
         ]);
         DB::table('posts')->insert([
             'pic' => 'images/posts/carpet.jpg',
@@ -63,7 +66,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'ثبت نام دوره های جدید کلاس های قالی بافی، چرم دوزی و ... با تدریس استاد سرکار خانم قربانی آغاز گردید .',
             'body' => '<p>دوره ها همراه با  اساتید مجرب و کار عملی در با همکاری موسسه بهارستان برگزار می شود.</p>',
             'subject_id'=>1,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-06-28 17:09:00'
         ]);
         DB::table('posts')->insert([
             'pic' => 'images/posts/orf.jpg',
@@ -71,7 +75,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'ثبت نام دوره های جدید موسیقی کودکان با تدریس استاد گلپور شروع شد.',
             'body' => '<p>ثبت نام دوره های تابستانه موسیقی کودکان همراه با آموزش شناخت آواهای مختلف، شناخت نت ها و ساز های مختلف با تدریس استاد گلپور در موسسه فرهنگی و هنری رامسر آغاز گردید.</p>',
             'subject_id'=>1,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-06-29 22:55:50'
         ]);
         DB::table('posts')->insert([
             'pic' => 'images/posts/music.jpg',
@@ -79,7 +84,8 @@ class DatabaseSeeder extends Seeder
             'abstract' => 'آموزش ساز های پیانو، تار و سه تار، گیتار، سنتور و ... در موسسه فرهنگی هنری نسیم رامسر ',
             'body' => '<p>برای آشنایی با دوره های موسیقی موسسه به <a href=\"activity.php\">قسمت دوره ها</a> مراجعه کنید.</p>',
             'subject_id'=>1,
-            'user_id'=>1
+            'user_id'=>1,
+            'created_at'=>'2018-07-02 19:33:00'
         ]);
 
         //add field

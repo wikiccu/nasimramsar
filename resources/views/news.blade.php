@@ -50,7 +50,7 @@
                                         @if($post->user)
                                         <i class="glyphicon glyphicon-user"></i> توسط {{$post->user->name}}،
                                         @endif
-                                        <i class="glyphicon glyphicon-calendar"></i> {{$post->created_at}}</p>
+                                        <i class="glyphicon glyphicon-calendar"></i> {{$post->makeDate()}}</p>
                                     <p>{{$post->abstract}}</p>
                                     <div class="button">
                                         <span>
