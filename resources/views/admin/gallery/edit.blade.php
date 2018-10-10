@@ -62,9 +62,9 @@
                         <select id="course_id" name="course_id" class="form-control">
                             <option value="">-- انتخاب دوره --</option>
                             @if($courses)
-                            @foreach ($courses as $course)
-                                <option value="{{$course->id}}" @if($course->id==$gallery->course_id) selected @endif>{{$course->title}}</option>
-                            @endforeach
+                                @foreach ($courses as $course)
+                                    <option value="{{$course->id}}" @if($course->id==$gallery->course_id) selected @endif>{{$course->title}}</option>
+                                @endforeach
                             @endif
                         </select>
                         <span for="course_id" class="text-danger"></span>
@@ -97,13 +97,14 @@
                                         <img class="img-responsive img-thumbnail" src="{{asset($image->pic)}}" >
                                         <div class="caption">
                                                 <p>{{$image->title}}</p>
+                                                <button style="margin-bottom: 0.5em;" class="btn btn-warning" title="تغییر عنوان" onclick="changeTitle('{{$image->title}}',{{$image->id.','.$image->gallery_id}})"><i class="fa fa-edit" title="تغییر عنوان"></i> تغییر عنوان</button>
                                                 <form method="POST"  action="{{ url('/deleteGalleryImage') }}"
                                                     onsubmit="return confirm('از حذف تصویر اطمینان دارید؟');">
                                                     @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <input type="hidden" id="id" name="id" value="{{$image->id}}">
                                                     <input type="hidden" id="gallery_id" name="gallery_id" value="{{$image->gallery_id}}">
-                                                    <button class="btn btn-danger" title="حذف گالری">
+                                                    <button class="btn btn-danger" title="حذف تصویر">
                                                         <i class="fa fa-trash-o" title="حذف تصویر"></i> حذف تصویر
                                                     </button>
                                                 </form>
@@ -206,6 +207,28 @@
             }
         } catch (e) {
           console.log(e.statusMessage);
+        }
+    };
+
+    function changeTitle(title,id,gallery_id){
+        var newTitle = prompt("عنوان جدید را وارد کنید", title);
+        if(newTitle != null && newTitle != '' && newTitle != title){
+            console.log('start post')
+            $.ajax({
+                method: "POST",
+                url: "{{url('/changeGalleryImageTitle')}}",
+                data: {
+                    id: id,
+                    title: title,
+                    gallery_id:gallery_id,
+                    _token: "{{ csrf_token() }}"
+                }
+            }).done (function (data) {
+                console.log ('image was deleted');
+                })
+                .fail (function (e) {
+                console.log (e);
+                })
         }
     };
 </script>

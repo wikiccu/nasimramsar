@@ -53,5 +53,6 @@ Route::post('/uploadfile','Admin\AdminController@upload');
 Route::post('/deletefile','Admin\AdminController@delete');
 Route::DELETE('/fileuploads', 'Admin\AdminController@destroy');
 
-//delete image in gallery
+//image in gallery
 Route::DELETE('/deleteGalleryImage', 'Admin\GalleryController@destroyImage');
+Route::Post('/changeGalleryImageTitle', 'Admin\GalleryController@changeImageTitle');

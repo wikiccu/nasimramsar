@@ -8,6 +8,8 @@ use App\Image;
 use App\FroalaFileUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as ImageManager;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryController extends Controller
 {
@@ -57,15 +59,15 @@ class GalleryController extends Controller
         if ($request->hasFile('pic')) {
             $file = $request->file('pic');
 
-            $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(400, 400);
+            $image_resize = ImageManager::make($file->getRealPath());
+            $image_resize->resize(500, 400);
 
             $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
             $image_resize->save(public_path($filename));
-        }
+         }
 
         $gallery = new Gallery;
-        $course->pic = $filename;
+        $gallery->pic = $filename;
         $gallery->title = $request->title;
         $gallery->body = $request->body;
         $gallery->course_id = $request->course_id;
@@ -138,15 +140,15 @@ class GalleryController extends Controller
         if ($request->hasFile('pic')) {
 
             $file = $request->file('pic');
-            $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(400, 400);
+            $image_resize = ImageManager::make($file->getRealPath());
+            $image_resize->resize(500, 400);
 
-            if($course->pic==''){
+            if($gallery->pic==''){
                 $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
                 $image_resize->save(public_path($filename));
-                $course->pic = $filename;
+                $gallery->pic = $filename;
             }else{
-                $filename = $course->pic;
+                $filename = $gallery->pic;
                 $image_resize->save(public_path($filename));
             }
         }
@@ -184,6 +186,12 @@ class GalleryController extends Controller
         //
         $gallery = Gallery::find($id);
 
+        $filename = $gallery->pic;
+        if(file_exists(public_path($filename)))
+        {
+            unlink(public_path($filename));
+        }
+
         //remove pic from body
         $this->deleteImage($gallery->body);
 
@@ -211,6 +219,16 @@ class GalleryController extends Controller
         }
         $img->delete();
 
+        return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
+    }
+
+    public function changeImageTitle(Request $request)
+    {
+        //$id = $request->id;
+        //$title = $request->title;
+        $img = Image::find($request->id);
+        $img->title = $request->title;
+        $img->save();
         return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
     }
 
