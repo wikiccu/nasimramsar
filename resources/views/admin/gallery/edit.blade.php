@@ -20,6 +20,16 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input name="Id" id="Id" type="hidden" value="{{$gallery->id}}" />
 
+
+                    <div class="form-group">
+                        <label for="Name" class="control-label">تصویر گالری</label>
+                        <div>
+                          <img id="inputImage" onclick="$('#pic').trigger('click');" style="cursor: pointer;width: auto;height: 180px;"
+                            src="{{$gallery->pic===''?asset('images/no-image.png'):asset($gallery->pic)}}" class="img-rounded" alt="no Image Available">
+                          <input id="pic" name="pic" type="file" onchange="GetImage()" style="display: none" />
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="title" class="control-label">عنوان گالری</label>
                         <input id="title" name="title" class="form-control" value="{{$gallery->title}}"/>
@@ -39,7 +49,7 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                                 <span class="btn btn-primary">
-                                    انتخاب عکس ها <input id="uploadPics[]" name="uploadPics[]" style="display: none;" onchange="GetImage(this)" multiple="multiple" type="file">
+                                    انتخاب عکس ها <input id="uploadPics[]" name="uploadPics[]" style="display: none;" onchange="GetImages(this)" multiple="multiple" type="file">
                                 </span>
                             </label>
                             <input id="uploadPicsLog" class="form-control" readonly="readonly" type="text">
@@ -144,7 +154,29 @@
         });
     });
 
-    function GetImage(input) {
+    function GetImage() {
+        try {
+          var input = document.getElementById("pic");
+          if (input.files && input.files[0]) {
+            //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            var fileExtension = ['jpg'];
+            if ($.inArray(input.value.split('.')[input.value.split('.').length - 1].toLowerCase(), fileExtension) === -1) {
+              $("#pic").val("");
+              showAppMessage("فایل ها تنها با فرمت تصویر مجاز می باشند. " + fileExtension.join(', '), "warning");
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#inputImage').attr('src', e.target.result);
+              changeImage = true;
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        } catch (e) {
+          showAppMessage(e.statusMessage, "error");
+        }
+    };
+
+    function GetImages(input) {
         try {
             //var input2 = document.getElementById("uploadPics");
             if(input.files){

@@ -15,6 +15,7 @@ class CreateGalleriesTable extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('pic',400)->collation('utf8_unicode_ci');
             $table->string('title',400)->collation('utf8_unicode_ci');
             $table->text('body')->collation('utf8_unicode_ci');
 

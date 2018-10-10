@@ -12,6 +12,13 @@
                 <dl class="dl-horizontal">
 
                     <dt>
+                        تصویر گالری
+                    </dt>
+                    <dd>
+                        <img src="{{$gallery->pic===''?asset('images/no-image.png'):asset($gallery->pic)}}"  class="img-rounded" alt="no Image Available">
+                    </dd>
+
+                    <dt>
                         عنوان گالری
                     </dt>
                     <dd>

@@ -52,7 +52,20 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         //
+        $filename='';
+
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 400);
+
+            $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
+            $image_resize->save(public_path($filename));
+        }
+
         $gallery = new Gallery;
+        $course->pic = $filename;
         $gallery->title = $request->title;
         $gallery->body = $request->body;
         $gallery->course_id = $request->course_id;
@@ -64,7 +77,7 @@ class GalleryController extends Controller
         if($request->hasFile('uploadPics')){
             $index = 1;
             foreach($request->file('uploadPics') as $file){
-                $name='g_'.$gallery->id.'_'.$file->getClientOriginalName();
+                $name='g_'.$gallery->id.'_'.time().'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/images/galleries/', $name);
                 $image = new Image;
                 if($index==1) {
@@ -122,6 +135,22 @@ class GalleryController extends Controller
         //
         $gallery = Gallery::find($id);
 
+        if ($request->hasFile('pic')) {
+
+            $file = $request->file('pic');
+            $image_resize = Image::make($file->getRealPath());
+            $image_resize->resize(400, 400);
+
+            if($course->pic==''){
+                $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
+                $image_resize->save(public_path($filename));
+                $course->pic = $filename;
+            }else{
+                $filename = $course->pic;
+                $image_resize->save(public_path($filename));
+            }
+        }
+
         $gallery->title = $request->title;
         $gallery->body = $request->body;
         $gallery->course_id = $request->course_id;
@@ -130,7 +159,7 @@ class GalleryController extends Controller
         if($request->hasFile('uploadPics')){
             $index=$gallery->images->count()+1;
             foreach($request->file('uploadPics') as $file){
-                $name='g_'.$gallery->id.'_'.$file->getClientOriginalName();
+                $name='g_'.$gallery->id.'_'.time().'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/images/galleries/', $name);
                 $image = new Image;
                 $image->title = $gallery->title.' - عکس '.$index;
