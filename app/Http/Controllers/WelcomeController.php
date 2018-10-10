@@ -123,8 +123,9 @@ class WelcomeController extends Controller
 
     public function galleryImage($id)
     {
+        //$gallery = Gallery::find($id);
         $menu='gallery';
-        return view('gallery',compact('menu'));
+        return view('galleryImage',compact('menu'));
     }
 
 }
