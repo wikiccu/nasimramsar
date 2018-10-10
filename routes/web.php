@@ -31,6 +31,7 @@ Route::post('/contact', 'WelcomeController@contactPost')->name('contactPost');
 Route::get('/teacher/{id}', 'WelcomeController@teacher')->name('teacher');
 Route::get('/course/{id}', 'WelcomeController@course')->name('course');
 Route::get('/post/{id}', 'WelcomeController@post')->name('post');
+Route::get('/galleryImage/{id}', 'WelcomeController@galleryImage')->name('galleryImage');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');

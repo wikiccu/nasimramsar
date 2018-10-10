@@ -121,10 +121,10 @@ class WelcomeController extends Controller
         return view('course',compact('menu','course'));
     }
 
-    // public function galleryImage($id)
-    // {
-    //     $menu='gallery';
-    //     return view('course',compact('menu'));
-    // }
+    public function galleryImage($id)
+    {
+        $menu='gallery';
+        return view('gallery',compact('menu'));
+    }
 
 }
