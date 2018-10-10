@@ -229,7 +229,8 @@ class GalleryController extends Controller
         $img = Image::find($request->id);
         $img->title = $request->title;
         $img->save();
-        return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
+
+        return 'ok';
     }
 
     public function deleteImage($text)

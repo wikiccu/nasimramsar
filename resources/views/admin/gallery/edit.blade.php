@@ -97,7 +97,7 @@
                                         <img class="img-responsive img-thumbnail" src="{{asset($image->pic)}}" >
                                         <div class="caption">
                                                 <p>{{$image->title}}</p>
-                                                <button style="margin-bottom: 0.5em;" class="btn btn-warning" title="تغییر عنوان" onclick="changeTitle('{{$image->title}}',{{$image->id.','.$image->gallery_id}})"><i class="fa fa-edit" title="تغییر عنوان"></i> تغییر عنوان</button>
+                                                <button style="margin-bottom: 0.5em;" class="btn btn-warning" title="تغییر عنوان" onclick="changeTitle('{{$image->title}}',{{$image->id}},this)"><i class="fa fa-edit" title="تغییر عنوان"></i> تغییر عنوان</button>
                                                 <form method="POST"  action="{{ url('/deleteGalleryImage') }}"
                                                     onsubmit="return confirm('از حذف تصویر اطمینان دارید؟');">
                                                     @csrf
@@ -210,21 +210,19 @@
         }
     };
 
-    function changeTitle(title,id,gallery_id){
+    function changeTitle(title,id,obj){
         var newTitle = prompt("عنوان جدید را وارد کنید", title);
         if(newTitle != null && newTitle != '' && newTitle != title){
-            console.log('start post')
             $.ajax({
                 method: "POST",
                 url: "{{url('/changeGalleryImageTitle')}}",
                 data: {
                     id: id,
-                    title: title,
-                    gallery_id:gallery_id,
+                    title: newTitle,
                     _token: "{{ csrf_token() }}"
                 }
             }).done (function (data) {
-                console.log ('image was deleted');
+                $(obj).parent().find("p").text(newTitle);
                 })
                 .fail (function (e) {
                 console.log (e);
