@@ -45,9 +45,11 @@
                 <div class="login">
                     <ul class="nav-login">
                         @auth
-                            {{--  @if ( $user->isAdmin() )
-                                <p>Yay! I'm Admin!</p>
-                            @endif  --}}
+                            @if ( Auth::user()->isAdmin() )
+                                <li>
+                                    <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
                             </li>

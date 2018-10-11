@@ -35,12 +35,12 @@ class User extends Authenticatable
 
     public function isActive()
     {
-        return $this->isActive != 0;
+        return $this->is_active != 0;
     }
 
     public function hasRole($roleName)
     {
-        foreach ($this->roles()->get() as $role)
+        foreach ($this->roles as $role)
         {
             if ($role->name == $roleName)
             {
@@ -53,9 +53,9 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        foreach ($this->roles()->get() as $role)
+        foreach ($this->roles as $role)
         {
-            if ($role->name == 'Admin')
+            if ($role->name == 'admin')
             {
                 return true;
             }

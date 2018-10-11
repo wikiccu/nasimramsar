@@ -12,7 +12,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         //$this->middleware('active');
-        //$this->middleware('role:editor');
+        $this->middleware('role:admin');
     }
     //
     public function index()

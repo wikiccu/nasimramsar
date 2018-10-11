@@ -14,7 +14,7 @@ class TeacherCourseController extends Controller
     {
         //$this->middleware('auth');
         //$this->middleware('active');
-        //$this->middleware('role:editor');
+        $this->middleware('role:admin');
     }
     /**
      * Display a listing of the resource.
