@@ -50,9 +50,9 @@
                                     <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
                                 </li>
                             @endif
-                            <li>
+                            {{-- <li>
                                 <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href='{{ route('logout') }}' class='persianFont' onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">خروج</a>
@@ -89,18 +89,17 @@
                         <div class="login-grids">
 
                             <div class="login-right">
-                                <form action="#" method="post">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <h3 class="myDirection persianFont">برای ورود اطلاعات خود را وارد کنید </h3>
-                                    <input type="text" value="Enter your mobile number or Email" name=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}"
-                                        required="">
-                                    <input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"
-                                        required="">
+                                    <input type="text"  placeholder="Enter your mobile number or Email"  id="email" name="email" required="">
+                                    <input type="password" placeholder="Password" id="password" name="password" required="" >
                                     <h4 class="myDirection persianFont">
-                                        <a href="#">فراموش کردن رمزعبور</a> /
-                                        <a href="#">ساخت پسورد جدید</a>
+                                        <a href="{{ route('password.request') }}">فراموش کردن رمزعبور</a> /
+                                        <a href="{{ route('password.request') }}">ساخت پسورد جدید</a>
                                     </h4>
                                     <div class="single-bottom myDirection">
-                                        <input type="checkbox" id="brand" value="">
+                                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="persianFont" for="brand">
                                             <span></span>مرابه خاطر بسپار</label>
                                     </div>
@@ -130,16 +129,13 @@
                         <div class="login-grids">
 
                             <div class="login-right">
-                                <form action="#" method="post">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
                                     <h3 class="myDirection persianFont">ساخت حساب کاربری </h3>
-                                    <input type="text" value="Name" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}"
-                                        required="">
-                                    <input type="text" value="Mobile number" name="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}"
-                                        required="">
-                                    <input type="text" value="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"
-                                        required="">
-                                    <input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"
-                                        required="">
+                                    <input type="text" placeholder="Name" id="name" name="name" required="">
+                                    <input type="text" placeholder="Mobile:09123456" id="mobile" name="mobile" required="">
+                                    <input type="text" placeholder="Email" id="Email" name="Email" required="">
+                                    <input type="password" placeholder="Password" id="Password" name="Password" required="">
 
                                     <input class="persianFont" type="submit" value="ساخت حساب کاربری">
                                 </form>
