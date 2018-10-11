@@ -43,9 +43,9 @@
                         @foreach ($gallery->images as $image)
                         <div class="col-md-3 col-sm-4 col-xs-6">
                             <div class="thumbnail">
-                                <img class="img-responsive img-thumbnail" src="{{asset($image->pic)}}" >
+                                <img class="img-responsive img-thumbnail" src="{{asset($image->pic)}}" alt="{{$image->title}}">
                                 <div class="caption">
-                                        <p>{{$image->title}}</p>
+                                    <p>{{$image->title}}</p>
                                 </div>
                             </div>
                         </div>

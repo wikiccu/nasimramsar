@@ -43,7 +43,7 @@
             <span class="persianFont myDirection">2 عکس</span>
         </span>
     </a>
-    @if (galleries)
+    @if ($galleries)
         @foreach ($galleries as $gallery)
             <a class="gallery-item" href="{{url('galleryImage/'.$gallery->id)}}">
                 <img src="{{asset($gallery->pic)}}" alt="{{$gallery->title}}">
