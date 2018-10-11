@@ -42,37 +42,38 @@
                         <img src="images/bo.png" alt="" title="موسسه نسیم رامسر">
                     </a>
                 </div>
-                @if (Route::has('login'))
                 <div class="login">
                     <ul class="nav-login">
                         @auth
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#myModal1" class="persianFont">ورود</a>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#myModal2" class="persianFont">عضویت</a>
-                        </li>
+                            {{--  @if ( $user->isAdmin() )
+                                <p>Yay! I'm Admin!</p>
+                            @endif  --}}
+                            <li>
+                                <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
+                            </li>
+                            <li>
+                                <a href='{{ route('logout') }}' class='persianFont' onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">خروج</a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                </form>
+                            </li>
                         @else
-                        <li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                <input name='return' type='hidden' value='".urlencode($_SERVER['PHP_SELF'])."' />
-                                @csrf
-                                <button type='submit' class='persianFont logoutBtn'>خروج</button>
-                            </form>
-                        </li>
-                        {{--  @if ( $user->isAdmin() )
-                            <p>Yay! I'm Admin!</p>
-                        @endif  --}}
-                        <li>
-                            <a href='{{url('admin')}}' class='persianFont'>بخش مدیریت</a>
-                        </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal1" class="persianFont">ورود</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal2" class="persianFont">عضویت</a>
+                            </li>
                         @endauth
                     </ul>
                 </div>
-                @endif
                 <div class="clearfix"></div>
             </div>
         </div>
+
+        @guest
         <!-- login -->
         <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -152,6 +153,9 @@
             </div>
         </div>
         <!-- //signup -->
+        @endguest
+
+
         @if($menu=='welcome')
             <div class="banner">
                 <div class="container">
