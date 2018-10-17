@@ -44,6 +44,70 @@
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <!-- Navbar Right Menu -->
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav" style="padding-right: 0;padding-left: 2em;">
+                        @guest
+                        <li >
+                            <a href="{{ route('login') }}">
+                                <i class="fa fa-sign-in text-aqua"></i>
+                                ورود به سایت
+                            </a>
+                        </li>
+                        <li>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">
+                                    <i class="fa fa-wpforms text-success"></i>
+                                    عضویت در سایت
+                                </a>
+                            @endif
+                        </li>
+                        @else
+
+                        <li class="dropdown notifications-menu open">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-user"></i>
+                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu" style="text-align: right">
+                                <li>
+                                <!-- inner menu: contains the actual data -->
+                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 130px;">
+                                    <ul class="menu" style="overflow: hidden; width: 100%; height: 130px;">
+
+                                        <li>
+                                            <a href="{{url('home')}}">
+                                                <i class="fa fa-home text-aqua"></i> خانه
+                                            </a>
+                                        </li>
+                                        @if ( Auth::user()->isAdmin() )
+                                        <li>
+                                            <a href="{{url('admin')}}">
+                                                <i class="fa fa-dashboard text-yellow"></i> بخش مدیریت
+                                            </a>
+                                        </li>
+                                        @endif
+                                        <li>
+                                            <a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-sign-out text-red"></i> خروج
+                                            </a>
+                                        </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+                                    </ul>
+                                    <div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 195.122px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                    </li>
+
+                                {{--  <li class="footer"><a href="#">View all</a></li>  --}}
+                            </ul>
+                            </li>
+                        @endguest
+                    </ul>
+                    </div>
+
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -54,6 +118,9 @@
 
               <!-- Sidebar Menu -->
               <ul class="sidebar-menu">
+
+                @auth
+
                 <li class="header">بخش ها</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="@if($menu=='admin') active @endif">
@@ -110,6 +177,26 @@
                     <span>پیام ها</span>
                   </a>
                 </li>
+
+                @else
+
+                <li class="header">لینک ها</li>
+                <li>
+                    <a href="{{ route('login') }}">
+                        <i class="fa fa-sign-in"></i>
+                        <span>ورود</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('register') }}">
+                        <i class="fa fa-wpforms"></i>
+                        <span>عضویت</span>
+                    </a>
+                </li>
+
+                @endauth
+
               </ul>
               <!-- /.sidebar-menu -->
             </section>
