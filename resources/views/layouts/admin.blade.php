@@ -64,8 +64,8 @@
                         </li>
                         @else
 
-                        <li class="dropdown notifications-menu open">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
                             </a>
@@ -120,6 +120,16 @@
               <ul class="sidebar-menu">
 
                 @auth
+
+                <li class="header">بخش اعضا</li>
+                <li class="@if($menu=='home') active @endif">
+                    <a href="{{url('home')}}">
+                        <i class="fa fa-home"></i>
+                        <span>خانه</span>
+                    </a>
+                </li>
+
+                @if ( Auth::user()->isAdmin() )
 
                 <li class="header">بخش ها</li>
                 <!-- Optionally, you can add icons to the links -->
@@ -177,7 +187,7 @@
                     <span>پیام ها</span>
                   </a>
                 </li>
-
+                @endif
                 @else
 
                 <li class="header">لینک ها</li>
