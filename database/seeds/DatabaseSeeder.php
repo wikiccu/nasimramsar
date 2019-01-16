@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name'      => 'محسن شعبانیان',
             'email'     => 'mohsen1299@gmail.com',
-            'password'  => bcrypt('secret'),
+            'password'  => bcrypt('nasimLaravel$2y$10$bPDr'),
             'is_active' =>'1'
         ]);
         //add role

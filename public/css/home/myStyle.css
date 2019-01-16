@@ -267,3 +267,11 @@ figure figcaption {
     color: #b3b3b3;
     font-style: italic;
 }
+
+a.no-style {
+    color: inherit;
+}
+
+a.no-style:hover {
+    text-decoration: none;
+}

@@ -82,7 +82,7 @@ Route::get('sitemap', function() {
 
 		// add every post to the sitemap
 		foreach ($posts as $post) {
-			$sitemap->add('/post/'.$post->id, $post->updated_at, $post->published,'daily');
+			$sitemap->add(URL::to('/post/'.$post->id), $post->updated_at, $post->published,'daily');
         }
 
 		// get all courses from db
@@ -90,7 +90,7 @@ Route::get('sitemap', function() {
 
 		// add every course to the sitemap
 		foreach ($courses as $course) {
-			$sitemap->add('/course/'.$course->id, $course->updated_at, '0.5','daily');
+			$sitemap->add(URL::to('/course/'.$course->id), $course->updated_at, '0.5','daily');
         }
 
 		// get all teachers from db
@@ -98,7 +98,7 @@ Route::get('sitemap', function() {
 
 		// add every teacher to the sitemap
 		foreach ($teachers as $teacher) {
-			$sitemap->add('/teacher/'.$teacher->id, $teacher->updated_at, '0.5','daily');
+			$sitemap->add(URL::to('/teacher/'.$teacher->id), $teacher->updated_at, '0.5','daily');
         }
 
 
@@ -107,7 +107,7 @@ Route::get('sitemap', function() {
 
 		// add every teacher to the sitemap
 		foreach ($galleryImages as $galleryImage) {
-			$sitemap->add('/galleryImage/'.$galleryImage->id, $galleryImage->updated_at, '0.5','daily');
+			$sitemap->add(URL::to('/galleryImage/'.$galleryImage->id), $galleryImage->updated_at, '0.5','daily');
 		}
 	}
 

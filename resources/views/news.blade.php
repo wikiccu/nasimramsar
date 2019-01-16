@@ -45,7 +45,7 @@
                                     <img src="{{asset($post->pic)}}" alt="{{$post->title}}">
                                 </div>
                                 <div class="text col-md-8 col-xs-12 pull-left persianFont">
-                                    <h3>{{$post->title}}</h3>
+                                    <a class="no-style" href="{{url('post/'.$post->id)}}"><h3>{{$post->title}}</h3></a>
                                     <p>
                                         @if($post->user)
                                         <i class="glyphicon glyphicon-user"></i> توسط {{$post->user->name}}،

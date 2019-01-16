@@ -22,17 +22,21 @@ class WelcomeController extends Controller
     public function index()
     {
         $menu='welcome';
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
         $posts = Post::orderBy('id', 'DESC')->take(6)->get();
         $teachers = Teacher::orderBy('id')->take(4)->get();
-        return view('welcome',compact('menu','posts','teachers'));
+        return view('welcome',compact('menu', 'last_gallery_photo','posts','teachers'));
     }
 
     public function activity()
     {
+        $menu='activity';
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
         $fields = Field::all();
         $courses = Course::all();
-        $menu='activity';
-        return view('activity',compact('menu','fields','courses'));
+        return view('activity',compact('menu', 'last_gallery_photo','fields','courses'));
     }
 
     public function news($subject_id = null)
@@ -51,15 +55,20 @@ class WelcomeController extends Controller
             $this_subject = "آخرین اخبار و مقالات موسسه نسیم";
         }
         $all_posts_number = Post::all()->count();
+
         $menu='news';
-        return view('news',compact('menu','subjects','posts','this_subject','all_posts_number'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
+        return view('news',compact('menu', 'last_gallery_photo','subjects','posts','this_subject','all_posts_number'));
     }
 
     public function gallery()
     {
         $galleries = Gallery::all();
         $menu='gallery';
-        return view('gallery',compact('menu','galleries'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
+        return view('gallery',compact('menu', 'last_gallery_photo','galleries'));
     }
 
     public function about()
@@ -67,13 +76,17 @@ class WelcomeController extends Controller
         $fields = Field::all();
         $teachers = Teacher::all();
         $menu='about';
-        return view('about',compact('menu','fields','teachers'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
+        return view('about',compact('menu', 'last_gallery_photo','fields','teachers'));
     }
 
     public function contact()
     {
         $menu='contact';
-        return view('contact',compact('menu'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
+        return view('contact',compact('menu', 'last_gallery_photo'));
     }
     public function contactPost(Request $request)
     {
@@ -85,7 +98,7 @@ class WelcomeController extends Controller
         Message::create($request->all());
 
         return back()->with('success', 'Thanks for contacting us!');
-        //return view('contact',compact('menu'));
+        //return view('contact',compact('menu', 'last_gallery_photo'));
     }
 
 
@@ -102,30 +115,35 @@ class WelcomeController extends Controller
             $page_title = "خبر پیدا نشد";
         }
         $menu='news';
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+
         $subjects = Subject::all();
         $all_posts_number = Post::all()->count();
-        return view('post',compact('menu','post','subjects','all_posts_number','page_title'));
+        return view('post',compact('menu', 'last_gallery_photo','post','subjects','all_posts_number','page_title'));
     }
 
     public function teacher($id)
     {
         $teacher = Teacher::find($id);
         $menu='about';
-        return view('teacher',compact('menu','teacher'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('teacher',compact('menu', 'last_gallery_photo','teacher'));
     }
 
     public function course($id)
     {
         $course = Course::find($id);
         $menu='activity';
-        return view('course',compact('menu','course'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('course',compact('menu', 'last_gallery_photo','course'));
     }
 
     public function galleryImage($id)
     {
         $gallery = Gallery::find($id);
         $menu='gallery';
-        return view('galleryImage',compact('menu','gallery'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('galleryImage',compact('menu', 'last_gallery_photo','gallery'));
     }
 
 }

@@ -10,6 +10,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="آموزش, نسیم, نسیم رامسر, صنایع دستی, فنی و حرفه ای, کامپیوتر, برنامه نویسی, هنر, معماری, عمران حسابداری"/>
 
+    <meta property="og:title" content="موسسه نسیم رامسر">
+    <meta property="og:description" content="آموزشگاه فنی حرفه ای و آموزش موسیقی، معماری و حسابداری و صنایع دستی، ">
+    <meta property="og:image" content="http://nasimramsar.com/images/bo.png">
+    <meta property="og:url" content="http://nasimramsar.com/">
+
+    <meta name="twitter:title" content="موسسه نسیم رامسر">
+    <meta name="twitter:description" content="آموزشگاه فنی حرفه ای و آموزش موسیقی، معماری و حسابداری و صنایع دستی، ">
+    <meta name="twitter:image" content=" http://nasimramsar.com/images/bo.png">
+    <meta name="twitter:card" content="آموزشگاه فنی حرفه ای و آموزش موسیقی، معماری و حسابداری و صنایع دستی، ">
+
     <title>موسسه نسیم رامسر | @yield('title')</title>
 
     <!-- Scripts -->
@@ -236,6 +246,7 @@
     @yield('content')
 
     <!---->
+    @if($menu!='gallery')
     <div class="content-bottom">
         <h1 class="persianFont myDirection">گالری تصاویر
             <a href="{{url('gallery')}}" class="btn btn-default pull-left gallery_btn" style="">سایر تصاویر</a>
@@ -251,28 +262,25 @@
                 </div>
             </div>
         </div>
-        <div class="content-in">
-            <div class="port effect-1">
-                <div class="image-box">
-                    <img src="{{asset('images/galleries/fi1.jpg')}}" alt="" class="img-responsive">
+
+        @if ($last_gallery_photo)
+            @foreach ($last_gallery_photo as $last_photo)
+                <div class="content-in">
+                    <div class="port effect-1">
+                        <div class="image-box">
+                            <img src="{{asset($last_photo->pic)."?".time()}}" alt="{{$last_photo->title}}" class="img-responsive">
+                        </div>
+                        <div class="text-desc">
+                            <div style="vertical-align:middle;margin:auto">
+                            <h6 class="persianFont myDirection"><a class="no-style" href="{{url('galleryImage/'.$last_photo->id)}}">{{$last_photo->title}}</a></h6>
+                            <p class="persianFont myDirection">{{$last_photo->images->count()}} عکس </p>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-desc">
-                    <h6 class="persianFont myDirection">آموزش چرم دوزی</h6>
-                    <p class="persianFont myDirection">با اساتید حرفه ای و کار عملی</p>
-                </div>
-            </div>
-        </div>
-        <div class="content-in">
-            <div class="port effect-1">
-                <div class="image-box">
-                    <img src="{{asset('images/galleries/fi3.jpg')}}" alt="" class="img-responsive">
-                </div>
-                <div class="text-desc">
-                    <h6 class="persianFont myDirection">آموزش پیانو</h6>
-                    <p class="persianFont myDirection">با اساتید حرفه ای </p>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
+
         <div class="content-in">
             <div class="port effect-1">
                 <div class="image-box">
@@ -284,19 +292,9 @@
                 </div>
             </div>
         </div>
-        <div class="content-in">
-            <div class="port effect-1">
-                <div class="image-box">
-                    <img src="{{asset('images/galleries/fi4.jpg')}}" alt="" class="img-responsive">
-                </div>
-                <div class="text-desc">
-                    <h6 class="persianFont myDirection">دوره های مالیاتی</h6>
-                    <p class="persianFont myDirection">دوره های کوتاه مدت و بلند مدت</p>
-                </div>
-            </div>
-        </div>
         <div class="clearfix"> </div>
     </div>
+    @endif
     <!---->
     <!--footer-->
     <div class="footer">

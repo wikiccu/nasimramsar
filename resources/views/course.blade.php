@@ -26,6 +26,7 @@
     </div>
 </div>
 
+@if ($course->description!=null && $course->description!='')
 <div class="services">
     <div class="container">
         <div class="gallery-top">
@@ -39,6 +40,7 @@
         </div>
     </div>
 </div>
+@endif
 
 <div class="gallery">
     <div class="container">
@@ -57,7 +59,7 @@
                                     <img src="{{asset($teacher->pic)}}" alt="{{$teacher->name}}">
                                 </div>
                                 <div class="text col-md-8 col-xs-12 pull-left persianFont" style="margin-top:3em;">
-                                    <h3>{{$teacher->name}}</h3>
+                                    <a class="no-style" href="{{url('teacher/'.$teacher->id)}}"><h3>{{$teacher->name}}</h3></a>
                                     <p>{{$teacher->title}}</p>
                                     <div class="button" style="margin-top:1em;">
                                         <span>

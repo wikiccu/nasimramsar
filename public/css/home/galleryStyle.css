@@ -748,7 +748,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   left: 0;
   top: 0;
 }
-
+/*
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
@@ -883,7 +883,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 .btn-outline:hover, .btn-outline:focus, .btn-outline:active {
   box-shadow: none;
-}
+} */
 
 #message {
   height: 130px;
