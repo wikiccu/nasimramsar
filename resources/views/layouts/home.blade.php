@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="آموزش, نسیم, نسیم رامسر, صنایع دستی, فنی و حرفه ای, کامپیوتر, برنامه نویسی, هنر, معماری, عمران حسابداری"/>
+    <meta name="keywords" content="آموزش, نسیم, نسیم رامسر, صنایع دستی, فنی و حرفه ای, کامپیوتر, برنامه نویسی, هنر, معماری, عمران حسابداری"/>
+    <meta name="news_keywords" content="طراحی سایت، خرید مودم، آموزش برنامه نویسی، آموزش طراحی سایت" />
+    <meta name="description" content="آموزشگاه فنی حرفه ای و آموزش موسیقی، معماری و حسابداری و صنایع دستی، " />
 
     <meta property="og:title" content="موسسه نسیم رامسر">
     <meta property="og:description" content="آموزشگاه فنی حرفه ای و آموزش موسیقی، معماری و حسابداری و صنایع دستی، ">
