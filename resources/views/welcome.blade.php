@@ -80,7 +80,7 @@
             </div>
             <div class="section group">
                 <div class="col-md-2 contact-form pull-left">
-                    <a href="blogs.html" class="persianFont btn-style">بقیه خبر ها </a>
+                    <a href="{{url('news')}}" class="persianFont btn-style">بقیه خبر ها </a>
                 </div>
                 <div class="clearfix"> </div>
             </div>

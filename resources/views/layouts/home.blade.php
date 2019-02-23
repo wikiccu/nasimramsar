@@ -253,18 +253,7 @@
         <h1 class="persianFont myDirection">گالری تصاویر
             <a href="{{url('gallery')}}" class="btn btn-default pull-left gallery_btn" style="">سایر تصاویر</a>
         </h1>
-        <div class="content-in">
-            <div class="port effect-1">
-                <div class="image-box">
-                    <img src="{{asset('images/galleries/fi.jpg')}}" alt="" class="img-responsive">
-                </div>
-                <div class="text-desc">
-                    <h6 class="persianFont myDirection">آموزش C#</h6>
-                    <p class="persianFont myDirection">آموزش زبان برنامه نویسی سی شارپ مقدماتی و پیشرفته</p>
-                </div>
-            </div>
-        </div>
-
+        
         @if ($last_gallery_photo)
             @foreach ($last_gallery_photo as $last_photo)
                 <div class="content-in">
@@ -283,17 +272,6 @@
             @endforeach
         @endif
 
-        <div class="content-in">
-            <div class="port effect-1">
-                <div class="image-box">
-                    <img src="{{asset('images/galleries/fi2.jpg')}}" alt="" class="img-responsive">
-                </div>
-                <div class="text-desc">
-                    <h6 class="persianFont myDirection">آموزش نرم افزار هلو</h6>
-                    <p class="persianFont myDirection">به صورت عملی همراه با پروژه های کاربردی</p>
-                </div>
-            </div>
-        </div>
         <div class="clearfix"> </div>
     </div>
     @endif
