@@ -22,9 +22,9 @@ class WelcomeController extends Controller
     public function index()
     {
         $menu='welcome';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
-        $posts = Post::orderBy('id', 'DESC')->take(6)->get();
+        $posts = Post::orderBy('id', 'DESC')->take(5)->get();
         $teachers = Teacher::orderBy('id')->take(4)->get();
         return view('welcome',compact('menu', 'last_gallery_photo','posts','teachers'));
     }
@@ -32,7 +32,7 @@ class WelcomeController extends Controller
     public function activity()
     {
         $menu='activity';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         $fields = Field::all();
         $courses = Course::all();
@@ -57,7 +57,7 @@ class WelcomeController extends Controller
         $all_posts_number = Post::all()->count();
 
         $menu='news';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         return view('news',compact('menu', 'last_gallery_photo','subjects','posts','this_subject','all_posts_number'));
     }
@@ -66,7 +66,7 @@ class WelcomeController extends Controller
     {
         $galleries = Gallery::all();
         $menu='gallery';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         return view('gallery',compact('menu', 'last_gallery_photo','galleries'));
     }
@@ -76,7 +76,7 @@ class WelcomeController extends Controller
         $fields = Field::all();
         $teachers = Teacher::all();
         $menu='about';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         return view('about',compact('menu', 'last_gallery_photo','fields','teachers'));
     }
@@ -84,7 +84,7 @@ class WelcomeController extends Controller
     public function contact()
     {
         $menu='contact';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         return view('contact',compact('menu', 'last_gallery_photo'));
     }
@@ -115,7 +115,7 @@ class WelcomeController extends Controller
             $page_title = "خبر پیدا نشد";
         }
         $menu='news';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
 
         $subjects = Subject::all();
         $all_posts_number = Post::all()->count();
@@ -126,7 +126,7 @@ class WelcomeController extends Controller
     {
         $teacher = Teacher::find($id);
         $menu='about';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
         return view('teacher',compact('menu', 'last_gallery_photo','teacher'));
     }
 
@@ -134,7 +134,7 @@ class WelcomeController extends Controller
     {
         $course = Course::find($id);
         $menu='activity';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
         return view('course',compact('menu', 'last_gallery_photo','course'));
     }
 
@@ -142,7 +142,7 @@ class WelcomeController extends Controller
     {
         $gallery = Gallery::find($id);
         $menu='gallery';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
         return view('galleryImage',compact('menu', 'last_gallery_photo','gallery'));
     }
 

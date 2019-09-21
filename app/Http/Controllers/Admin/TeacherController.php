@@ -60,7 +60,7 @@ class TeacherController extends Controller
             $file = $request->file('pic');
 
             $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(400, 270);
+            $image_resize->resize(400, 378);
 
             $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
             $image_resize->save(public_path($filename));
@@ -125,7 +125,7 @@ class TeacherController extends Controller
 
             $file = $request->file('pic');
             $image_resize = Image::make($file->getRealPath());
-            $image_resize->resize(400, 270);
+            $image_resize->resize(400, 378);
 
             if($teacher->pic==''){
                 $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
