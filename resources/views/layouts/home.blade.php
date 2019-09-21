@@ -312,6 +312,10 @@
                         <a href="mailto:info@example.com">
                             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>info@nasimramsar.com</a>
                     </li>
+                    <li>
+                        <a href="https://www.instagram.com/nasimramsar/">
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>instagram: @nasimramsar</a>
+                    </li>
                 </ul>
                 <!-- <p class="copy-right">© 2016 Academic. All rights reserved | Design by
                     <a href="http://w3layouts.com/">W3layouts</a>
