@@ -63,7 +63,8 @@ class GalleryController extends Controller
             $image_resize->resize(500, 400);
 
             $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path($filename));
+            $path = str_replace("index/public/images","images",public_path($filename));
+            $image_resize->save($path);
          }
 
         $gallery = new Gallery;
@@ -145,11 +146,13 @@ class GalleryController extends Controller
 
             if($gallery->pic==''){
                 $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
                 $gallery->pic = $filename;
             }else{
                 $filename = $gallery->pic;
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
             }
         }
 

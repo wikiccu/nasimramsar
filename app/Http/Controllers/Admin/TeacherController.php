@@ -63,7 +63,8 @@ class TeacherController extends Controller
             $image_resize->resize(400, 378);
 
             $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path($filename));
+            $path = str_replace("index/public/images","images",public_path($filename));
+            $image_resize->save($path);
         }
 
         $teacher = new Teacher;
@@ -129,11 +130,13 @@ class TeacherController extends Controller
 
             if($teacher->pic==''){
                 $filename = 'images/teachers/'.time().'_'.$file->getClientOriginalName();
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
                 $teacher->pic = $filename;
             }else{
                 $filename = $teacher->pic;
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
             }
         }
 

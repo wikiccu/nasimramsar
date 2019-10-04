@@ -62,7 +62,8 @@ class PostController extends Controller
             $image_resize->resize(400, 270);
 
             $filename = 'images/posts/'.time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path($filename));
+            $path = str_replace("index/public/images","images",public_path($filename));
+            $image_resize->save($path);
         }
 
         $post = new Post;
@@ -134,11 +135,13 @@ class PostController extends Controller
 
             if($post->pic==''){
                 $filename = 'images/posts/'.time().'_'.$file->getClientOriginalName();
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
                 $post->pic = $filename;
             }else{
                 $filename = $post->pic;
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
             }
         }
 

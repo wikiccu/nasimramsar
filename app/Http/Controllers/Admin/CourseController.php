@@ -63,7 +63,8 @@ class CourseController extends Controller
             $image_resize->resize(400, 270);
 
             $filename = 'images/courses/'.time().'_'.$file->getClientOriginalName();
-            $image_resize->save(public_path($filename));
+            $path = str_replace("index/public/images","images",public_path($filename));
+            $image_resize->save($path);
         }
 
         $course = new Course;
@@ -134,11 +135,13 @@ class CourseController extends Controller
 
             if($course->pic==''){
                 $filename = 'images/courses/'.time().'_'.$file->getClientOriginalName();
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
                 $course->pic = $filename;
             }else{
                 $filename = $course->pic;
-                $image_resize->save(public_path($filename));
+                $path = str_replace("index/public/images","images",public_path($filename));
+                $image_resize->save($path);
             }
         }
 
