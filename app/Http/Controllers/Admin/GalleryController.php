@@ -29,7 +29,7 @@ class GalleryController extends Controller
         //
         $gallerys = Gallery::orderBy('id', 'DESC')->get();
         $menu = 'gallery';
-        return view('admin.gallery.index', compact('gallerys','menu'));
+        return view('admin.gallery.index', compact('gallerys', 'menu'));
     }
 
     /**
@@ -42,7 +42,7 @@ class GalleryController extends Controller
         //
         $courses = Course::all();
         $menu = 'gallery';
-        return view('admin.gallery.create',compact('courses','menu'));
+        return view('admin.gallery.create', compact('courses', 'menu'));
     }
 
     /**
@@ -54,7 +54,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         //
-        $filename='';
+        $filename = '';
 
         if ($request->hasFile('pic')) {
             $file = $request->file('pic');
@@ -62,10 +62,10 @@ class GalleryController extends Controller
             $image_resize = ImageManager::make($file->getRealPath());
             $image_resize->resize(500, 400);
 
-            $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
-            $path = str_replace("index/public/images","images",public_path($filename));
+            $filename = 'images/galleries/g_p_' . time() . '_' . $file->getClientOriginalName();
+            $path = str_replace("index/public/images", "images", public_path($filename));
             $image_resize->save($path);
-         }
+        }
 
         $gallery = new Gallery;
         $gallery->pic = $filename;
@@ -77,17 +77,18 @@ class GalleryController extends Controller
 
         //return $gallery->id;
         //save gallery image
-        if($request->hasFile('uploadPics')){
+        if ($request->hasFile('uploadPics')) {
             $index = 1;
-            foreach($request->file('uploadPics') as $file){
-                $name='g_'.$gallery->id.'_'.time().'_'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/galleries/', $name);
+            foreach ($request->file('uploadPics') as $file) {
+                $filename = 'images/galleries/g_' . $gallery->id . '_' . time() . '_' . $file->getClientOriginalName();
+                $path = str_replace("index/public/images", "images", public_path($filename));
+                $file->move($path);
                 $image = new Image;
-                if($index==1) {
-                    $image->mainPic=1;
+                if ($index == 1) {
+                    $image->mainPic = 1;
                 }
-                $image->title = $gallery->title.' - عکس '.$index;
-                $image->pic ='images/galleries/'.$name;
+                $image->title = $gallery->title . ' - عکس ' . $index;
+                $image->pic = $filename;
                 $image->gallery_id = $gallery->id;
                 $image->save();
                 $index++;
@@ -108,7 +109,7 @@ class GalleryController extends Controller
         //
         $gallery = Gallery::find($id);
         $menu = 'gallery';
-        return view('admin.gallery.show',compact('gallery','id','menu'));
+        return view('admin.gallery.show', compact('gallery', 'id', 'menu'));
     }
 
     /**
@@ -123,7 +124,7 @@ class GalleryController extends Controller
         $gallery = Gallery::find($id);
         $courses = Course::all();
         $menu = 'gallery';
-        return view('admin.gallery.edit',compact('gallery','id','courses','menu'));
+        return view('admin.gallery.edit', compact('gallery', 'id', 'courses', 'menu'));
     }
 
     /**
@@ -144,14 +145,14 @@ class GalleryController extends Controller
             $image_resize = ImageManager::make($file->getRealPath());
             $image_resize->resize(500, 400);
 
-            if($gallery->pic==''){
-                $filename = 'images/galleries/g_p_'.time().'_'.$file->getClientOriginalName();
-                $path = str_replace("index/public/images","images",public_path($filename));
+            if ($gallery->pic == '') {
+                $filename = 'images/galleries/g_p_' . time() . '_' . $file->getClientOriginalName();
+                $path = str_replace("index/public/images", "images", public_path($filename));
                 $image_resize->save($path);
                 $gallery->pic = $filename;
-            }else{
+            } else {
                 $filename = $gallery->pic;
-                $path = str_replace("index/public/images","images",public_path($filename));
+                $path = str_replace("index/public/images", "images", public_path($filename));
                 $image_resize->save($path);
             }
         }
@@ -161,14 +162,14 @@ class GalleryController extends Controller
         $gallery->course_id = $request->course_id;
         $gallery->save();
 
-        if($request->hasFile('uploadPics')){
-            $index=$gallery->images->count()+1;
-            foreach($request->file('uploadPics') as $file){
-                $name='g_'.$gallery->id.'_'.time().'_'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/galleries/', $name);
+        if ($request->hasFile('uploadPics')) {
+            $index = $gallery->images->count() + 1;
+            foreach ($request->file('uploadPics') as $file) {
+                $name = 'g_' . $gallery->id . '_' . time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path() . '/images/galleries/', $name);
                 $image = new Image;
-                $image->title = $gallery->title.' - عکس '.$index;
-                $image->pic ='images/galleries/'.$name;
+                $image->title = $gallery->title . ' - عکس ' . $index;
+                $image->pic = 'images/galleries/' . $name;
                 $image->gallery_id = $gallery->id;
                 $image->save();
                 $index++;
@@ -190,8 +191,7 @@ class GalleryController extends Controller
         $gallery = Gallery::find($id);
 
         $filename = $gallery->pic;
-        if(file_exists(public_path($filename)))
-        {
+        if (file_exists(public_path($filename))) {
             unlink(public_path($filename));
         }
 
@@ -200,8 +200,7 @@ class GalleryController extends Controller
 
         //remove images
         foreach ($gallery->images as $image) {
-            if(file_exists(public_path($image->pic)))
-            {
+            if (file_exists(public_path($image->pic))) {
                 unlink(public_path($image->pic));
             }
             $image->delete();
@@ -216,13 +215,12 @@ class GalleryController extends Controller
         //remove image
         $img = Image::find($request->id);
         $filename = $img->pic;
-        if(file_exists(public_path($filename)))
-        {
+        if (file_exists(public_path($filename))) {
             unlink(public_path($filename));
         }
         $img->delete();
 
-        return redirect('admin\gallery\\'.$request->gallery_id.'\edit');
+        return redirect('admin\gallery\\' . $request->gallery_id . '\edit');
     }
 
     public function changeImageTitle(Request $request)
@@ -242,23 +240,20 @@ class GalleryController extends Controller
         $parts = preg_split($pattern, $text);
 
         // Loop through parts array and display substrings
-        foreach($parts as $part){
-            $startpos=stripos($part,"src=");
-            $endpos=stripos($part,"\" ",$startpos);
-            if($startpos!=false && $endpos!=false)
-            {
-                $src = substr($part,$startpos+5,$endpos-$startpos-5);
+        foreach ($parts as $part) {
+            $startpos = stripos($part, "src=");
+            $endpos = stripos($part, "\" ", $startpos);
+            if ($startpos != false && $endpos != false) {
+                $src = substr($part, $startpos + 5, $endpos - $startpos - 5);
                 //unlink($src);
                 $splitPath = explode("/", $src);
                 $splitPathLength = count($splitPath);
-                $filename=$splitPath[$splitPathLength-1];
-                if(file_exists(public_path('images/froalafiles/'.$filename)))
-                {
-                    unlink(public_path('images/froalafiles/'.$filename));
+                $filename = $splitPath[$splitPathLength - 1];
+                if (file_exists(public_path('images/froalafiles/' . $filename))) {
+                    unlink(public_path('images/froalafiles/' . $filename));
                 }
                 FroalaFileUpload::where('path', 'LIKE', '%' . $filename . '%')->delete();
             }
         }
     }
-
 }
