@@ -165,11 +165,12 @@ class GalleryController extends Controller
         if ($request->hasFile('uploadPics')) {
             $index = $gallery->images->count() + 1;
             foreach ($request->file('uploadPics') as $file) {
-                $name = 'g_' . $gallery->id . '_' . time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path() . '/images/galleries/', $name);
+                $filename = 'images/galleries/g_' . $gallery->id . '_' . time() . '_' . $file->getClientOriginalName();
+                $path = str_replace("index/public/images", "images", public_path($filename));
+                $file->move($path);
                 $image = new Image;
                 $image->title = $gallery->title . ' - عکس ' . $index;
-                $image->pic = 'images/galleries/' . $name;
+                $image->pic = $filename;
                 $image->gallery_id = $gallery->id;
                 $image->save();
                 $index++;
