@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\product;
 use Illuminate\Http\Request;
+use App\Gallery;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,9 @@ class ProductController extends Controller
     public function index(){
 
         $menu = 'product';
-        return view('shop.index',compact('menu'));
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
+
+        return view('shop.index',compact('menu','last_gallery_photo'));
     }
 
     /**
