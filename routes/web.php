@@ -47,7 +47,7 @@ Route::resources(
     '/admin/gallery' => 'Admin\GalleryController',
     '/admin/message' => 'Admin\MessageController',
     ]);
-
+Route::resource('photos', 'ProductController');
 //froala
 Route::post('/uploadfile','Admin\AdminController@upload');
 Route::post('/deletefile','Admin\AdminController@delete');
