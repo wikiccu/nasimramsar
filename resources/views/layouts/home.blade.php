@@ -28,9 +28,11 @@
 
 
     <!-- Styles -->
+    <link href="{{ asset('css/main.css') }} " rel="stylesheet" />
     <link href="{{ asset('css/adminlte/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home/myStyle.css') }}" rel="stylesheet">
+    
 
     <script type="application/x-javascript">
 		addEventListener("load", function () {
@@ -302,7 +304,7 @@
             </div>
             <div class="col-md-6 footer-right pull-left">
                 <h3 class="persianFont myDirection">تماس با ما </h3>
-                <ul class="con-icons">
+                <ul class="con-icons" style="direction:ltr;text-align:left;">
                     <li>
                         <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                         <span class="persianFont">+11 55 25 9606</span>
@@ -330,5 +332,7 @@
     <!--//footer-->
     <script src="{{ asset('js/jquery.min.js') }}" ></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+    <!-- Main Js -->
+    <script src="{{ asset('js/main.js') }} " type="text/javascript"></script>
     @yield('scripts')
 </body>
