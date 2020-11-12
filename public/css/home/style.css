@@ -400,9 +400,9 @@ transition: 0.5s all;
     margin-left: 1%;
 }
 .footer-left p.para {
-    color: #999;
+    color: #fff;
     line-height: 2.2em;
-    font-size: 1em;
+    font-size: 18px;
 	padding:2em 0 2.7em;
 	letter-spacing: 1px;
 }
@@ -449,9 +449,9 @@ transition: 0.5s all;
 	margin-top:2em;
 }
 ul.con-icons li {
-    color: #999;
+    color: #fff;
     list-style-type: none;
-    font-size: 1em;
+    font-size: 18px;
 	margin-bottom: 1.5em;
 	letter-spacing: 1px;
 }
@@ -460,7 +460,7 @@ ul.con-icons li span {
     margin-right: 9px;
 }
 ul.con-icons li a {
-    color: #999;
+    color: #fff;
 	text-decoration:none;
 }
 ul.con-icons li a:hover {
