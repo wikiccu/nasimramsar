@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
 
             $table->string('file')->nullable();
 
-            $table->decimal('price', 8, 2);
+            $table->integer('price');
 
             $table->timestamps();
         });

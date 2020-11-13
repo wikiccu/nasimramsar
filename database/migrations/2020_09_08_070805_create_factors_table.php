@@ -24,7 +24,7 @@ class CreateFactorsTable extends Migration
             $table->string('bank_name')->nullable();
             $table->string('bank_status')->nullable();
 
-            $table->decimal('price', 8, 2);
+            $table->integer('price');
 
             $table->tinyInteger('status')->default(0); // 0 init, 1 failed, 2 success
 
