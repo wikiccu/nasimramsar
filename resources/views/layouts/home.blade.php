@@ -215,7 +215,7 @@
                                     <a class="@if($menu=='contact')active @endif persianFont" href="{{url('contact')}}">تماس با ما</a>
                                 </li>
                                 <li>
-                                    <a class="@if($menu=='product')active @endif persianFont" href="{{ route('product.index') }}"> فروشگاه </a>
+                                    <a class="@if($menu=='shop')active @endif persianFont" href="{{ route('shop') }}"> فروشگاه </a>
                                 </li>
                             </ul>
                         </div>

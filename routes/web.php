@@ -27,7 +27,7 @@ Route::get('/gallery', 'WelcomeController@gallery')->name('gallery');
 Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
 Route::post('/contact', 'WelcomeController@contactPost')->name('contactPost');
-Route::post('/shop', 'WelcomeController@shop')->name('shop');
+Route::get('/shop', 'WelcomeController@shop')->name('shop');
 
 Route::get('/teacher/{id}', 'WelcomeController@teacher')->name('teacher');
 Route::get('/course/{id}', 'WelcomeController@course')->name('course');
@@ -47,8 +47,8 @@ Route::resources(
     '/admin/teachercourse' => 'Admin\TeacherCourseController',
     '/admin/gallery' => 'Admin\GalleryController',
     '/admin/message' => 'Admin\MessageController',
+    '/admin/product' => 'Admin\ProductController',
     ]);
-Route::resource('product', 'ProductController');
 //froala
 Route::post('/uploadfile','Admin\AdminController@upload');
 Route::post('/deletefile','Admin\AdminController@delete');

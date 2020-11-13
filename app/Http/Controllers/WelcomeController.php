@@ -10,6 +10,7 @@ use App\Course;
 use App\Field;
 use App\Gallery;
 use App\Message;
+use App\Product;
 
 class WelcomeController extends Controller
 {
@@ -147,7 +148,7 @@ class WelcomeController extends Controller
     }
     public function shop()
     {
-        $menu = 'product';
+        $menu = 'shop';
         $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
         $products = Product::all();
         return view('shop.index',compact('menu','last_gallery_photo','products'));
