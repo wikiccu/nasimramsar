@@ -14,9 +14,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        //$this->middleware('active');
+        $this->middleware('role:admin');
+    }
     public function index(){
-
-        
+        $products = Product::orderBy('id', 'DESC')->get();
+        // $menu = 'gallery';
+        return view('admin.product.index',compact('products'));
     }
 
     /**

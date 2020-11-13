@@ -141,7 +141,7 @@
     <!-- /.info-box -->
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12 pull-right">
-    <a href="#">
+    <a href="{{ route('product.index') }}">
         <div class="info-box">
         <span class="info-box-icon bg-teal">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
