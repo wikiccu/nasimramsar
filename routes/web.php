@@ -27,6 +27,7 @@ Route::get('/gallery', 'WelcomeController@gallery')->name('gallery');
 Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
 Route::post('/contact', 'WelcomeController@contactPost')->name('contactPost');
+Route::post('/shop', 'WelcomeController@shop')->name('shop');
 
 Route::get('/teacher/{id}', 'WelcomeController@teacher')->name('teacher');
 Route::get('/course/{id}', 'WelcomeController@course')->name('course');

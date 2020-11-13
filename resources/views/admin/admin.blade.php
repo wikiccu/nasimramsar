@@ -140,4 +140,18 @@
     </a>
     <!-- /.info-box -->
     </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 pull-right">
+    <a href="#">
+        <div class="info-box">
+        <span class="info-box-icon bg-teal">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+        </span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">بخش</span>
+            <span class="info-box-number">محصولات</span>
+        </div>
+        </div>
+    </a>
+    </div>
     @endsection

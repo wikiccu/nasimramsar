@@ -145,5 +145,11 @@ class WelcomeController extends Controller
         $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
         return view('galleryImage',compact('menu', 'last_gallery_photo','gallery'));
     }
-
+    public function shop()
+    {
+        $menu = 'product';
+        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
+        $products = Product::all();
+        return view('shop.index',compact('menu','last_gallery_photo','products'));
+    }
 }

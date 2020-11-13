@@ -16,11 +16,7 @@ class ProductController extends Controller
      */
     public function index(){
 
-        $menu = 'product';
-        $last_gallery_photo = Gallery::orderBy('id', 'DESC')->take(5)->get();
-        $products = Product::all();
-        return view('shop.index',compact('menu','last_gallery_photo','products'));
-
+        
     }
 
     /**
